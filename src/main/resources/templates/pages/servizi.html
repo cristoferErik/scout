@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{modules/head}"></head>
+
+<body>
+    <div class="wrapper">
+        <header th:replace="~{modules/menu}"></header>
+        <div class="container">
+            <div class="container">
+                <div class="card">
+                    <div class="container box ">
+                        <div>
+                            <h2 for="cercare">Servizi</h2>
+                        </div>
+                    </div>
+                    <div class="container box right">
+                        <form class="container-ricerca" action="/servizio" method="GET">
+                            <div class="ricerca">
+                                <label for="nome">cercare per nome:</label>
+                                <input type="text" name="nome" th:value="${nome}" id="nome" />
+                            </div>
+                            <div class="ricerca right">
+                                <button class="button green" type="submit">cercare</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="box dim">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Nome</th>
+                                    <th>Costo</th>
+                                    <th>Descrizzione</th>
+                                    <th>Data creazione</th>
+                                    <th>Data Aggiornamento</th>
+                                    <th>Update</th>
+                                    <th>Check</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="servizio : ${listServizi}">
+                                    <input type="hidden" name="descrizzione" th:value="${servizio.descrizzione}">
+                                    <td th:text="${servizio.id}"></td>
+                                    <td th:text="${servizio.nome}"></td>
+                                    <td th:text="${servizio.costo}"></td>
+                                    <td th:text="${servizio.descrizzione}"></td>
+                                    <td th:text="${servizio.dataCreazione}"></td>
+                                    <td th:text="${servizio.dataAggiornamento}"></td>
+                                    <td>
+                                        <button type="button" class="button light-blue"
+                                            onclick="openModal('modal1'); getData(this);">update</button>
+                                    </td>
+                                    <td>
+                                        <button type="button" class="button check-color"
+                                            onclick="openModal('modal1'); getData(this);">check</button>
+                                    </td>
+                                    <td>
+                                        <button type="button" class="button danger-color"
+                                            onclick="openModal('modal1'); getData(this);">remove</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="container box">
+                        <nav th:replace="~{pagination/paginator}"></nav>
+                    </div>
+                    <div class="container box right">
+                        <button type="button" class="button green" 
+                        onclick="openModal('modal1'); getData(this);">Aggiungere</button>
+                    </div>
+                </div>
+            </div>
+            <div id="modal1" class="modal">
+                <div class="container ">
+                    <div class="card-form">
+                        <div class="container box ">
+                            <form class="module" action="/saveAggSw" method="post">
+                                <div class="items">
+                                    <div class="item center">
+                                        <h2 for="cercare">Descrizzione del aggiormamento</h2>
+                                        <input type="hidden" name="idSitoWeb">
+                                    </div>
+                                </div>
+                                <div class="items ">
+                                    <div class="item">
+                                        <label for="date">Data</label>
+                                        <input type="hidden" name="date">
+                                        <input disabled readonly type="date" name="date" id="date">
+                                    </div>
+                                    <div class="item">
+                                        <label for="nomeWebSite">Sito Web</label>
+                                        <input type="hidden" name="nomeWebSite">
+                                        <input disabled type="text" name="nomeWebSite" id="nomeWebSite"
+                                            readonly></input>
+                                    </div>
+                                    <div class="item">
+                                        <label for="description">Descrizzione</label>
+                                        <textarea name="description" id="description"
+                                            placeholder="aggiunge una descrizzione"></textarea>
+                                    </div>
+                                    <div class="item">
+                                        <label for="message">Message</label>
+                                        <textarea name="message" id="message"
+                                            placeholder="aggiunge un messagio"></textarea>
+                                    </div>
+                                    <div class="item right">
+                                        <button class="button green" type="submit" name="action"
+                                            value="invia">Salva</button>
+                                        <button class="button dark-red" type="button" name="action" value="anulla"
+                                            onclick="closeModal('modal1')">anulla</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="js/modal.js"></script>
+</html>

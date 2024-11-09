@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{modules/head}"></head>
+
+<body>
+    <div class="wrapper">
+        <header th:replace="~{modules/menu}"></header>
+        <div class="container">
+            <div class="container">
+                <div class="card">
+                    <div class="container box">
+                        <div>
+                            <h2 for="cercare ">Utenti</h2>
+                        </div>
+                    </div>
+                    <div class="container box right">
+                        <form class="container-ricerca" action="/utente" method="GET">
+                            <div class="ricerca">
+                                <label for="nome">cercare per nome:</label>
+                                <input type="text" name="nome" th:value="${nome}" id="nome" />
+                            </div>
+                            <div class="ricerca right">
+                                <button class="button green" type="submit">cercare</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="box dim">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Nome</th>
+                                    <th>Cognome</th>
+                                    <th>Indirizzo</th>
+                                    <th>Telefono</th>
+                                    <th>Email</th>
+                                    <th>Update</th>
+                                    <th>Check</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="utente : ${listUtente}">
+                                    <td th:text="${utente.id}"></td>
+                                    <td th:text="${utente.nome}"></td>
+                                    <td th:text="${utente.cognome}"></td>
+                                    <td th:text="${utente.indirizzo}"></td>
+                                    <td th:text="${utente.telefono}"></td>
+                                    <td th:text="${utente.email}"></td>
+                                    <td>
+                                        <button type="button" class="button light-blue"
+                                            onclick="openModal('modal1'); getDataUtente(this);">update</button>
+                                    </td>
+                                    <td>
+                                        <button type="button" class="button check-color"
+                                            onclick="openModal('modal1'); getDataUtente(this);">check</button>
+                                    </td>
+                                    <td>
+                                        <button type="button" class="button danger-color"
+                                            onclick="openModal('modal1');">remove</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="container box">
+                        <nav th:replace="~{pagination/paginator}"></nav>
+                    </div>
+                    <div class="container box right">
+                        <button type="button" class="button green"
+                            onclick="openModal('modal1'); getData(this);">Aggiungere</button>
+                    </div>
+                </div>
+            </div>
+            <div id="modal1" class="modal">
+                <div class="container ">
+                    <div class="card-form">
+                        <div class="container box ">
+                            <form class="module" action="/saveUtente" method="post">
+                                <div class="items">
+                                    <div class="item center dark-item">
+                                        <h2 for="cercare">Utente</h2>
+                                        <input type="hidden" name="idUtente">
+                                    </div>
+                                </div>
+                                <div class="items">
+                                    <div class="container dark-item">
+                                        <div class="item">
+                                            <label for="nome">Nome</label>
+                                            <input type="text" name="nome" id="nome"></input>
+                                        </div>
+                                        <div class="item">
+                                            <label for="cognome">Cognome</label>
+                                            <input type="text" name="cognome" id="cognome"></input>
+                                        </div>
+                                        <div class="item">
+                                            <label for="indirizzo">Indirizzo</label>
+                                            <input type="text" name="indirizzo" id="Indirizzo"></input>
+                                        </div>
+                                    </div>
+                                    <div class="container separate dark-item">
+                                        <div class="item">
+                                            <label for="telefono">Telefono</label>
+                                            <input type="text" name="telefono" id="telefono"></input>
+                                        </div>
+                                        <div class="item">
+                                            <label for="email">email</label>
+                                            <input type="email" name="email" id="email"></input>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="items  dark-item">
+                                    <div class="item right">
+                                        <button class="button green" type="submit" name="action"
+                                            value="invia">Salva</button>
+                                        <button class="button dark-red" type="button" name="action" value="anulla"
+                                            onclick="closeModal('modal1')">anulla</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="js/modal.js"></script>
+
+</html>

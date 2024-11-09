@@ -1,0 +1,41 @@
+<nav th:fragment="paginator" class="pagination">
+    <div class="item-icon opaque" th:if="${page.first}">
+      <img class="icon" src="images/pagination/angulo-doble-izquierda.svg" alt="" />
+    </div>
+    <div th:if="${not page.first}">
+      <a class="item-icon" th:href="@{${page.url}(page=0)}">
+        <img class="icon" src="images/pagination/angulo-doble-izquierda.svg" alt="" />
+      </a>
+    </div>
+    <div class="item-icon opaque" th:if="${not page.hasPrevious}">
+      <img class="icon" src="images/pagination/angulo-izquierdo.svg" alt="" />
+    </div>
+    <div th:if="${page.hasPrevious}">
+      <a class="item-icon" th:href="@{${page.url}(page=${page.actualPage-2})}">
+        <img class="icon" src="images/pagination/angulo-izquierdo.svg" alt="" />
+      </a>
+    </div>
+    <div th:each="item :${page.listPageItem}">
+      <div>
+        <span class="item-icon actual" th:if="${item.actual}" th:text="${item.numero}"></span>
+        <a class="item-icon" th:if="${not item.actual}" th:href="@{${page.url}(page=${item.numero-1})}"
+          th:text="${item.numero}"></a>
+      </div>
+    </div>
+    <div class="item-icon opaque" th:if="${ page.last}">
+      <img class="icon" src="images/pagination/angulo-derecho.svg" alt="" />
+    </div>
+    <div th:if="${not page.last}">
+      <a class="item-icon" th:href="@{${page.url}(page=${page.actualPage})}">
+        <img class="icon" src="images/pagination/angulo-derecho.svg" alt="" />
+      </a>
+    </div>
+    <div class="item-icon opaque" th:if="${ page.last}">
+      <img class="icon" src="images/pagination/angulo-doble-derecha.svg" alt="" />
+    </div>
+    <div th:if="${not page.last}">
+      <a class="item-icon" th:href="@{${page.url}(page=${page.totalPages-1})}">
+        <img class="icon" src="images/pagination/angulo-doble-derecha.svg" alt="" />
+      </a>
+    </div>
+  </nav>

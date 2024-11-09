@@ -1,0 +1,55 @@
+.card-form{
+    margin: 0.5rem;
+    min-width: 40rem;
+    overflow-x: auto;
+    box-sizing: border-box;
+}
+.card-form .box{
+    margin: 0;
+}
+.modal{
+    position: absolute;
+    display: none;
+    align-content: center;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0,.5);
+}
+.module{
+    display: block;
+    width: 100%;
+
+}
+.items{
+    display: block;
+    margin:0.5rem 0;
+    width: 100%;
+}
+
+.item{
+    display: flex;
+    padding: 1rem 2rem;
+    margin: 0.25rem 0rem;
+}
+.center{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+.item label{
+    display: inline-block;
+    min-width: 6rem;
+}
+.item input,.item textarea{
+    display: flex;
+    margin-left:1rem ;
+    box-sizing: border-box;
+}
+
+input:disabled{
+    background: var(--blue-gray-color);
+    color: var(--light-font-color);
+}

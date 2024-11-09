@@ -1,0 +1,22 @@
+.pagination{
+    display: flex;
+}
+.pagination div{
+    display: flex;
+}
+.item-icon{
+    color:#d8dde4;
+    background: var(--blue-dark-color);
+    display: flex;
+    padding: 0.25rem 0.5rem;
+    margin: 0rem 0.25rem;
+}
+.icon{
+    width:1rem;
+}
+.actual{
+    background:#497596 ;
+}
+.opaque{
+    background: #0d161d;
+}

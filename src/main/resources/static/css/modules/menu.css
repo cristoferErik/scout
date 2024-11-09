@@ -1,0 +1,32 @@
+header{
+    margin: 0px;
+    display: block;
+    background: var(--blue-dark-color);
+}
+.menu{
+    display: flex;
+    justify-content: space-between;
+}
+.menu ul{
+    margin: 0px 2.5rem;   
+}
+.menu ul,.menu li{
+    display: flex;
+    float: left;
+    border-width: 0 1px;
+    border-style:solid;
+    border-color: var(--border-color);
+}
+
+li:last-child,li:first-child {
+    border-right: none;
+    border-left:none;
+  }
+.m_button{
+    padding: 1rem 2rem;
+    color: var(--light-font-color);
+    white-space: nowrap;/*evita il cambio di linea*/
+}
+.m_button:hover{
+    background: var(--second-color);
+}

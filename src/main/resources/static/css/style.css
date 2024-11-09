@@ -1,0 +1,120 @@
+:root{
+    --blue-dark-item-color:#24354d;
+    --blue-dark-color:#1b2e50;
+    --second-color:#375179;
+    --light-font-color:#d8dde4;
+    --background-color:#121f36;
+    --border-color:#55739f;
+    --blue-gray-color:#3d505f;
+    --danger-color:#752525;
+    --light-danger-color:#964444;
+    --check-color:#2e7645;
+    --light-check-color:#578f60;
+
+    --green-color:#586d56;
+    --light-green-color:#758c73;
+
+    --sky-color:#5c817f;
+    --light-sky-color:#6d908e;
+
+    --dark-red-color:#6b465f;
+    --light-red-color:#916985;
+}
+* {
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    background: var(--background-color);
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--light-font-color);
+    min-height: 100vh;
+    display: inline-flex;
+}
+h2{
+    margin-block-start: 0.25em;
+    margin-block-end: 0.25em;
+}
+ul{
+    margin:0;
+    margin-block:0;
+    margin-inline: 0;
+    padding-inline: 0;
+}
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+.button{
+    padding-inline: 0;
+    padding-block: 0;
+    box-sizing: border-box;
+    display: inline-flex;
+    border: none;
+    padding: 0.5rem 2rem;
+    white-space: nowrap;/*evita il cambio di linea*/
+    cursor: pointer;
+    font-size: 14px;
+    margin: 0.25rem;
+}
+textarea{
+    width:100%;
+    min-height: 10rem;
+    max-height: 20rem;
+    resize: vertical;
+    background: #303335;
+    border-width: 1px;
+    color: var(--light-font-color);
+    
+}
+.dark-item{
+    background: var(--blue-dark-item-color);
+}
+.green{
+    background: var(--green-color);
+    color: var(--light-font-color);
+}
+
+.green:hover{
+    background: var(--light-green-color);
+    color: var(--light-font-color);
+}
+.light-blue{
+    background: #4f7f7d;
+    color: var(--light-font-color);
+}
+.light-blue:hover{
+    background: #65918e;
+    color: var(--light-font-color);
+}
+.dark-red{
+    background: var(--dark-red-color);
+    color: var(--light-font-color);
+}
+
+.dark-red:hover{
+    background: var( --light-red-color);
+    color: var(--light-font-color);
+}
+.danger-color{
+    background: var(--danger-color);
+    color: var(--light-font-color);
+}
+
+.danger-color:hover{
+    background: var( --light-danger-color);
+    color: var(--light-font-color);
+}
+.check-color{
+    background: var(--check-color);
+    color: var(--light-font-color);
+}
+
+.check-color:hover{
+    background: var( --light-check-color);
+    color: var(--light-font-color);
+}
