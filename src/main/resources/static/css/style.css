@@ -71,6 +71,12 @@ textarea{
     color: var(--light-font-color);
     
 }
+label{
+    font-weight: bold;
+}
+.claimers{
+    width: 10rem;
+}
 .dark-item{
     background: var(--blue-dark-item-color);
 }

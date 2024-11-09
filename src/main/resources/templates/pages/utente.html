@@ -50,15 +50,15 @@
                                     <td th:text="${utente.email}"></td>
                                     <td>
                                         <button type="button" class="button light-blue"
-                                            onclick="openModal('modal1'); getDataUtente(this);">update</button>
+                                            onclick="openModal('modal1'); getDataUtente(this,'modal1','add');">update</button>
                                     </td>
                                     <td>
                                         <button type="button" class="button check-color"
-                                            onclick="openModal('modal1'); getDataUtente(this);">check</button>
+                                            onclick="openModal('modal2'); getDataUtente(this,'modal2','add');">check</button>
                                     </td>
                                     <td>
                                         <button type="button" class="button danger-color"
-                                            onclick="openModal('modal1');">remove</button>
+                                            onclick="openModal('modal3'); getDataUtente(this,'modal3','add');">remove</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -69,63 +69,16 @@
                     </div>
                     <div class="container box right">
                         <button type="button" class="button green"
-                            onclick="openModal('modal1'); getData(this);">Aggiungere</button>
+                            onclick="openModal('modal1'); getDataUtente(null,'modal1','');">Aggiungere</button>
                     </div>
                 </div>
             </div>
-            <div id="modal1" class="modal">
-                <div class="container ">
-                    <div class="card-form">
-                        <div class="container box ">
-                            <form class="module" action="/saveUtente" method="post">
-                                <div class="items">
-                                    <div class="item center dark-item">
-                                        <h2 for="cercare">Utente</h2>
-                                        <input type="hidden" name="idUtente">
-                                    </div>
-                                </div>
-                                <div class="items">
-                                    <div class="container dark-item">
-                                        <div class="item">
-                                            <label for="nome">Nome</label>
-                                            <input type="text" name="nome" id="nome"></input>
-                                        </div>
-                                        <div class="item">
-                                            <label for="cognome">Cognome</label>
-                                            <input type="text" name="cognome" id="cognome"></input>
-                                        </div>
-                                        <div class="item">
-                                            <label for="indirizzo">Indirizzo</label>
-                                            <input type="text" name="indirizzo" id="Indirizzo"></input>
-                                        </div>
-                                    </div>
-                                    <div class="container separate dark-item">
-                                        <div class="item">
-                                            <label for="telefono">Telefono</label>
-                                            <input type="text" name="telefono" id="telefono"></input>
-                                        </div>
-                                        <div class="item">
-                                            <label for="email">email</label>
-                                            <input type="email" name="email" id="email"></input>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="items  dark-item">
-                                    <div class="item right">
-                                        <button class="button green" type="submit" name="action"
-                                            value="invia">Salva</button>
-                                        <button class="button dark-red" type="button" name="action" value="anulla"
-                                            onclick="closeModal('modal1')">anulla</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div th:replace="~{utente-modal/utente-modals :: modal-save-update}"></div>
+            <div th:replace="~{utente-modal/utente-modals :: modal-check}"></div>
+            <div th:replace="~{utente-modal/utente-modals :: modal-remove}"></div>
         </div>
     </div>
 </body>
-<script src="js/modal.js"></script>
-
+<script th:src="@{js/modal.js}"></script>
+<script th:src="@{js/forms/utente/Utente.js}"></script>
 </html>

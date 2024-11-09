@@ -41,7 +41,6 @@ public class HomeController {
             days=days<10?10:days;
             url+=url.contains("?")?"&days="+d:"?days="+days;
 
-            System.out.println(url);
             Pageable pageRequest = PageRequest.of(page, 10);
             Page<IWebSite> pageWebSite = this.servizioWebSiteService.getAllWebSiteToUpdate(nome,days,pageRequest);
             PageRender<IWebSite> webSitePageRender = new PageRender<>(url, pageWebSite);

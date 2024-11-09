@@ -32,6 +32,7 @@
     display: flex;
     padding: 1rem 2rem;
     margin: 0.25rem 0rem;
+    width: 100% ;
 }
 .center{
     display: flex;
@@ -52,4 +53,11 @@
 input:disabled{
     background: var(--blue-gray-color);
     color: var(--light-font-color);
+}
+/*Card claimers modal*/
+.card-claimer{
+    margin: 0.5rem;
+    min-width: 20rem;
+    overflow-x: auto;
+    box-sizing: border-box;
 }

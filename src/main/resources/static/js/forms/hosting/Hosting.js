@@ -1,44 +1,39 @@
-function getDataUtente(button,modal,mode){
+function getDataHosting(button,modal,mode){
     let m=document.getElementById(modal);
     let ids=m.querySelectorAll('[id]');
     if(mode==="add" && button!=null ){
-        // Obtener el <tr> que es el padre del botón
+        // Ottenere il <tr> che è il padre del bottone
         var tr = button.closest('tr');
-        // Hacer algo con el tr, por ejemplo, mostrar los datos de la fila
+        // Ottenere tutti i td, per potere accedere ai suoi valori
         var tds = tr.querySelectorAll('td');
         
         let id=`${tds[0].textContent.trim()}`;
         let nome=`${tds[1].textContent.trim()}`;
-        let cognome=`${tds[2].textContent.trim()}`;
-        let indirizzo=`${tds[3].textContent.trim()}`;
-        let telefono=`${tds[4].textContent.trim()}`;
-        let email=`${tds[5].textContent.trim()}`;
+        let url=`${tds[2].textContent.trim()}`;
+        let hUsername=`${tds[3].textContent.trim()}`;
+        let hPassword=`${tds[4].textContent.trim()}`;
         ids.forEach(function(input){
             let name = input.getAttribute('id');
             switch (name) {
-                case 'idUtente':
+                case 'idHosting':
                     input.value = id;
                     input.textContent=id;
                     break;
-                case 'nomeUtente':
+                case 'nome':
                     input.value = nome;
                     input.textContent=nome;
                     break;
-                case 'cognome':
-                    input.value = cognome;
-                    input.textContent=cognome;
+                case 'url':
+                    input.value = url;
+                    input.textContent=url;
                     break;
-                case 'indirizzo':
-                    input.value = indirizzo;
-                    input.textContent=indirizzo;
+                case 'hUsername':
+                    input.value = hUsername;
+                    input.textContent=hUsername;
                     break;
-                case 'telefono':
-                    input.value = telefono;
-                    input.textContent=telefono;
-                    break;
-                case 'email':
-                    input.value = email;
-                    input.textContent=email;
+                case 'hPassword':
+                    input.value = hPassword;
+                    input.textContent=hPassword;
                     break;
                 default:
                     break;
