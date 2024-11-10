@@ -12,43 +12,40 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.checker.scout.entities.Hosting;
-import com.checker.scout.services.HostingService;
+import com.checker.scout.entities.WebSite;
+import com.checker.scout.services.WebSiteService;
 import com.checker.scout.util.paginator.PageRender;
 
-@RequestMapping("/hosting")
+@RequestMapping("/siti_web")
 @Controller
-public class HostingController {
+public class SitiWebController {
     
     @Autowired
-    private HostingService hostingService;
-
+    private WebSiteService webSiteService;
+    
     @GetMapping("")
-    public String getHostings(
+    public String getWebSites(
         @RequestParam(defaultValue = "0") int page,
         @RequestParam Map<String, String> params,
-        Model model
-        )
-    {
+        Model model){
+        String hostingId=params.get("idHosting");
         String nome=params.get("nome");
-        String id=params.get("idUtente");
-        String url = "/hosting";
+        String url = "/siti_web";
         url+=(nome != null && !nome.isEmpty())?"?nome="+nome:"";
-        Long idUtente;
-        if(id!=null && !id.isEmpty()){
-            idUtente=Long.valueOf(id);
-            url+= url.contains("?") ? "&idUtente=" + id : "?idUtente=" + id;
+        if(hostingId!=null && !hostingId.isEmpty()){
+            Long id=Long.valueOf(hostingId);
+            url+=url.contains("?")?"&idHosting="+id:"?idHosting="+id;
             Pageable pageRequest = PageRequest.of(page, 10);
-            Page<Hosting> pageHosting = hostingService.getAllHostingsByUtente(nome, idUtente, pageRequest);
-            PageRender<Hosting> hostingPageRender = new PageRender<>(url, pageHosting);
-            hostingPageRender.rangeOfPage();
-            model.addAttribute("page", hostingPageRender);
-            model.addAttribute("listHosting", pageHosting);
+            Page<WebSite> pageWebSite = this.webSiteService.getAllWebSites(nome, id, pageRequest);
+            PageRender<WebSite> servizioPageRender = new PageRender<>(url, pageWebSite);
+            servizioPageRender.rangeOfPage();
+            model.addAttribute("page", servizioPageRender);
+            model.addAttribute("listWebSites", pageWebSite);
             model.addAttribute("nome",nome);
-            model.addAttribute("idUtente",idUtente);
-            return "pages/hosting";
+            model.addAttribute("idHosting",id);
+            return "pages/sitiweb";
         }
-        
         return "redirect:/utente";
+        
     }
 }

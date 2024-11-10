@@ -47,7 +47,7 @@ public class HomeController {
 
             webSitePageRender.rangeOfPage();
             model.addAttribute("page", webSitePageRender);
-            model.addAttribute("listWebSite", pageWebSite);
+            model.addAttribute("listWebSiteUpdate", pageWebSite);
             model.addAttribute("nome",nome);
             model.addAttribute("days",days);
             return "index";

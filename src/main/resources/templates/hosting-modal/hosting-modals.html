@@ -49,11 +49,11 @@
     <div class="container">
         <div class="card-form">
             <div class="container box ">
-                <form class="module" action="/hosting">
+                <form class="module" action="/siti_web">
                     <div class="items">
                         <div class="item center dark-item">
-                            <h2 for="cercare">Hosting</h2>
-                            <input type="hidden" id="idHosting" />
+                            <h2>Hosting</h2>
+                            <input type="hidden" name="idHosting" id="idHosting" />
                         </div>
                     </div>
                     <div class="items">
@@ -75,23 +75,22 @@
                                 </div>
                                 <div class="item">
                                     <label for="hPassword">Password</label>
-                                    <span name="hPassword" id="hPassword"></span>
+                                    <span id="hPassword"></span>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="items  dark-item">
                         <div class="item right">
-                            <button class="button green" type="submit" name="action" value="invia">Salva</button>
+                            <button class="button green" type="submit" name="action" value="invia">WebSites</button>
                             <button class="button dark-red" type="button" name="action" value="anulla"
                                 onclick="closeModal('modal2')">anulla</button>
                         </div>
                     </div>
+                </form>
             </div>
-            </form>
         </div>
     </div>
-</div>
 </div>
 <div th:fragment="modal-remove" id="modal3" class="modal">
     <div class="container">
