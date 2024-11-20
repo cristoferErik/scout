@@ -1,8 +1,8 @@
 package com.checker.scout.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.checker.scout.entities.Hosting;
@@ -13,7 +13,7 @@ public class HostingService {
     @Autowired
     private HostingRepository hostingRepository;
 
-    public Page<Hosting> getAllHostingsByUtente(String nome, Long id,Pageable pageable){
-        return this.hostingRepository.findAllHostingByUtente(nome, id, pageable);
+    public List<Hosting> getAllHostingsByUtente(Long utenteId){
+        return this.hostingRepository.findAllHostingByUtente(utenteId);
     }
 }

@@ -35,6 +35,7 @@ input{
     table-layout: auto;
     border-spacing: 0;
     text-align: center;
+    width: 100%;
 }
 .table thead{
     background: var( --second-color);
@@ -42,7 +43,8 @@ input{
 .table tbody{
     background: var(--blue-gray-color);
 }
-.table tbody tr td{
+
+th, td{
     padding: 0.5rem 0.25rem ;
     max-width: 10rem;
     overflow: hidden;    
@@ -50,6 +52,7 @@ input{
     text-overflow: ellipsis;
     justify-items: center;
 }
+
 .dt-layout-cell{
     overflow-y:auto;
     overflow-x: auto;

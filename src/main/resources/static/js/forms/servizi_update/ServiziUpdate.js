@@ -11,7 +11,8 @@ function getDataServizio(button, modal, mode) {
         let nome = `${tds[1].textContent.trim()}`;
         let costo = `${tds[2].textContent.trim()}`;
         let descrizione = `${tds[3].textContent.trim()}`;
-
+        let dataCreazione =  `${tds[4].textContent.trim()}`;
+        let dataAggiornamento =  `${tds[5].textContent.trim()}`;
         ids.forEach(function (input) {
             let name = input.getAttribute('id');
             switch (name) {
@@ -31,6 +32,13 @@ function getDataServizio(button, modal, mode) {
                     input.value = descrizione;
                     input.textContent = descrizione;
                     break;
+                case 'dataCreazione':
+                    input.value = dataCreazione;
+                    input.textContent = dataCreazione;
+                    break;
+                case 'dataAggiornamento':
+                    input.value = dataAggiornamento;
+                    input.textContent = dataAggiornamento;
                 default:
                     break;
             }
