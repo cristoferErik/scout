@@ -1,7 +1,7 @@
 package com.checker.scout.repositories;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -15,8 +15,6 @@ public interface ServizioWebSiteRepository extends JpaRepository<WebSite,Long>{
         d.prossimoAgg as  prossimoAgg ,s.nome as nomeServizio
             from WebSite w inner join DetailWsSe d on w.id=d.webSite.id
             inner join servizio s on s.id=d.servizio.id 
-            where  (:nome IS NULL or w.nome like %:nome%)
-            and datediff(d.prossimoAgg,current_date) <=:days
     """)
-    Page<IWebSite> findAllWebSiteToUpdate(String nome,int days,Pageable pageable);
+    List<IWebSite> findAllWebSiteToUpdate();
 }

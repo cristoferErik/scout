@@ -4,33 +4,19 @@
     width: 100%;
     position: relative;
 }
-.container{
-    display: flex;
-    justify-content: center;
-}
 .card{
-    display: flex;
-    flex-direction: column;
+    display: block;
+    align-self: center;
     margin: 1rem;
     padding: 3rem;
     background: var(--blue-dark-color);
-    width: 100%;
-    
+    text-align: center;
 }
 .box{
     background: var(--second-color);
     margin:0.25rem 0rem;
-    padding:0.25rem 0rem;
-}
-.right{
-    justify-content: right;
-    align-items: end;
-    align-content: end;
-}
-.container-ricerca{
-    display: grid;
-    grid-template-columns: auto auto auto;
-    gap:0.25rem 0;
+    padding:0.25rem 0.5rem;
+    min-width: 60rem;
 }
 input{
     border-width: 0;
@@ -45,22 +31,13 @@ input{
     max-width:4rem;
     text-align: center;
 }
-.ricerca{
-    margin: 0rem 0.5rem;
-    align-content: center;
-}
 .table{
     table-layout: auto;
     border-spacing: 0;
     text-align: center;
-    width: 100%;
 }
 .table thead{
     background: var( --second-color);
-}
-.table thead tr th{
-    padding: 0.25rem 1rem;
-    min-width: 2rem;
 }
 .table tbody{
     background: var(--blue-gray-color);
@@ -71,22 +48,23 @@ input{
     overflow: hidden;    
     white-space: nowrap; 
     text-overflow: ellipsis;
+    justify-items: center;
 }
-
-.dim {
-    max-height: 25rem;
-    max-width: 60rem;
-   
+.dt-layout-cell{
     overflow-y:auto;
     overflow-x: auto;
     box-sizing: border-box;
+    max-height: 25rem;
 }
-.dim::-webkit-scrollbar {
+.dt-search input{
+    background-color: var(--light-font-color);
+}
+.dt-layout-cell::-webkit-scrollbar {
     background: #5f5f5f;
     width: 0.5rem; 
     height: 0.5rem; 
 }
-.dim::-webkit-scrollbar-thumb {
+.dt-layout-cell::-webkit-scrollbar-thumb {
     background-color: #888; 
     border-radius: 10px; 
 }

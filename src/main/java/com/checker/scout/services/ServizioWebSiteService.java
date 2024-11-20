@@ -1,8 +1,8 @@
 package com.checker.scout.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.checker.scout.entities.projections.IWebSite;
@@ -14,7 +14,7 @@ public class ServizioWebSiteService {
     @Autowired
     private ServizioWebSiteRepository servizioWebSiteRepository;
 
-    public Page<IWebSite> getAllWebSiteToUpdate(String nome,int days,Pageable pageable){
-        return this.servizioWebSiteRepository.findAllWebSiteToUpdate(nome,days,pageable);
+    public List<IWebSite> getAllWebSiteToUpdate(){
+        return this.servizioWebSiteRepository.findAllWebSiteToUpdate();
     }
 }

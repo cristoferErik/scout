@@ -12,7 +12,7 @@ import com.checker.scout.repositories.SitiWebRepository;
 public class WebSiteService {
     @Autowired
     private SitiWebRepository sitiWebRepository;
-
+    
     public Page<WebSite> getAllWebSites(String nome,Long hostingId,Pageable pageable){
         return sitiWebRepository.findAllWebSite(nome,hostingId,pageable);
     }

@@ -6,79 +6,48 @@
 <body>
     <div class="wrapper">
         <header th:replace="~{modules/menu}"></header>
-        <div class="container">
-            <div class="container">
-                <div class="card">
-                    <div class="container box">
-                        <div>
-                            <h2 for="cercare ">Utenti</h2>
-                        </div>
-                    </div>
-                    <div class="container box right">
-                        <form class="container-ricerca" action="/utente" method="GET">
-                            <div class="ricerca">
-                                <label for="nome">cercare per nome:</label>
-                                <input type="text" name="nome" th:value="${nome}" id="nome" />
-                            </div>
-                            <div class="ricerca right">
-                                <button class="button green" type="submit">cercare</button>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="box dim">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Id</th>
-                                    <th>Nome</th>
-                                    <th>Cognome</th>
-                                    <th>Indirizzo</th>
-                                    <th>Telefono</th>
-                                    <th>Email</th>
-                                    <th>Update</th>
-                                    <th>Check</th>
-                                    <th>Delete</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr th:each="utente : ${listUtente}">
-                                    <td th:text="${utente.id}"></td>
-                                    <td th:text="${utente.nome}"></td>
-                                    <td th:text="${utente.cognome}"></td>
-                                    <td th:text="${utente.indirizzo}"></td>
-                                    <td th:text="${utente.telefono}"></td>
-                                    <td th:text="${utente.email}"></td>
-                                    <td>
-                                        <button type="button" class="button light-blue"
-                                            onclick="openModal('modal1'); getDataUtente(this,'modal1','add');">update</button>
-                                    </td>
-                                    <td>
-                                        <button type="button" class="button check-color"
-                                            onclick="openModal('modal2'); getDataUtente(this,'modal2','add');">check</button>
-                                    </td>
-                                    <td>
-                                        <button type="button" class="button danger-color"
-                                            onclick="openModal('modal3'); getDataUtente(this,'modal3','add');">remove</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="container box">
-                        <nav th:replace="~{pagination/paginator}"></nav>
-                    </div>
-                    <div class="container box right">
-                        <button type="button" class="button green"
-                            onclick="openModal('modal1'); getDataUtente(null,'modal1','');">Aggiungere</button>
-                    </div>
+        <div class="card">
+            <div class="box">
+                <div>
+                    <h2 for="cercare">Utenti</h2>
                 </div>
             </div>
-            <div th:replace="~{utente-modal/utente-modals :: modal-save-update}"></div>
-            <div th:replace="~{utente-modal/utente-modals :: modal-check}"></div>
-            <div th:replace="~{utente-modal/utente-modals :: modal-remove}"></div>
+            <div class="box ">
+                <table class="table" id="table1">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nome</th>
+                            <th>Cognome</th>
+                            <th>Indirizzo</th>
+                            <th>Telefono</th>
+                            <th>Email</th>
+                            <th>Update</th>
+                            <th>Check</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody  id="tbody1">
+                        <!--Inserimento dei dati-->
+                    </tbody>
+                </table>
+            </div>
+            <div class="box">
+                <button type="button" class="button light-blue right"
+                onclick="openModal('modal1'); getDataUtente(this,'modal1','');">add</button>
+            </div>
         </div>
+        <div th:replace="~{utente-modal/utente-modals :: modal-save-update}"></div>
+        <div th:replace="~{utente-modal/utente-modals :: modal-check}"></div>
+        <div th:replace="~{utente-modal/utente-modals :: modal-remove}"></div>
+    </div>
     </div>
 </body>
-<script th:src="@{js/modal.js}"></script>
+
 <script th:src="@{js/forms/utente/Utente.js}"></script>
+<footer th:replace="~{modules/footer}"></footer>
+<script th:src="@{js/Tables/Utente.js}"></script>
+
+
+
 </html>

@@ -6,5 +6,10 @@ function openModal(modalId) {
 
 function closeModal(modalId){
     let modal=document.getElementById(modalId);
+    let inputs = modal.querySelectorAll('input, textarea, span');
+    inputs.forEach(function(input) {
+        input.value = '';  // pulire tutti gli inputs
+        input.textContent='';
+    });
      if(modal) modal.style.display="none";
 }

@@ -2,6 +2,8 @@ package com.checker.scout.entities;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,10 +27,12 @@ public class Hosting {
     @Column(name="h_password")
     private String hPassword; 
     
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name="utente_id",nullable=false)
     private Utente utente;
-
+    
+    @JsonIgnore
     @OneToMany(mappedBy="hosting")
     private List<WebSite> listWebSite;
 

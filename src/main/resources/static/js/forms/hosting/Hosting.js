@@ -41,32 +41,12 @@ function getDataHosting(button,modal,mode){
         });
         
     }else{
-        //cui si fa la pullizia in caso sia da registrare
-        ids.forEach(function(input){
-            let name = input.getAttribute('id');
-            switch (name) {
-                case 'idUtente':
-                    input.value = "";
-                    break;
-                case 'nomeUtente':
-                    input.value = "";
-                    break;
-                case 'cognome':
-                    input.value = "";
-                    break;
-                case 'indirizzo':
-                    input.value = "";
-                    break;
-                case 'telefono':
-                    input.value = "";
-                    break;
-                case 'email':
-                    input.value = "";
-                    break;
-                default:
-                    break;
-            }
-        });
+         //cui si fa la pullizia in caso sia da registrare
+         let inputs = m.querySelectorAll('input, textarea');
+         inputs.forEach(function (input) {
+             input.value = '';  // pulire tutti gli inputs
+             input.textContent = '';
+         });
     }
     
 }

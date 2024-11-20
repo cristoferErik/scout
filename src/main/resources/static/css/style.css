@@ -34,7 +34,7 @@ html,body{
     color: var(--light-font-color);
     display: flex;
     width: 100%;
-    min-width: 80rem;
+    min-width: 90rem;
     min-height: 100vh;
 }
 
@@ -58,13 +58,23 @@ a{
     padding-inline: 0;
     padding-block: 0;
     box-sizing: border-box;
-    display: inline-flex;
+    display: block;
     border: none;
     padding: 0.5rem 2rem;
     white-space: nowrap;/*evita il cambio di linea*/
     cursor: pointer;
     font-size: 14px;
     margin: 0.25rem;
+    min-width: 8rem;
+    text-align: center;
+ 
+}
+.right{
+    margin-left: auto;
+}
+input[type="text"],input[type="email"] {
+    flex: 1;
+    min-width: 15rem;
 }
 textarea{
     width:100%;

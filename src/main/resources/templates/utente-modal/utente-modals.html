@@ -1,147 +1,131 @@
 <div th:fragment="modal-save-update" id="modal1" class="modal">
-    <div class="container ">
-        <div class="card-form">
-            <div class="container box ">
-                <form class="module" action="/utente/save_utente" method="post">
-                    <div class="items">
-                        <div class="item center dark-item">
-                            <h2 for="cercare">Utente</h2>
-                            <input type="hidden" name="idUtente" id="idUtente"/>
-                        </div>
+
+    <div class="card-form">
+        <div class="box-modal ">
+            <form class="module" action="/utente/save_utente" method="post">
+                <div class="items">
+                    <div class="item center dark-item">
+                        <h2 for="cercare">Utente</h2>
+                        <input type="hidden" name="idUtente" id="idUtente" />
                     </div>
-                    <div class="items">
-                        <div class="container separate dark-item">
-                            <div>
-                                <div class="item">
-                                    <label for="nomeUtente">Nome</label>
-                                    <input name="nomeUtente" id="nomeUtente"></input>
-                                </div>
-                                <div class="item">
-                                    <label for="cognome">Cognome</label>
-                                    <input name="cognome" id="cognome"></input>
-                                </div>
+                </div>
+                <div class="items">
+                    <div class="separate dark-item">
+                        <div>
+                            <div class="item">
+                                <label for="nomeUtente">Nome</label>
+                                <input type="text" name="nomeUtente" id="nomeUtente"></input>
                             </div>
-                            <div>
-                                <div class="item">
-                                    <label for="indirizzo">Indirizzo</label>
-                                    <input type="text" name="indirizzo" id="indirizzo"></input>
-                                </div>
-                                <div class="item">
-                                    <label for="telefono">Telefono</label>
-                                    <input type="text" name="telefono" id="telefono"></input>
-                                </div>
+                            <div class="item">
+                                <label for="cognome">Cognome</label>
+                                <input type="text" name="cognome" id="cognome"></input>
                             </div>
-                        </div>
-                        <div class="container separate dark-item">
-                            <div>
-                                <div class="item">
-                                    <label for="email">email</label>
-                                    <input type="email" name="email" id="email"></input>
-                                </div>
+                            <div class="item">
+                                <label for="indirizzo">Indirizzo</label>
+                                <input type="text" name="indirizzo" id="indirizzo"></input>
+                            </div>
+                            <div class="item">
+                                <label for="telefono">Telefono</label>
+                                <input type="text" name="telefono" id="telefono"></input>
+                            </div>
+                            <div class="item">
+                                <label for="email">email</label>
+                                <input type="email" name="email" id="email"></input>
                             </div>
                         </div>
                     </div>
-                    <div class="items  dark-item">
-                        <div class="item right">
-                            <button class="button green" type="submit" name="action" value="invia">Salva</button>
-                            <button class="button dark-red" type="button" name="action" value="anulla"
-                                onclick="closeModal('modal1')">anulla</button>
-                        </div>
+                </div>
+                <div class="items  dark-item">
+                    <div class="separate item right">
+                        <button class="button green" type="submit" name="action" value="invia">Salva</button>
+                        <button class="button dark-red" type="button" name="action" value="anulla"
+                            onclick="closeModal('modal1')">anulla</button>
                     </div>
-                </form>
-            </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>
 <div th:fragment="modal-check" id="modal2" class="modal">
-    <div class="container">
-        <div class="card-form">
-            <div class="container box ">
-                <form class="module" action="/hosting">
-                    <div class="items">
-                        <div class="item center dark-item">
-                            <h2 for="cercare">Utente:</h2>
-                            <input type="hidden" name="idUtente" id="idUtente"/>
-                        </div>
+    <div class="card-form">
+        <div class="box-modal">
+            <form class="module" action="/hosting">
+                <div class="items">
+                    <div class="item center dark-item">
+                        <h2 for="cercare">Utente:</h2>
+                        <input type="hidden" name="idUtente" id="idUtente" />
                     </div>
-                    <div class="items">
-                        <div class="container separate dark-item">
-                            <div>
-                                <div class="item">
-                                    <label for="nomeUtente">Nome:</label>
-                                    <span id="nomeUtente"></span>
-                                </div>
-                                <div class="item">
-                                    <label for="cognome">Cognome</label>
-                                    <span id="cognome"></span>
-                                </div>
+                </div>
+                <div class="items">
+                    <div class="dark-item">
+                        <div>
+                            <div class="item">
+                                <label for="nomeUtente">Nome:</label>
+                                <span id="nomeUtente"></span>
                             </div>
-                            <div>
-                                <div class="item">
-                                    <label for="indirizzo">Indirizzo</label>
-                                    <span id="indirizzo"></span>
-                                </div>
-                                <div class="item">
-                                    <label for="telefono">Telefono</label>
-                                    <span id="telefono"></span>
-                                </div>
+                            <div class="item">
+                                <label for="cognome">Cognome</label>
+                                <span id="cognome"></span>
                             </div>
-                        </div>
-                        <div class="container separate dark-item">
-                            <div>
-                                <div class="item">
-                                    <label for="email">email</label>
-                                    <span id="email"></span>
-                                </div>
+                            <div class="item">
+                                <label for="indirizzo">Indirizzo</label>
+                                <span id="indirizzo"></span>
+                            </div>
+                            <div class="item">
+                                <label for="telefono">Telefono</label>
+                                <span id="telefono"></span>
+                            </div>
+                            <div class="item">
+                                <label for="email">email</label>
+                                <span id="email"></span>
                             </div>
                         </div>
                     </div>
-                    <div class="items  dark-item">
-                        <div class="item right">
-                            <button class="button green" type="submit">Hosting</button>
-                            <button class="button dark-red" type="button" name="action" value="anulla"
-                                onclick="closeModal('modal2')">anulla</button>
-                        </div>
+                </div>
+                <div class="items  dark-item">
+                    <div class="separate item right">
+                        <button class="button green" type="submit">Hosting</button>
+                        <button class="button dark-red" type="button" name="action" value="anulla"
+                            onclick="closeModal('modal2')">anulla</button>
                     </div>
-                </form>
-            </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>
 <div th:fragment="modal-remove" id="modal3" class="modal">
-    <div class="container">
-        <div class="card-claimer">
-            <div class="container box">
-                <div class="module">
-                    <div class="items">
-                        <div class="item center dark-item">
-                            <h2 for="cercare">Sei sicuro di eliminare l'Utente</h2>
-                            <input type="hidden" id="idUtente" />
+
+    <div class="card-form">
+        <div class="box-modal">
+            <div class="module">
+                <div class="items">
+                    <div class="item center dark-item">
+                        <h2 for="cercare">Sei sicuro di eliminare l'Utente</h2>
+                        <input type="hidden" id="idUtente" />
+                    </div>
+                </div>
+                <div class="items">
+                    <div class="separate dark-item">
+                        <div class="item">
+                            <label for="nomeUtente">Nome:</label>
+                            <span name="nomeUtente" id="nomeUtente"></span>
+                        </div>
+                        <div class="item">
+                            <label for="cognome">Cognome:</label>
+                            <span name="cognome" id="cognome"></span>
                         </div>
                     </div>
-                    <div class="items">
-                        <div class="container separate dark-item">
-                            <div class="item">
-                                <label for="nomeUtente">Nome:</label>
-                                <span name="nomeUtente" id="nomeUtente"></span>
-                            </div>
-                            <div class="item">
-                                <label for="cognome">Cognome:</label>
-                                <span name="cognome" id="cognome"></span>
-                            </div>
-                        </div>
+                </div>
+                <div class="items">
+                    <div class="item center dark-item">
+                        <img class="claimers" th:src="@{/images/claimers/warning-svgrepo-com.svg}" alt="">
                     </div>
-                    <div class="items">
-                        <div class="item center dark-item">
-                            <img class="claimers" th:src="@{/images/claimers/warning-svgrepo-com.svg}" alt="">
-                        </div>
-                    </div>
-                    <div class="items  dark-item">
-                        <div class="item right">
-                            <button class="button green" type="button" name="action" value="invia">Elimina</button>
-                            <button class="button dark-red" type="button" name="action" value="anulla"
-                                onclick="closeModal('modal3')">anulla</button>
-                        </div>
+                </div>
+                <div class="items  dark-item">
+                    <div class="separate item right">
+                        <button class="button green" type="button" name="action" value="invia">Elimina</button>
+                        <button class="button dark-red" type="button" name="action" value="anulla"
+                            onclick="closeModal('modal3')">anulla</button>
                     </div>
                 </div>
             </div>
