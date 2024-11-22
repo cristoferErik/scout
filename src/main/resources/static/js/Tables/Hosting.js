@@ -1,7 +1,6 @@
 
 document.addEventListener("DOMContentLoaded", function () {
-    const params = new URLSearchParams(window.location.search);
-    const utenteId = params.get('utenteId');
+    const utenteId = document.getElementById("utenteId").value;
     fetch(`/restHosting/hosting?utenteId=${utenteId}`)
         .then(response => {
             if (!response.ok) {
@@ -36,15 +35,15 @@ function createDataTableT1(data) {
             <td>${dato.hPassword}</td>
             <td>
                 <button type="button" class="button light-blue"
-                    onclick="openModal('modal1'); getDataServizio(this,'modal1','add');">update</button>
+                    onclick="openModal('modal1'); getDataHosting(this,'modal1','add');">update</button>
             </td>
             <td>
                 <button type="button" class="button check-color"
-                    onclick="openModal('modal2'); getDataServizio(this,'modal2','add');">check</button>
+                    onclick="openModal('modal2'); getDataHosting(this,'modal2','add');">check</button>
             </td>
             <td>
                 <button type="button" class="button danger-color"
-                    onclick="openModal('modal3'); getDataServizio(this,'modal3','add');">remove</button>
+                    onclick="openModal('modal3'); getDataHosting(this,'modal3','add');">remove</button>
             </td>
         `;
         tableBody.appendChild(row);

@@ -72,7 +72,7 @@ a{
 .right{
     margin-left: auto;
 }
-input[type="text"],input[type="email"] {
+input[type="text"],input[type="email"],input[type="password"] {
     flex: 1;
     min-width: 15rem;
 }

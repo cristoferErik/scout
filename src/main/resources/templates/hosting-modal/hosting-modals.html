@@ -1,131 +1,120 @@
 <div th:fragment="modal-save-update" id="modal1" class="modal">
-    <div class="container ">
-        <div class="card-form">
-            <div class="container box ">
-                <form class="module" action="/saveHosting" method="post">
-                    <div class="items">
-                        <div class="item center dark-item">
-                            <h2 for="cercare">Hosting</h2>
-                            <input type="hidden" name="idHosting" id="idHosting" />
+    <div class="card-form">
+        <div class="box-modal ">
+            <div class="items">
+                <div class="item center dark-item">
+                    <h2>Hosting</h2>
+                    <input type="hidden" name="idHosting" id="idHosting" />
+                </div>
+            </div>
+            <div class="items">
+                <div class="container dark-item">
+                    <div>
+                        <div class="item">
+                            <label for="nomeHosting">Nome</label>
+                            <input type="text" id="nomeHosting"></input>
+                        </div>
+                        <div class="item">
+                            <label for="urlHosting">Url</label>
+                            <input type="text" id="urlHosting"></input>
+                        </div>
+                        <div class="item">
+                            <label for="hUsername">hUsername</label>
+                            <input type="text" id="hUsername"></input>
+                        </div>
+                        <div class="item">
+                            <label for="hPassword">hPassword</label>
+                            <input type="password" id="hPassword"></input>
                         </div>
                     </div>
-                    <div class="items">
-                        <div class="container dark-item">
-                            <div>
-                                <div class="item">
-                                    <label for="nome">Nome</label>
-                                    <input type="text" name="nome" id="nome"></input>
-                                </div>
-                                <div class="item">
-                                    <label for="url">Url</label>
-                                    <input type="text" name="url" id="url"></input>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="item">
-                                    <label for="hUsername">Username</label>
-                                    <input type="text" name="hUsername" id="hUsername"></input>
-                                </div>
-                                <div class="item">
-                                    <label for="hPassword">Password</label>
-                                    <input type="text" name="hPassword" id="hPassword"></input>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="items  dark-item">
-                        <div class="item right">
-                            <button class="button green" type="submit" name="action" value="invia">Salva</button>
-                            <button class="button dark-red" type="button" name="action" value="anulla"
-                                onclick="closeModal('modal1')">anulla</button>
-                        </div>
-                    </div>
-                </form>
+                </div>
+            </div>
+            <div class="items  dark-item">
+                <div class="separate item right">
+                    <button class="button dark-red" type="button" name="action" value="anulla"
+                        onclick="closeModal('modal1')">anulla</button>
+                </div>
             </div>
         </div>
     </div>
 </div>
 <div th:fragment="modal-check" id="modal2" class="modal">
-    <div class="container">
-        <div class="card-form">
-            <div class="container box ">
-                <form class="module" action="/siti_web">
-                    <div class="items">
-                        <div class="item center dark-item">
-                            <h2>Hosting</h2>
-                            <input type="hidden" name="idHosting" id="idHosting" />
-                        </div>
+    <div class="card-form">
+        <div class="box-modal ">
+            <form class="module" action="/siti_web">
+                <div class="items">
+                    <div class="item center dark-item">
+                        <h2>Hosting</h2>
+                        <input type="hidden" name="idHosting" id="idHosting" />
                     </div>
-                    <div class="items">
-                        <div class="container dark-item">
-                            <div>
-                                <div class="item">
-                                    <label for="nome">Nome</label>
-                                    <span id="nome"></span>
-                                </div>
-                                <div class="item">
-                                    <label for="url">Url</label>
-                                    <span id="url"></span>
-                                </div>
+                </div>
+                <div class="items">
+                    <div class="container dark-item">
+                        <div>
+                            <div class="item">
+                                <label for="nomeHosting">Nome</label>
+                                <span id="nomeHosting"></span>
                             </div>
-                            <div>
-                                <div class="item">
-                                    <label for="hUsername">Username</label>
-                                    <span id="hUsername"></span>
-                                </div>
-                                <div class="item">
-                                    <label for="hPassword">Password</label>
-                                    <span id="hPassword"></span>
-                                </div>
+                            <div class="item">
+                                <label for="urlHosting">Url</label>
+                                <span id="urlHosting"></span>
+                            </div>
+                            <div class="item">
+                                <label for="hUsername">hUsername</label>
+                                <span id="hUsername"></span>
+                            </div>
+                            <div class="item">
+                                <label for="hPassword">hPassword</label>
+                                <span id="hPassword"></span>
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="items  dark-item">
                     <div class="items  dark-item">
-                        <div class="item right">
-                            <button class="button green" type="submit" name="action" value="invia">WebSites</button>
+                        <div class="separate item right">
+                            <button class="button green" type="submit">Siti Webs</button>
                             <button class="button dark-red" type="button" name="action" value="anulla"
                                 onclick="closeModal('modal2')">anulla</button>
                         </div>
                     </div>
-                </form>
-            </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>
 <div th:fragment="modal-remove" id="modal3" class="modal">
-    <div class="container">
-        <div class="card-claimer">
-            <div class="container box">
-                <div class="module">
-                    <div class="items">
-                        <div class="item center dark-item">
-                            <h2 for="cercare">Sei sicuro di eliminare l'Utente</h2>
-                            <input type="hidden" name="idHosting" id="idHosting" />
+    <div class="card-form">
+        <div class="box-modal">
+            <div class="module">
+                <div class="items">
+                    <div class="item center dark-item">
+                        <h2 for="cercare">Sei sicuro di eliminare questo Hosting</h2>
+                        <input type="hidden" name="idHosting" id="idHosting" />
+                    </div>
+                </div>
+                <div class="items">
+                    <div class="separate dark-item">
+                        <div class="item">
+                            <label for="idHosting">Id</label>
+                            <span id="idHosting"></span>
+                        </div>
+                        <div class="item">
+                            <label for="nomeHosting">Nome</label>
+                            <span id="nomeHosting"></span>
                         </div>
                     </div>
-                    <div class="items">
-                        <div class="container separate dark-item">
-                            <div class="item">
-                                <label for="nome">Nome:</label>
-                                <span name="nome" id="nome"></span>
-                            </div>
-                            <div class="item">
-                                <label for="url">Url:</label>
-                                <span name="url" id="url"></span>
-                            </div>
-                        </div>
+                </div>
+                <div class="items">
+                    <div class="item center dark-item">
+                        <img class="claimers" th:src="@{/images/claimers/warning-svgrepo-com.svg}" alt="">
                     </div>
-                    <div class="items">
-                        <div class="item center dark-item">
-                            <img class="claimers" th:src="@{/images/claimers/warning-svgrepo-com.svg}" alt="">
-                        </div>
-                    </div>
-                    <div class="items  dark-item">
-                        <div class="item right">
-                            <button class="button green" type="button" name="action" value="invia">Elimina</button>
-                            <button class="button dark-red" type="button" name="action" value="anulla"
-                                onclick="closeModal('modal3')">anulla</button>
-                        </div>
+                </div>
+                <div class="items  dark-item">
+                    <div class="separate item right">
+                        <button class="button green" type="button" name="action" value="invia">Elimina</button>
+                        <button class="button dark-red" type="button" name="action" value="anulla"
+                            onclick="closeModal('modal3')">anulla</button>
                     </div>
                 </div>
             </div>

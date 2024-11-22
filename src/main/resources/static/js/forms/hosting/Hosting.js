@@ -19,11 +19,11 @@ function getDataHosting(button,modal,mode){
                     input.value = id;
                     input.textContent=id;
                     break;
-                case 'nome':
+                case 'nomeHosting':
                     input.value = nome;
                     input.textContent=nome;
                     break;
-                case 'url':
+                case 'urlHosting':
                     input.value = url;
                     input.textContent=url;
                     break;
