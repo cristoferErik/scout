@@ -97,11 +97,11 @@
 
     <div class="card-form">
         <div class="box-modal">
-            <div class="module">
+            <form class="module" method="Post" action="/utente/deleteUtente">
                 <div class="items">
                     <div class="item center dark-item">
                         <h2 for="cercare">Sei sicuro di eliminare l'Utente</h2>
-                        <input type="hidden" id="utenteId" />
+                        <input type="hidden" name="idUtente" id="idUtente" />
                     </div>
                 </div>
                 <div class="items">
@@ -123,12 +123,12 @@
                 </div>
                 <div class="items  dark-item">
                     <div class="separate item right">
-                        <button class="button green" type="button" name="action" value="invia">Elimina</button>
+                        <button class="button green" type="submit" name="action" value="invia">Elimina</button>
                         <button class="button dark-red" type="button" name="action" value="anulla"
                             onclick="closeModal('modal3')">anulla</button>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>

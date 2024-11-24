@@ -89,7 +89,4 @@ public class Utente {
     public void setListHostings(List<Hosting> listHostings) {
         this.listHosting = listHostings;
     }
-
-
-    
 }

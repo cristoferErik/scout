@@ -43,4 +43,14 @@ public class UtenteService {
         }
         
     }
+    @Transactional
+    public boolean deleteUtente(Long id){
+        Optional<Utente> utenteOpt = utenteRepository.findById(id);
+        if(utenteOpt.isPresent()){
+            utenteRepository.delete(utenteOpt.get());
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

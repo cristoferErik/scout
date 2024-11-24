@@ -49,4 +49,12 @@ public class UtenteController {
             utenteService.saveUtente(utente);
         return "redirect:/utente";
     }
+
+    @PostMapping("/deleteUtente")
+    public String deleteUtente(@RequestParam Map<String, String> params){
+        String idUtenteStr=params.get("idUtente");
+        Long idUtente = (idUtenteStr==null || idUtenteStr.equals(""))? null:Long.valueOf(idUtenteStr);
+        utenteService.deleteUtente(idUtente);
+        return "redirect:/utente";
+    }
 }
