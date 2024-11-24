@@ -6,74 +6,43 @@
 <body>
     <div class="wrapper">
         <header th:replace="~{modules/menu}"></header>
-        <div class="container">
-            <div class="container">
-                <div class="card">
-                    <div class="container box ">
-                        <div>
-                            <h2 for="cercare">Siti Web</h2>
-                        </div>
-                    </div>
-                    <div class="container box right">
-                        <form class="container-ricerca" action="/siti_web" method="GET">
-                            <div class="ricerca">
-                                <label for="nome">cercare per nome:</label>
-                                <input type="text" name="nome" th:value="${nome}" id="nome" />
-                                <input type="hidden" name="idHosting" th:value="${idHosting}" />
-                            </div>
-                            <div class="ricerca right">
-                                <button class="button green" type="submit">cercare</button>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="container box dim">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Id</th>
-                                    <th>Nome</th>
-                                    <th>Url</th>
-                                    <th>Descrizzione</th>
-                                    <th>Update</th>
-                                    <th>Check</th>
-                                    <th>Delete</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr th:each="website : ${listWebSites}">
-                                    <td th:text="${website.id}"></td>
-                                    <td th:text="${website.nome}"></td>
-                                    <td th:text="${website.url}"></td>
-                                    <td th:text="${website.descrizzione}"></td>
-                                    <td>
-                                        <button type="button" class="button light-blue"
-                                            onclick="openModal('modal1'); getData(this);">update</button>
-                                    </td>
-                                    <td>
-                                        <button type="button" class="button check-color"
-                                            onclick="openModal('modal1'); getData(this);">check</button>
-                                    </td>
-                                    <td>
-                                        <button type="button" class="button danger-color"
-                                            onclick="openModal('modal1'); getData(this);">remove</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="container box">
-                        <nav th:replace="~{pagination/paginator}"></nav>
-                    </div>
-                    <div class="container box right">
-                        <button type="button" class="button green"
-                            onclick="openModal('modal1'); getData(this);">Aggiungere</button>
-                    </div>
+        <div class="card">
+            <div class="box">
+                <div>
+                    <h2 for="cercare">Siti webs</h2>
                 </div>
+                <input disabled type="hidden" id="idHosting" th:value="${idHosting}">
             </div>
-            <div th:replace="~{hosting-modal/hosting-modals :: modal-save-update}"></div>
-            <div th:replace="~{hosting-modal/hosting-modals :: modal-check}"></div>
-            <div th:replace="~{hosting-modal/hosting-modals :: modal-remove}"></div>
+            <div class="box">
+                <table class="table" id="table1">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nome</th>
+                            <th>Url</th>
+                            <th>descrizione</th>
+                            <th>Update</th>
+                            <th>Check</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody1">
+                         <!--Inserimento dei dati-->
+                    </tbody>
+                </table>
+            </div>
+            <div class="container box ">
+                <button type="button" class="button green right"
+                    onclick="openModal('modal1'); getData(this);">Aggiungere</button>
+            </div>
+        </div>
+            <div th:replace="~{sitioweb-modal/sitioweb-modal :: modal-save-update}"></div>
+            <div th:replace="~{sitioweb-modal/sitioweb-modal :: modal-check}"></div>
+            <div th:replace="~{sitioweb-modal/sitioweb-modal :: modal-remove}"></div>
         </div>
     </div>
     <script th:src="@{js/modal.js}"></script>
+    <footer th:replace="~{modules/footer}"></footer>
+    <script th:src="@{js/Tables/SitiWeb.js}"></script>
+    <script th:src="@{js/forms/siti_web/SitiWeb.js}"></script>
 </body>

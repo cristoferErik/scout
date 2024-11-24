@@ -16,7 +16,7 @@ function getDataUtente(button,modal,mode){
         ids.forEach(function(input){
             let name = input.getAttribute('id');
             switch (name) {
-                case 'utenteId':
+                case 'idUtente':
                     input.value = id;
                     input.textContent=id;
                     break;

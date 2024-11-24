@@ -3,6 +3,8 @@ package com.checker.scout.entities;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,13 +25,16 @@ public class WebSite {
     private String url;
     private String descrizzione;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name="hosting_id")
     private Hosting hosting;
 
+    @JsonIgnore
     @OneToMany(mappedBy="webSite", cascade=CascadeType.ALL)
     private List<AccountWebSite> listAccountWebSites;
 
+    @JsonIgnore
     @OneToMany(mappedBy="webSite",cascade=CascadeType.ALL)
     private List<DetailWsSe> listDetailWsSe;
 

@@ -1,8 +1,8 @@
 package com.checker.scout.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.checker.scout.entities.WebSite;
@@ -13,7 +13,7 @@ public class WebSiteService {
     @Autowired
     private SitiWebRepository sitiWebRepository;
     
-    public Page<WebSite> getAllWebSites(String nome,Long hostingId,Pageable pageable){
-        return sitiWebRepository.findAllWebSite(nome,hostingId,pageable);
+     public List<WebSite> findAllWebSite(Long idHosting){
+        return sitiWebRepository.findAllWebSite(idHosting);
     }
 }

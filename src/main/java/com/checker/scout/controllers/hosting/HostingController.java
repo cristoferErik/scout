@@ -17,10 +17,10 @@ public class HostingController {
     private HostingService hostingService;
 
     @GetMapping("")
-    public String getHostings(@RequestParam Long utenteId,Model model)
+    public String getHostings(@RequestParam Long idUtente,Model model)
     {   
-        System.out.println("here - " + utenteId); 
-        model.addAttribute("utenteId", utenteId);
+        System.out.println("here - " + idUtente); 
+        model.addAttribute("idUtente", idUtente);
         return "pages/hosting";
     }
 }

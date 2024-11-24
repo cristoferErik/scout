@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -26,8 +27,11 @@ public class Servizio {
     private LocalDateTime dataAggiornamento;
     
     @JsonIgnore
-    @OneToMany(mappedBy="servizio")
+    @OneToMany(mappedBy="servizio", cascade=CascadeType.ALL)
     private List<DetailWsSe> listDetailWsSe;
+
+
+
 
     public void prePersist(){
         if(dataCreazione == null){

@@ -1,7 +1,7 @@
 
 document.addEventListener("DOMContentLoaded", function () {
-    const idUtente = document.getElementById("idUtente").value;
-    fetch(`/restHosting/hosting?idUtente=${idUtente}`)
+    const idHosting = document.getElementById("idHosting").value;
+    fetch(`/restSitiWeb/hosting?idHosting=${idHosting}`)
         .then(response => {
             if (!response.ok) {
                 throw new Error("errore nella rete");
@@ -31,19 +31,18 @@ function createDataTableT1(data) {
             <td>${dato.id}</td>
             <td>${dato.nome}</td>
             <td>${dato.url}</td>
-            <td>${dato.hUsername}</td>
-            <td>${dato.hPassword}</td>
+            <td>${dato.descrizzione}</td>
             <td>
                 <button type="button" class="button light-blue"
-                    onclick="openModal('modal1'); getDataHosting(this,'modal1','add');">update</button>
+                    onclick="openModal('modal1'); getDataSitiWeb(this,'modal1','add');">update</button>
             </td>
             <td>
                 <button type="button" class="button check-color"
-                    onclick="openModal('modal2'); getDataHosting(this,'modal2','add');">check</button>
+                    onclick="openModal('modal2'); getDataSitiWeb(this,'modal2','add');">check</button>
             </td>
             <td>
                 <button type="button" class="button danger-color"
-                    onclick="openModal('modal3'); getDataHosting(this,'modal3','add');">remove</button>
+                    onclick="openModal('modal3'); getDataSitiWeb(this,'modal3','add');">remove</button>
             </td>
         `;
         tableBody.appendChild(row);

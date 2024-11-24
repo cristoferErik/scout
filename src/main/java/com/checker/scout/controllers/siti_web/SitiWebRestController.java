@@ -1,4 +1,4 @@
-package com.checker.scout.controllers.hosting;
+package com.checker.scout.controllers.siti_web;
 
 import java.util.List;
 
@@ -8,18 +8,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.checker.scout.entities.Hosting;
-import com.checker.scout.services.HostingService;
+import com.checker.scout.entities.WebSite;
+import com.checker.scout.repositories.SitiWebRepository;
 
-@RequestMapping("/restHosting")
+@RequestMapping("/restSitiWeb")
 @RestController
-public class HostingRestController {
+public class SitiWebRestController {
 
     @Autowired
-    private HostingService hostingService;
-
+    private SitiWebRepository sitiWebRepository;
     @GetMapping("/hosting")
-    public List<Hosting> getServizi(@RequestParam Long idUtente){
-        return hostingService.getAllHostingsByUtente(idUtente);
+    public List<WebSite> getServizi(@RequestParam Long idHosting){
+        return sitiWebRepository.findAllWebSite(idHosting);
     }
 }

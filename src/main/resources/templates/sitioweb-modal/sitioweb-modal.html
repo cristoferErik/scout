@@ -1,0 +1,116 @@
+<div th:fragment="modal-save-update" id="modal1" class="modal">
+    <div class="card-form">
+        <div class="box-modal ">
+            <form class="module" action="/siti_web/save_sitoweb" method="post">
+                <div class="items">
+                    <div class="item center dark-item">
+                        <h2 for="idSW">Sito Web</h2>
+                        <input type="hidden" name="idSW" id="idSW" />
+                    </div>
+                </div>
+                <div class="items">
+                    <div class="separate dark-item">
+                        <div>
+                            <div class="item">
+                                <label for="nomeSW">Nome</label>
+                                <input type="text" name="nomeSW" id="nomeSW"></input>
+                            </div>
+                            <div class="item">
+                                <label for="urlSW">Url</label>
+                                <input type="text" name="urlSW" id="urlSW"></input>
+                            </div>
+                            <div class="item">
+                                <label for="descrizione">descrizione</label>
+                                <textarea name="descrizioneSW" id="descrizioneSW"
+                                    placeholder="aggiunge una descrizzione"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="items  dark-item">
+                    <div class="separate item right">
+                        <button class="button green" type="submit" name="action" value="invia">Salva</button>
+                        <button class="button dark-red" type="button" name="action" value="anulla"
+                            onclick="closeModal('modal1')">anulla</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div th:fragment="modal-check" id="modal2" class="modal">
+
+    <div class="card-form">
+        <div class="box-modal ">
+            <div class="items">
+                <div class="item center dark-item">
+                    <h2 for="idServizio">Servizio</h2>
+                </div>
+            </div>
+            <div class="items">
+                <div class="separate dark-item">
+                    <div>
+                        <div class="item">
+                            <label for="nomeSW">Nome</label>
+                            <span id="nomeSW"></span>
+                        </div>
+                        <div class="item">
+                            <label for="urlSW">Url</label>
+                            <span id="urlSW"></span>
+                        </div>
+                        <div class="item">
+                            <label for="descrizione">descrizione</label>
+                            <textarea disabled name="descrizioneSW" id="descrizioneSW"
+                                placeholder="aggiunge una descrizzione"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="items  dark-item">
+                <div class="separate item right">
+                    <button class="button dark-red right" type="button" name="action" value="anulla"
+                        onclick="closeModal('modal2')">anulla</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:fragment="modal-remove" id="modal3" class="modal">
+
+    <div class="card-form">
+        <div class="box-modal">
+            <div class="module">
+                <div class="items">
+                    <div class="item center dark-item">
+                        <h2 for="cercare">Sei sicuro di eliminare questo Servizio</h2>
+                        <input type="hidden" name="idServizio" id="idServizio" />
+                    </div>
+                </div>
+                <div class="items">
+                    <div class="separate dark-item">
+                        <div class="item">
+                            <label for="idSW">Id</label>
+                            <span id="idSW"></span>
+                        </div>
+                        <div class="item">
+                            <label for="nomeSW">Nome</label>
+                            <span id="nomeSW"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="items">
+                    <div class="item center dark-item">
+                        <img class="claimers" th:src="@{/images/claimers/warning-svgrepo-com.svg}" alt="">
+                    </div>
+                </div>
+                <div class="items  dark-item">
+                    <div class="separate item right">
+                        <button class="button green" type="button" name="action" value="invia">Elimina</button>
+                        <button class="button dark-red" type="button" name="action" value="anulla"
+                            onclick="closeModal('modal3')">anulla</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
