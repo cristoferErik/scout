@@ -59,7 +59,6 @@ public class UtenteRestController {
         utente.setTelefono(utenteDao.getTelefono());
         this.utenteService.saveUtente(utente);
         Map<String, Object> response = new HashMap<>();
-        response.put("status","success");
         response.put("message","Utente salvato correttamente!");
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }

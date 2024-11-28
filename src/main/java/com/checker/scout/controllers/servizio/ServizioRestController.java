@@ -34,8 +34,8 @@ public class ServizioRestController {
         Servizio servizio = new Servizio();
         servizio.setId(servizioDao.getId());
         servizio.setNome(servizioDao.getNome());
-        servizio.setDescrizione(servizio.getDescrizione());
-        servizio.setCosto(servizio.getCosto());
+        servizio.setDescrizione(servizioDao.getDescrizione());
+        servizio.setCosto(servizioDao.getCosto());
         boolean flag=this.servizioService.saveServizio(servizio);
         Map<String,Object> response= new HashMap<>();
         

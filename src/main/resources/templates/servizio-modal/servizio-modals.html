@@ -1,7 +1,7 @@
 <div th:fragment="modal-save-update" id="modal1" class="modal">
     <div class="card-form">
         <div class="box-modal ">
-            <form class="module"  method="post">
+            <form class="module"  method="post" id="formServizio">
                 <div class="items">
                     <div class="item center dark-item">
                         <h2 for="id">Servizio</h2>
@@ -29,7 +29,7 @@
                 </div>
                 <div class="items  dark-item">
                     <div class="separate item right">
-                        <button class="button green" type="submit" onclick="saveFormServizio(event);">Salva</button>
+                        <button class="button green" type="button" onclick="saveFormServizio(event);">Salva</button>
                         <button class="button dark-red" type="button" name="action" value="anulla"
                             onclick="closeModal('modal1')">anulla</button>
                     </div>
@@ -41,10 +41,10 @@
 <div th:fragment="modal-check" id="modal2" class="modal">
 
     <div class="card-form">
-        <div class="box-modal ">
+        <div class="box-modal " id="checkServizio">
             <div class="items">
                 <div class="item center dark-item">
-                    <h2 for="idServizio">Servizio</h2>
+                    <h2 for="id">Servizio</h2>
                 </div>
             </div>
             <div class="items">
@@ -52,24 +52,24 @@
                     <div>
                         <div class="item">
                             <label for="nome">Nome</label>
-                            <span type="text" name="nome" id="nome"></span>
+                            <input type="text" readonly name="nome" id="nome"></input>
                         </div>
                         <div class="item">
                             <label for="descrizione">descrizione</label>
-                            <textarea disabled name="descrizione" id="descrizione"
+                            <textarea readonly name="descrizione" id="descrizione"
                                 placeholder="aggiunge una descrizzione"></textarea>
                         </div>
                         <div class="item">
                             <label for="costo">costo</label>
-                            <span type="text" name="costo" id="costo"></span>
+                            <input type="text" readonly name="costo"></input>
                         </div>
                         <div class="item">
                             <label for="dataCreazione">creazione </label>
-                            <span type="text" name="dataCreazione" id="dataCreazione"></span>
+                            <input type="text" readonly name="dataCreazione" ></input>
                         </div>
                         <div class="item">
-                            <label for="dataAggiornamento">Aggiornamento </label>
-                            <span type="text" name="dataAggiornamento" id="dataAggiornamento"></span>
+                            <label for="dataAggiornamento">Last Update </label>
+                            <input type="text" readonly name="dataAggiornamento" ></input>
                         </div>
                     </div>
                 </div>
@@ -86,23 +86,23 @@
 <div th:fragment="modal-remove" id="modal3" class="modal">
     <div class="card-form">
         <div class="box-modal">
-            <form class="module" method="Post" action="/servizio/deleteServizio">
-                <input type="hidden" name="_method" value="DELETE">
+            <form class="module" method="Post" id="formDeleteServizio">
+                <input type="hidden" method="post">
                 <div class="items">
                     <div class="item center dark-item">
                         <h2 for="cercare">Sei sicuro di eliminare questo Servizio</h2>
-                        <input type="hidden" name="idServizio" id="idServizio" />
+                        <input type="hidden" name="id"  />
                     </div>
                 </div>
                 <div class="items">
                     <div class="separate dark-item">
                         <div class="item">
-                            <label for="idServizio">Id</label>
-                            <span id="idServizio"></span>
+                            <label for="id">Id</label>
+                            <input type="text" readonly name="id" id="id"></input>
                         </div>
                         <div class="item">
                             <label for="nome">Nome</label>
-                            <span id="nome"></span>
+                            <input type="text" readonly name="nome" id="nome"></inpu>
                         </div>
                     </div>
                 </div>
@@ -113,7 +113,7 @@
                 </div>
                 <div class="items  dark-item">
                     <div class="separate item right">
-                        <button class="button green" type="submit" name="action" value="invia">Elimina</button>
+                        <button class="button green" type="button" onclick="deleteServizio();">Elimina</button>
                         <button class="button dark-red" type="button" name="action" value="anulla"
                             onclick="closeModal('modal3')">anulla</button>
                     </div>

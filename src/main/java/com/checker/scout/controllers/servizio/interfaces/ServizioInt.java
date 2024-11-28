@@ -2,7 +2,7 @@ package com.checker.scout.controllers.servizio.interfaces;
 
 import java.time.LocalDateTime;
 
-public class ServizioInt {
+public interface ServizioInt {
     public class ServizioDao{
             private Long id;
             private String nome;
@@ -10,6 +10,9 @@ public class ServizioInt {
             private float costo;
             private LocalDateTime dataCreazione;
             private LocalDateTime dataAggiornamento;
+
+            public ServizioDao() {
+            }
 
             public Long getId() {
                 return id;
