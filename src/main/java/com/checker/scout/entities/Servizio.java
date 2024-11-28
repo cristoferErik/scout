@@ -21,7 +21,7 @@ public class Servizio {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     private String nome;
-    private String descrizzione;
+    private String descrizione;
     private float costo;
     private LocalDateTime dataCreazione;
     private LocalDateTime dataAggiornamento;
@@ -75,12 +75,12 @@ public class Servizio {
         this.listDetailWsSe = listDetailWsSe;
     }
 
-    public String getDescrizzione() {
-        return descrizzione;
+    public String getDescrizione() {
+        return descrizione;
     }
 
-    public void setDescrizzione(String descrizzione) {
-        this.descrizzione = descrizzione;
+    public void setDescrizione(String descrizzione) {
+        this.descrizione = descrizzione;
     }
 
     public LocalDateTime getDataCreazione() {

@@ -43,6 +43,12 @@ public class UtenteService {
         }
         
     }
+
+    @Transactional(readOnly=true)
+    public Optional<Utente> getUtenteById(Long id){
+        return utenteRepository.findById(id);
+    }
+
     @Transactional
     public boolean deleteUtente(Long id){
         Optional<Utente> utenteOpt = utenteRepository.findById(id);

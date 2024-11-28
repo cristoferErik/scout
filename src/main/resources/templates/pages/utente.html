@@ -34,7 +34,7 @@
             </div>
             <div class="box">
                 <button type="button" class="button light-blue right"
-                onclick="openModal('modal1'); getDataUtente(this,'modal1','');">add</button>
+                onclick="openModal('modal1');">add</button>
             </div>
         </div>
         <div th:replace="~{utente-modal/utente-modals :: modal-save-update}"></div>
@@ -44,10 +44,10 @@
     </div>
 </body>
 
-<script th:src="@{js/forms/utente/Utente.js}"></script>
-<footer th:replace="~{modules/footer}"></footer>
-<script th:src="@{js/Tables/Utente.js}"></script>
 
+<footer th:replace="~{modules/footer}"></footer>
+<script th:src="@{js/forms/utente/Utente.js}"></script>
+<script th:src="@{js/forms/utente/UtenteForm.js}"></script>
 
 
 </html>

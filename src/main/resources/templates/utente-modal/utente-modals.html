@@ -2,19 +2,19 @@
 
     <div class="card-form">
         <div class="box-modal ">
-            <form class="module" action="/utente/saveUtente" method="post">
+            <form class="module" method="post" id="formUtente">
                 <div class="items">
                     <div class="item center dark-item">
-                        <h2 for="cercare">Utente</h2>
-                        <input type="hidden" name="idUtente" id="idUtente" />
+                        <h2>Utente</h2>
+                        <input type="hidden" name="id" id="id" />
                     </div>
                 </div>
                 <div class="items">
                     <div class="separate dark-item">
                         <div>
                             <div class="item">
-                                <label for="nomeUtente">Nome</label>
-                                <input type="text" name="nomeUtente" id="nomeUtente"></input>
+                                <label for="nome">Nome</label>
+                                <input type="text" name="nome" id="nome"></input>
                             </div>
                             <div class="item">
                                 <label for="cognome">Cognome</label>
@@ -37,7 +37,7 @@
                 </div>
                 <div class="items  dark-item">
                     <div class="separate item right">
-                        <button class="button green" type="submit" name="action" value="invia">Salva</button>
+                        <button class="button green" type="submit" onclick="saveFormUtente(event)">Salva</button>
                         <button class="button dark-red" type="button" name="action" value="anulla"
                             onclick="closeModal('modal1')">anulla</button>
                     </div>
@@ -49,7 +49,7 @@
 <div th:fragment="modal-check" id="modal2" class="modal">
     <div class="card-form">
         <div class="box-modal">
-            <form class="module" action="/hosting">
+            <form class="module" action="/hosting" id="formCheckUtente">
                 <div class="items">
                     <div class="item center dark-item">
                         <h2 for="cercare">Utente:</h2>
@@ -60,24 +60,24 @@
                     <div class="dark-item">
                         <div>
                             <div class="item">
-                                <label for="nomeUtente">Nome:</label>
-                                <span id="nomeUtente"></span>
+                                <label for="nome">Nome:</label>
+                                <input type="text" readonly name="nome"></input>
                             </div>
                             <div class="item">
                                 <label for="cognome">Cognome</label>
-                                <span id="cognome"></span>
+                                <input type="text" readonly name="cognome"></inpu>
                             </div>
                             <div class="item">
                                 <label for="indirizzo">Indirizzo</label>
-                                <span id="indirizzo"></span>
+                                <input type="text" readonly name="indirizzo" ></input>
                             </div>
                             <div class="item">
                                 <label for="telefono">Telefono</label>
-                                <span id="telefono"></span>
+                                <input type="text" readonly name="telefono"></inpu>
                             </div>
                             <div class="item">
                                 <label for="email">email</label>
-                                <span id="email"></span>
+                                <input type="text" readonly name="email" id="email"></input>
                             </div>
                         </div>
                     </div>
@@ -97,22 +97,22 @@
 
     <div class="card-form">
         <div class="box-modal">
-            <form class="module" method="Post" action="/utente/deleteUtente">
+            <form class="module" method="Post" id="formDeleteUtente">
                 <div class="items">
                     <div class="item center dark-item">
                         <h2 for="cercare">Sei sicuro di eliminare l'Utente</h2>
-                        <input type="hidden" name="idUtente" id="idUtente" />
+                        <input type="hidden" name="id" id="id" />
                     </div>
                 </div>
                 <div class="items">
                     <div class="separate dark-item">
                         <div class="item">
                             <label for="nomeUtente">Nome:</label>
-                            <span name="nomeUtente" id="nomeUtente"></span>
+                            <input type="text" readonly name="nome" id="nome"></input>
                         </div>
                         <div class="item">
                             <label for="cognome">Cognome:</label>
-                            <span name="cognome" id="cognome"></span>
+                            <input type="text" readonly name="cognome" id="cognome"></input>
                         </div>
                     </div>
                 </div>
@@ -123,7 +123,7 @@
                 </div>
                 <div class="items  dark-item">
                     <div class="separate item right">
-                        <button class="button green" type="submit" name="action" value="invia">Elimina</button>
+                        <button class="button green" type="button" onclick="deleteUtente();">Elimina</button>
                         <button class="button dark-red" type="button" name="action" value="anulla"
                             onclick="closeModal('modal3')">anulla</button>
                     </div>

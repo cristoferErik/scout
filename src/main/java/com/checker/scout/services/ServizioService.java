@@ -36,7 +36,7 @@ public class ServizioService {
             if(servizioOpt.isPresent()){
                 servizioOpt.get().setNome(servizio.getNome());
                 servizioOpt.get().setCosto(servizio.getCosto());
-                servizioOpt.get().setDescrizzione(servizio.getDescrizzione());
+                servizioOpt.get().setDescrizione(servizio.getDescrizione());
                 servizioOpt.get().setDataAggiornamento(localDateTime);
                 servizioRepository.saveAndFlush(servizioOpt.get());
                 return true;
@@ -54,5 +54,10 @@ public class ServizioService {
         }else{
             return false;
         }
+    }
+    @Transactional(readOnly=true)
+    public Optional<Servizio> getServizioById(Long id){
+        Optional<Servizio> servizioOpt = servizioRepository.findById(id);
+        return servizioOpt;
     }
 }

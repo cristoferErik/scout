@@ -1,11 +1,11 @@
 <div th:fragment="modal-save-update" id="modal1" class="modal">
     <div class="card-form">
         <div class="box-modal ">
-            <form class="module" action="/servizio/saveServizio" method="post">
+            <form class="module"  method="post">
                 <div class="items">
                     <div class="item center dark-item">
-                        <h2 for="idServizio">Servizio</h2>
-                        <input type="hidden" name="idServizio" id="idServizio" />
+                        <h2 for="id">Servizio</h2>
+                        <input type="hidden" name="id" id="id" />
                     </div>
                 </div>
                 <div class="items">
@@ -29,7 +29,7 @@
                 </div>
                 <div class="items  dark-item">
                     <div class="separate item right">
-                        <button class="button green" type="submit">Salva</button>
+                        <button class="button green" type="submit" onclick="saveFormServizio(event);">Salva</button>
                         <button class="button dark-red" type="button" name="action" value="anulla"
                             onclick="closeModal('modal1')">anulla</button>
                     </div>

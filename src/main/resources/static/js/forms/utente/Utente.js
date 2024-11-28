@@ -1,57 +1,123 @@
-function getDataUtente(button,modal,mode){
-    let m=document.getElementById(modal);
-    let ids=m.querySelectorAll('[id]');
-    if(mode==="add" && button!=null ){
-        // Obtener el <tr> que es el padre del botón
-        var tr = button.closest('tr');
-        // Hacer algo con el tr, por ejemplo, mostrar los datos de la fila
-        var tds = tr.querySelectorAll('td');
+document.addEventListener("DOMContentLoaded", function () {
+    listUtente();
+});
+function listUtente(){
+    fetch('/restUtente/utenti')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("errore nella rete");
+        }
+        return response.json();
+    })
+    .then(data => {
+        //data=paginate(data);
+        //console.log(data);
         
-        let id=`${tds[0].textContent.trim()}`;
-        let nome=`${tds[1].textContent.trim()}`;
-        let cognome=`${tds[2].textContent.trim()}`;
-        let indirizzo=`${tds[3].textContent.trim()}`;
-        let telefono=`${tds[4].textContent.trim()}`;
-        let email=`${tds[5].textContent.trim()}`;
-        ids.forEach(function(input){
-            let name = input.getAttribute('id');
-            switch (name) {
-                case 'idUtente':
-                    input.value = id;
-                    input.textContent=id;
-                    break;
-                case 'nomeUtente':
-                    input.value = nome;
-                    input.textContent=nome;
-                    break;
-                case 'cognome':
-                    input.value = cognome;
-                    input.textContent=cognome;
-                    break;
-                case 'indirizzo':
-                    input.value = indirizzo;
-                    input.textContent=indirizzo;
-                    break;
-                case 'telefono':
-                    input.value = telefono;
-                    input.textContent=telefono;
-                    break;
-                case 'email':
-                    input.value = email;
-                    input.textContent=email;
-                    break;
-                default:
-                    break;
-            }
-        });
-        
-    }else{
-        //cui si fa la pullizia in caso sia da registrare
-        let inputs = m.querySelectorAll('input, textarea');
-        inputs.forEach(function (input) {
-            input.value = '';  // pulire tutti gli inputs
-            input.textContent = '';
-        });
+        let tableElement =document.getElementById('table1');
+        if($.fn.DataTable.isDataTable(tableElement)){
+            let tableInstance = $(tableElement).DataTable(); // Usar jQuery para acceder a DataTable
+            tableInstance.clear();  // Limpiar las filas actuales
+            tableInstance.destroy();  // Destruir la instancia de DataTable
+        }
+            createDataTableT1(data);
+            let newTable = new DataTable(tableElement, {});
+    })
+    .catch(error => {
+        // Manejo de errores en caso de fallar la solicitud
+        console.error('Hubo un problema con la solicitud AJAX:', error);
+    });
+}
+function createDataTableT1(data) {
+    const tableBody = document.getElementById("tbody1");
+    tableBody.innerHTML = "";
+
+    data.forEach(dato => {
+        const row = document.createElement('tr');
+        row.innerHTML =
+            `
+            <td>${dato.id}</td>
+            <td>${dato.nome}</td>
+            <td>${dato.cognome}</td>
+            <td>${dato.indirizzo}</td>
+            <td>${dato.telefono}</td>
+            <td>${dato.email}</td>
+            <td>
+                <button type="button" class="button light-blue"
+                    onclick="openModal('modal1'); updateUtente(${dato.id});">update</button>
+            </td>
+            <td>
+                <button type="button" class="button check-color"
+                    onclick="openModal('modal2'); checkUtente(${dato.id});">check</button>
+            </td>
+            <td>
+                <button type="button" class="button danger-color"
+                    onclick="openModal('modal3'); deleteFormUtente(this);"
+                    data-utente='${JSON.stringify(dato)}'>remove</button>
+            </td>
+        `;
+        tableBody.appendChild(row);
+    });
+}
+
+async function getUtenteById(id){
+    try{
+        const response = await fetch(`/restUtente/utente/${id}`);
+        const responseData= await response.json();
+        if (!response.ok) {
+            let error =  new Error();
+            error.data= responseData;
+            throw error;
+        }else{
+            return responseData.data;
+        }
+
+    }catch(error){
+        let message = `Error: ${error.data.status} - ${error.data.message}`;
+        alert(message);
     }
-    
+}
+
+async function saveUtente(utente){
+    try{
+        const response = await fetch('/restUtente/save',{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(utente),
+        });
+
+        if(response.ok){
+            const result = await response.json();
+            const message=result.message;
+            alert(message);
+            closeModal("modal1");
+            listUtente();
+        }
+    }catch(error){
+        console.error('Errore nella richiesta!',error);
+    }
+}
+
+async function deleteUtente(){
+    let form = document.getElementById("formDeleteUtente");
+    let id = form.querySelector('[name="id"]').value; 
+    try{
+        const response = await fetch(`/restUtente/utente/${id}`,{
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+
+        if(response.ok){
+            const result = await response.json();
+            const message=result.message;
+            alert(message);
+            listUtente();
+            closeModal("modal3");
+        }
+    }catch(error){
+        console.error('Errore nella richiesta!',error);
+    }
 }

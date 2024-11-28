@@ -54,7 +54,7 @@
     box-sizing: border-box;
 }
 
-input:disabled{
+input:disabled,input[readOnly]{
     background: var(--blue-gray-color);
     color: var(--light-font-color);
 }

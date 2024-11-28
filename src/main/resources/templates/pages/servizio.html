@@ -34,7 +34,7 @@
             </div>
             <div class="box">
                 <button type="button" class="button light-blue right"
-                onclick="openModal('modal1'); getDataServizio(this,'modal1','');">add</button>
+                onclick="openModal('modal1');">add</button>
             </div>
         </div>
         <div th:replace="~{servizio-modal/servizio-modals :: modal-save-update}"></div>
@@ -44,7 +44,6 @@
 </body>
 <script th:src="@{js/Date/FormatDate.js}"></script>
 <footer th:replace="~{modules/footer}"></footer>
-<script th:src="@{js/Tables/Servizio.js}"></script>
-<script th:src="@{js/forms/servizi_update/ServiziUpdate.js}"></script>
-
+<script th:src="@{js/forms/servizi_update/ServizioUpdate.js}"></script>
+<script th:src="@{js/forms/servizi_update/ServizioUpdateForm.js}"></script>
 </html>
