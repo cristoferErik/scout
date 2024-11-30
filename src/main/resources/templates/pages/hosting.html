@@ -7,12 +7,12 @@
     <!--alt + 126 = ~ -->
     <div class="wrapper">
         <header th:replace="~{modules/menu}"></header>
-        <div class="card">
+        <div class="card" id="listHosting">
             <div class="box">
                 <div>
                     <h2 for="cercare">Hosting - servers</h2>
                 </div>
-                <input type="hidden" id="idUtente" th:value="${idUtente}">
+                <input type="hidden" name="utenteId" th:value="${utenteId}">
             </div>
             <div class="box">
                 <table class="table" id="table1">
@@ -35,15 +35,16 @@
             </div>
             <div class="container box ">
                 <button type="button" class="button green right"
-                    onclick="openModal('modal1'); getData(this);">Aggiungere</button>
+                    onclick="openModal('modal1');">Aggiungere</button>
             </div>
         </div>
         <div th:replace="~{hosting-modal/hosting-modals :: modal-save-update}"></div>
         <div th:replace="~{hosting-modal/hosting-modals :: modal-check}"></div>
         <div th:replace="~{hosting-modal/hosting-modals :: modal-remove}"></div>
     </div>
-    <script th:src="@{js/modal.js}"></script>
-    <script th:src="@{js/forms/hosting/Hosting.js}"></script>
+    <script th:src="@{/js/modal.js}"></script>
+    <script th:src="@{/js/forms/hosting/Hosting.js}"></script>
+    <script th:src="@{/js/forms/hosting/HostingForm.js}"></script>
     <footer th:replace="~{modules/footer}"></footer>
-    <script th:src="@{js/Tables/Hosting.js}"></script>
+   
 </body>

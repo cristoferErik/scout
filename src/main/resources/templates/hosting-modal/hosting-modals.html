@@ -1,24 +1,24 @@
 <div th:fragment="modal-save-update" id="modal1" class="modal">
     <div class="card-form">
         <div class="box-modal ">
-            <form class="module" method="Post" action="/hosting/saveHosting">
+            <form class="module" method="Post" action="/hosting/saveHosting" id="formHosting">
                 <div class="items">
                     <div class="item center dark-item">
                         <h2>Hosting</h2>
-                        <input type="hidden" name="idHosting" id="idHosting" />
-                        <input type="hidden" th:name="'idUtente'" th:value="${idUtente}">
+                        <input type="hidden" name="id" id="id" />
+                        <input type="hidden" name="utenteId" th:value="${utenteId}">
                     </div>
                 </div>
                 <div class="items">
                     <div class="container dark-item">
                         <div>
                             <div class="item">
-                                <label for="nomeHosting">Nome</label>
-                                <input type="text" name="nomeHosting" id="nomeHosting"></input>
+                                <label for="nome">Nome</label>
+                                <input type="text" name="nome" id="nome"></input>
                             </div>
                             <div class="item">
-                                <label for="urlHosting">Url</label>
-                                <input type="text" name="urlHosting" id="urlHosting"></input>
+                                <label for="url">Url</label>
+                                <input type="text" name="url" id="url"></input>
                             </div>
                             <div class="item">
                                 <label for="hUsername">hUsername</label>
@@ -33,7 +33,7 @@
                 </div>
                 <div class="items  dark-item">
                     <div class="separate item right">
-                        <button class="button green" type="submit">Salva</button>
+                        <button class="button green" type="submit" onclick="saveFormHosting(event);">Salva</button>
                         <button class="button dark-red" type="button" name="action" value="anulla"
                             onclick="closeModal('modal1')">anulla</button>
                     </div>
