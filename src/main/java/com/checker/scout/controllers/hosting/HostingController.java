@@ -13,7 +13,7 @@ public class HostingController {
     @GetMapping("/listHosting")
     public String getHostings(@RequestParam Long id,Model model)
     {   
-        System.out.println("here - " + id); 
+        //System.out.println("here - " + id); 
         model.addAttribute("utenteId", id);
         return "pages/hosting";
     }

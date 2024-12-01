@@ -8,6 +8,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,8 +27,9 @@ public class WebSiteRestController {
     private WebSiteService webSiteService;
 
     @GetMapping("/webSites")
-    public List<WebSite> getServizi(@RequestParam Long idHosting){
-        return webSiteService.findAllWebSite(idHosting);
+    public List<WebSite> getServizi(@RequestParam Long hostingId){
+        //System.out.println("rest-->"+hostingId);
+        return webSiteService.findAllWebSite(hostingId);
     }
 
     @PostMapping("/saveWebSite")
@@ -36,8 +38,8 @@ public class WebSiteRestController {
     }
 
     @GetMapping("/webSite/{id}")
-    public Map<String,Object> getWebSiteById(@RequestParam Long id){
-        Optional<WebSite> optWebSite=webSiteService.getWebSiteById(id);
+    public Map<String,Object> getWebSiteById(@PathVariable Long id){
+        Optional<WebSite> optWebSite=this.webSiteService.getWebSiteById(id);
         Map<String,Object> response= new HashMap<>();
         if(optWebSite.isPresent()){
             response.put("status","success");
@@ -50,7 +52,7 @@ public class WebSiteRestController {
     }
 
     @DeleteMapping("/webSite/{id}")
-    public Map<String,Object> deleteWebSite(@RequestParam Long id){
+    public Map<String,Object> deleteWebSite(@PathVariable Long id){
         return this.webSiteService.deleteWebSite(id);
     }
 }

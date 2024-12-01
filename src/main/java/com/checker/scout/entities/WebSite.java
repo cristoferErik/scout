@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -23,19 +24,19 @@ public class WebSite {
     private Long id;
     private String nome;
     private String url;
-    private String descrizzione;
+    private String descrizione;
 
     @JsonIgnore
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="hosting_id")
     private Hosting hosting;
 
     @JsonIgnore
-    @OneToMany(mappedBy="webSite", cascade=CascadeType.ALL)
+    @OneToMany(mappedBy="webSite", cascade=CascadeType.ALL,fetch=FetchType.LAZY)
     private List<AccountWebSite> listAccountWebSites;
 
     @JsonIgnore
-    @OneToMany(mappedBy="webSite",cascade=CascadeType.ALL)
+    @OneToMany(mappedBy="webSite",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
     private List<DetailWsSe> listDetailWsSe;
 
     public WebSite() {
@@ -68,12 +69,12 @@ public class WebSite {
         this.url = url;
     }
 
-    public String getDescrizzione() {
-        return descrizzione;
+    public String getDescrizione() {
+        return descrizione;
     }
 
-    public void setDescrizzione(String descrizzione) {
-        this.descrizzione = descrizzione;
+    public void setDescrizione(String descrizzione) {
+        this.descrizione = descrizzione;
     }
 
     public List<DetailWsSe> getListDetailWsSe() {

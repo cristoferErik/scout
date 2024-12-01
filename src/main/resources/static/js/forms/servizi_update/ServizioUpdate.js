@@ -11,8 +11,8 @@ function listServizio(){
         })
         .then(data => {
             let tableElement =document.getElementById('table1');
-            if($.fn.DataTable.isDataTable(tableElement)){
-                let tableInstance = $(tableElement).DataTable(); // Usar jQuery para acceder a DataTable
+            if (tableElement.DataTable) {
+                let tableInstance= tableElement.DataTable;
                 tableInstance.clear();  // Limpiar las filas actuales
                 tableInstance.destroy();  // Destruir la instancia de DataTable
             }

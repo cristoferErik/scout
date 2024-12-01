@@ -44,11 +44,10 @@
 <div th:fragment="modal-check" id="modal2" class="modal">
     <div class="card-form">
         <div class="box-modal ">
-            <form class="module" action="/siti_web" id="checkHosting">
+            <div class="module"  id="checkHosting">
                 <div class="items">
                     <div class="item center dark-item">
                         <h2>Hosting</h2>
-                        <input type="hidden" name="id" />
                     </div>
                 </div>
                 <div class="items">
@@ -76,13 +75,16 @@
                 <div class="items  dark-item">
                     <div class="items  dark-item">
                         <div class="separate item right">
-                            <button class="button green" type="submit">Siti Webs</button>
+                            <form action="/website" method="get">
+                                <input type="hidden" name="id"/>
+                                <button class="button green" type="submit">Siti Webs</button>
+                            </form>
                             <button class="button dark-red" type="button" name="action" value="anulla"
                                 onclick="closeModal('modal2')">anulla</button>
                         </div>
                     </div>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 </div>

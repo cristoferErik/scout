@@ -35,30 +35,36 @@ public class WebSiteService {
         webSite.setId(webSiteDao.getId());
         webSite.setNome(webSiteDao.getNome());
         webSite.setUrl(webSiteDao.getUrl());
-        webSite.setDescrizzione(webSiteDao.getDescrizzione());
-        Optional<Hosting> optHosting = hostingRepository.findById(webSite.getId());
-        Map<String,Object> response = new HashMap<>();
+        webSite.setDescrizione(webSiteDao.getDescrizione());
 
-        if(optHosting.isPresent()){
-            webSite.setHosting(optHosting.get());
-            webSiteRepository.save(webSite);
-            response.put("status","success");
-            response.put("message","Il web site é stato salvato successivamente!");
+        Map<String,Object> response = new HashMap<>();
+        if(webSiteDao.getHostingId()!=null){
+            Optional<Hosting> optHosting = hostingRepository.findById(webSiteDao.getHostingId());
+         
+            if(optHosting.isPresent()){
+                webSite.setHosting(optHosting.get());
+                webSiteRepository.save(webSite);
+                response.put("status","success");
+                response.put("message","Il web site é stato salvato successivamente!");
+            }else{
+                response.put("status", "not_found");
+                response.put("message","Il web Site non é potuto essere salvato per che il hosting no é valido!");    
+            }
         }else{
             response.put("status", "not_found");
-            response.put("message","Il web Site non é potuto essere salvato per che il hosting no é valido!");    
+            response.put("message","Il web Site non é potuto essere salvato per che il hosting no é valido!"); 
         }
+       
         return response;
     }
 
-    @Transactional
     public Optional<WebSite> getWebSiteById(Long id){
-        Optional<WebSite> optWebSite = this.webSiteRepository.findById(id);
+        Optional<WebSite> optWebSite = this.webSiteRepository.findWebSiteById(id);
         return optWebSite;
     }
 
     public Map<String,Object> deleteWebSite(Long id){
-        Optional<WebSite> optWebSite = this.webSiteRepository.findById(id);
+        Optional<WebSite> optWebSite = this.webSiteRepository.findWebSiteById(id);
         Map<String,Object> response= new HashMap<>();
         if(optWebSite.isPresent()){
             this.webSiteRepository.deleteById(id);

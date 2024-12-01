@@ -6,12 +6,12 @@
 <body>
     <div class="wrapper">
         <header th:replace="~{modules/menu}"></header>
-        <div class="card">
+        <div class="card" id="listWebSite">
             <div class="box">
                 <div>
                     <h2 for="cercare">Siti webs</h2>
                 </div>
-                <input disabled type="hidden" id="idHosting" th:value="${idHosting}">
+                <input type="hidden" name="hostingId" th:value="${hostingId}">
             </div>
             <div class="box">
                 <table class="table" id="table1">
@@ -33,7 +33,7 @@
             </div>
             <div class="container box ">
                 <button type="button" class="button green right"
-                    onclick="openModal('modal1'); getData(this);">Aggiungere</button>
+                    onclick="openModal('modal1');">Aggiungere</button>
             </div>
         </div>
             <div th:replace="~{sitioweb-modal/sitioweb-modal :: modal-save-update}"></div>
@@ -41,8 +41,8 @@
             <div th:replace="~{sitioweb-modal/sitioweb-modal :: modal-remove}"></div>
         </div>
     </div>
-    <script th:src="@{js/modal.js}"></script>
     <footer th:replace="~{modules/footer}"></footer>
-    <script th:src="@{js/Tables/SitiWeb.js}"></script>
-    <script th:src="@{js/forms/siti_web/SitiWeb.js}"></script>
+    <script th:src="@{/js/forms/siti_web/WebSite.js}"></script>
+    <script th:src="@{/js/forms/siti_web/WebSiteForm.js}"></script>
+
 </body>

@@ -44,14 +44,19 @@ function listHosting(){
             return response.json();
         })
         .then(data => {
-            //data=paginate(data);
+            let tableElement =document.getElementById('table1');
+            if (tableElement._dtInstance) {
+                tableElement._dtInstance.clear();  // Pulire le righe correnti
+                tableElement._dtInstance.destroy();  // Distruggere l'istanza di DataTable
+            }
             createDataTableT1(data);
             //$('#table1').DataTable(); // Inicializa DataTables
-            let table = new DataTable('#table1', {});
+            let newTable = new DataTable(tableElement, {});
+            tableElement._dtInstance = newTable; 
         })
         .catch(error => {
-            // Manejo de errores en caso de fallar la solicitud
-            console.error('Hubo un problema con la solicitud AJAX:', error);
+            // Gestione degli errori in caso di fallimento della richiesta
+            console.error("C'è stato un problema con la richiesta AJAX:", error);
         });
 }
 

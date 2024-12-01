@@ -6,8 +6,8 @@ public interface WebSiteInt {
         private Long id;
         private String nome;
         private String url;
-        private String descrizzione;
-        private String hostingId;
+        private String descrizione;
+        private Long hostingId;
 
         public WebSiteDao() {
         }
@@ -36,20 +36,22 @@ public interface WebSiteInt {
             this.url = url;
         }
 
-        public String getDescrizzione() {
-            return descrizzione;
+        public String getDescrizione() {
+            return descrizione;
         }
 
-        public void setDescrizzione(String descrizzione) {
-            this.descrizzione = descrizzione;
+        public void setDescrizione(String descrizzione) {
+            this.descrizione = descrizzione;
         }
 
-        public String getHostingId() {
+        public Long getHostingId() {
             return hostingId;
         }
 
-        public void setHostingId(String hostingId) {
+        public void setHostingId(Long hostingId) {
             this.hostingId = hostingId;
         }
+
+        
     }
 }

@@ -1,6 +1,7 @@
 package com.checker.scout.repositories;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -14,4 +15,9 @@ public interface WebSiteRepository extends JpaRepository<WebSite, Long>{
             select w from WebSite w where  w.hosting.id = :idHosting
             """)
     public List<WebSite> findAllWebSite(Long idHosting);
+    
+    @Query("""
+            select w from WebSite w where w.id= :idWebSite
+            """)
+    public Optional<WebSite> findWebSiteById(Long idWebSite);
 }

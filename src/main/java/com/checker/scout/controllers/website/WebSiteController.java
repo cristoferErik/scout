@@ -1,8 +1,5 @@
 package com.checker.scout.controllers.website;
 
-import java.util.Map;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,12 +17,9 @@ public class WebSiteController {
     private WebSiteService webSiteService;
     
     @GetMapping("")
-    public String getWebSites(
-        @RequestParam Map<String, String> params,
-        Model model){
-            Long idHosting = Optional.ofNullable(params.get("idHosting")).map(Long::parseLong).orElse(null);
-            model.addAttribute("idHosting",idHosting);
-            System.out.println(idHosting);
+    public String getWebSites(@RequestParam Long id, Model model){
+            System.out.println("here --> "+id);
+            model.addAttribute("hostingId",id);
             return "pages/sitiweb";
         }
 }
