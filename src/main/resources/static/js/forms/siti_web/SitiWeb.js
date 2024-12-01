@@ -1,3 +1,33 @@
+document.addEventListener("DOMContentLoaded", function () {
+    listUtente();
+});
+function listWebSite(){
+    fetch('/restUtente/utenti')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("errore nella rete");
+        }
+        return response.json();
+    })
+    .then(data => {
+        //data=paginate(data);
+        //console.log(data);
+        
+        let tableElement =document.getElementById('table1');
+        if($.fn.DataTable.isDataTable(tableElement)){
+            let tableInstance = $(tableElement).DataTable(); // Usar jQuery para acceder a DataTable
+            tableInstance.clear();  // Limpiar las filas actuales
+            tableInstance.destroy();  // Destruir la instancia de DataTable
+        }
+            createDataTableT1(data);
+            let newTable = new DataTable(tableElement, {});
+    })
+    .catch(error => {
+        // Manejo de errores en caso de fallar la solicitud
+        console.error('Hubo un problema con la solicitud AJAX:', error);
+    });
+}
+
 function getDataSitiWeb(button,modal,mode){
     let m=document.getElementById(modal);
     let ids=m.querySelectorAll('[id]');

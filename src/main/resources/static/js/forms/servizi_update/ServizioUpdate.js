@@ -92,7 +92,6 @@ async function getServizioById(id){
             // Retornar los datos si la respuesta es exitosa
             return responseData.body; // Aquí asumo que los datos de interés están bajo la clave 'body'
         }
-
     }catch(error){
         let message = `Error: ${error.data.status} - ${error.data.message}`;
         alert(message);

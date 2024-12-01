@@ -17,15 +17,15 @@ function createDataTableT1(data) {
             <td>${dato.hPassword}</td>
             <td>
                 <button type="button" class="button light-blue"
-                    onclick="openModal('modal1'); getDataHosting(this,'modal1','add');">update</button>
+                    onclick="openModal('modal1'); updateHosting(${dato.id});">update</button>
             </td>
             <td>
                 <button type="button" class="button check-color"
-                    onclick="openModal('modal2'); getDataHosting(this,'modal2','add');">check</button>
+                    onclick="openModal('modal2'); checkFormHosting(${dato.id});">check</button>
             </td>
             <td>
                 <button type="button" class="button danger-color"
-                    onclick="openModal('modal3'); getDataHosting(this,'modal3','add');">remove</button>
+                    onclick="openModal('modal3'); deleteFormHosting(${dato.id});">remove</button>
             </td>
         `;
         tableBody.appendChild(row);
@@ -56,6 +56,14 @@ function listHosting(){
 }
 
 async function saveHosting(hosting){
+    let listHostingInputs = document.getElementById('listHosting');
+    let utenteId = listHostingInputs.querySelector('[name="utenteId"]').value;
+    if(utenteId){
+        hosting["utenteId"]=utenteId
+    }else{
+        throw Error("Non c'è l'ID del utente");
+    }
+
     try{
         const response = await fetch('/restHosting/saveHosting',{
             method: 'POST',
@@ -75,6 +83,55 @@ async function saveHosting(hosting){
     }
 }
 
+async function getHostingById(id){
+    try{
+        const response = await fetch(`/restHosting/hosting/${id}`);
+        const responseData= await response.json();
+        if (responseData.status !== "success") {
+            let error =  new Error();
+            error.data = responseData;
+            throw error;
+        } else {
+            // Retornar los datos si la respuesta es exitosa
+            return responseData.body; // Restituiamo il corpo de la richiesta!
+        }
+    }catch(error){
+        let message = `Error: ${error.data.status} - ${error.data.message}`;
+        alert(message);
+    }  
+}
 
+async function deleteHosting(){
+    let form = document.getElementById("formDeleteHosting");
+    let inputs = form.querySelectorAll('[name]');
+  
+    let hosting={};
+    inputs.forEach((input)=> {
+        hosting[input.name]=input.value;
+    });
+    try{
+        const response = await fetch(`/restHosting/hosting/${hosting.id}`,{
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        const responseData= await response.json();
+        if (responseData.status !== "success") {
+            let error =  new Error();
+            error.data = responseData;
+            throw error;
+        } else {
+            // Retornar los datos si la respuesta es exitosa
+            alert(responseData.message); // Aquí asumo que los datos de interés están bajo la clave 'body'
+            closeModal("modal3");
+            listHosting();
+        }
+
+    }catch(error){
+        let message = `Error: ${error.data.status} - ${error.data.message}`;
+        alert(message);
+    }
+}
 
 

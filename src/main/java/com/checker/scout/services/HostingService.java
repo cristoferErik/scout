@@ -68,8 +68,27 @@ public class HostingService {
             }
         } else {
             response.put("status","not_found");
-            response.put("message","L'utente non esiste per cio, non puoi aggiornare il suo hosting!");
+            response.put("message","L'utente non esiste per cio, non si puo aggiornare il suo hosting!");
             return response;
         }
+    }
+
+    @Transactional(readOnly = true)
+    public Optional<Hosting> findHostingById(Long id){
+        return this.hostingRepository.findById(id);
+    }
+
+    public Map<String,Object> deleteHosting(Long id){
+        Optional<Hosting> optHosting=this.hostingRepository.findById(id);
+        Map<String,Object> response= new HashMap<>();
+        if(optHosting.isPresent()){
+            this.hostingRepository.deleteById(id);
+            response.put("status","success");
+            response.put("message","Il hosting è stato eliminato successivamente!");
+        }else{
+            response.put("status","not_found");
+            response.put("message","Il hosting non è stato trovato, per cio non ha potuto essere eliminato!");
+        }
+        return response;
     }
 }

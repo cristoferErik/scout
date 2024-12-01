@@ -1,4 +1,4 @@
-package com.checker.scout.controllers.siti_web;
+package com.checker.scout.controllers.website;
 
 import java.util.Map;
 import java.util.Optional;
@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.checker.scout.services.WebSiteService;
 
-@RequestMapping("/siti_web")
+@RequestMapping("/website")
 @Controller
-public class SitiWebController {
+public class WebSiteController {
     
     @Autowired
     private WebSiteService webSiteService;

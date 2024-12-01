@@ -6,7 +6,6 @@
                     <div class="item center dark-item">
                         <h2>Hosting</h2>
                         <input type="hidden" name="id" id="id" />
-                        <input type="hidden" name="utenteId" th:value="${utenteId}">
                     </div>
                 </div>
                 <div class="items">
@@ -45,31 +44,31 @@
 <div th:fragment="modal-check" id="modal2" class="modal">
     <div class="card-form">
         <div class="box-modal ">
-            <form class="module" action="/siti_web">
+            <form class="module" action="/siti_web" id="checkHosting">
                 <div class="items">
                     <div class="item center dark-item">
                         <h2>Hosting</h2>
-                        <input type="hidden" name="idHosting" id="idHosting" />
+                        <input type="hidden" name="id" />
                     </div>
                 </div>
                 <div class="items">
                     <div class="container dark-item">
                         <div>
                             <div class="item">
-                                <label for="nomeHosting">Nome</label>
-                                <span id="nomeHosting"></span>
+                                <label for="nome">Nome</label>
+                                <input type="text"readonly name="nome"></input>
                             </div>
                             <div class="item">
-                                <label for="urlHosting">Url</label>
-                                <span id="urlHosting"></span>
+                                <label for="url">Url</label>
+                                <input type="text"readonly name="url"></input>
                             </div>
                             <div class="item">
                                 <label for="hUsername">hUsername</label>
-                                <span id="hUsername"></span>
+                                <input type="text"readonly name="hUsername"></input>
                             </div>
                             <div class="item">
                                 <label for="hPassword">hPassword</label>
-                                <span id="hPassword"></span>
+                                <input type="text" readonly name="hPassword"></input>
                             </div>
                         </div>
                     </div>
@@ -90,23 +89,11 @@
 <div th:fragment="modal-remove" id="modal3" class="modal">
     <div class="card-form">
         <div class="box-modal">
-            <div class="module">
+            <div class="module" id="formDeleteHosting">
                 <div class="items">
                     <div class="item center dark-item">
                         <h2 for="cercare">Sei sicuro di eliminare questo Hosting</h2>
-                        <input type="hidden" name="idHosting" id="idHosting" />
-                    </div>
-                </div>
-                <div class="items">
-                    <div class="separate dark-item">
-                        <div class="item">
-                            <label for="idHosting">Id</label>
-                            <span id="idHosting"></span>
-                        </div>
-                        <div class="item">
-                            <label for="nomeHosting">Nome</label>
-                            <span id="nomeHosting"></span>
-                        </div>
+                        <input type="hidden" name="id"/>
                     </div>
                 </div>
                 <div class="items">
@@ -116,7 +103,7 @@
                 </div>
                 <div class="items  dark-item">
                     <div class="separate item right">
-                        <button class="button green" type="button" name="action" value="invia">Elimina</button>
+                        <button class="button green" type="button" onclick="deleteHosting();">Elimina</button>
                         <button class="button dark-red" type="button" name="action" value="anulla"
                             onclick="closeModal('modal3')">anulla</button>
                     </div>
