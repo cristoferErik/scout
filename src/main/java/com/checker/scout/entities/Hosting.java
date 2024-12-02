@@ -30,7 +30,7 @@ public class Hosting {
     private String hPassword; 
     
     @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="utente_id",nullable=false)
     private Utente utente;
     

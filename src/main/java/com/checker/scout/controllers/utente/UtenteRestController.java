@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.checker.scout.controllers.utente.interfaces.UtenteInt;
 import com.checker.scout.entities.Utente;
+import com.checker.scout.entities.projections.IUtente;
 import com.checker.scout.services.UtenteService;
 
 
@@ -29,8 +30,8 @@ public class UtenteRestController {
     private UtenteService utenteService;
 
     @GetMapping("/utenti")
-    public List<Utente> getUtenti(){
-         List<Utente> pageUtente = this.utenteService.getAllUtenti();
+    public List<IUtente> getUtenti(){
+         List<IUtente> pageUtente = this.utenteService.getAllUtenti();
          return pageUtente;
     }
 

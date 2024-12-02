@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.checker.scout.entities.Utente;
+import com.checker.scout.entities.projections.IUtente;
 import com.checker.scout.repositories.UtenteRepository;
 
 
@@ -18,7 +19,7 @@ public class UtenteService {
     private UtenteRepository utenteRepository;
 
     @Transactional(readOnly=true)
-    public List<Utente> getAllUtenti(){
+    public List<IUtente> getAllUtenti(){
         return this.utenteRepository.findAllUtenti();
     }
 
