@@ -51,8 +51,8 @@ function createDataTableT1(data) {
             </td>
             <td>
                 <button type="button" class="button danger-color"
-                    onclick="openModal('modal3'); deleteFormUtente(this);"
-                    data-utente='${JSON.stringify(dato)}'>remove</button>
+                    onclick="openModal('modal3'); deleteFormUtente(${dato.id});"
+                    >remove</button>
             </td>
         `;
         tableBody.appendChild(row);
@@ -101,9 +101,13 @@ async function saveUtente(utente){
 
 async function deleteUtente(){
     let form = document.getElementById("formDeleteUtente");
-    let id = form.querySelector('[name="id"]').value; 
+    let inputs = form.querySelectorAll('[name]');
+    let utente={};
+    inputs.forEach((input)=>{
+        utente[input.name]=input.value;
+    }); 
     try{
-        const response = await fetch(`/restUtente/utente/${id}`,{
+        const response = await fetch(`/restUtente/utente/${utente.id}`,{
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',

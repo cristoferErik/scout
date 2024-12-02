@@ -71,22 +71,13 @@ async function checkUtente(id) {
     });
 }
 
-function deleteFormUtente(button) {
-    const utenteData = button.dataset.utente;
-    const utente = JSON.parse(utenteData);
-
+function deleteFormUtente(id) {
     let form = document.getElementById("formDeleteUtente");
     let inputs = form.querySelectorAll('[name]');
     inputs.forEach(function (input) {
         switch (input.name) {
             case 'id':
-                input.value = utente.id;
-                break;
-            case 'nome':
-                input.value = utente.nome;
-                break;
-            case 'cognome':
-                input.value = utente.cognome;
+                input.value = id;
                 break;
             default:
                 break;
