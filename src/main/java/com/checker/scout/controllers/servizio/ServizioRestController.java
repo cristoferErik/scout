@@ -88,7 +88,17 @@ public class ServizioRestController {
         }else if(servizioForWebSite.getWebSiteId()==null){
             response.put("status","bad_request");
             response.put("message","L'id del WebSite é vuoto prova ricaricare la pagina!");
-        }else{
+        }else if(servizioForWebSite.getDateIni()==null){
+            response.put("status","bad_request");
+            response.put("message","La data iniziale é richiesta!");
+        }else if(servizioForWebSite.getDateFine()==null){
+            response.put("status","bad_request");
+            response.put("message","La data finale é richiesta!");
+        }else if(servizioForWebSite.getPeriodo()==null){
+            response.put("status","bad_request");
+            response.put("message","Il periodo é richiesto in giorni!");
+        }
+        else{
             response=this.servizioService.saveServizioForWebSite(servizioForWebSite);
         }
         return response;

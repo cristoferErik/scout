@@ -151,7 +151,7 @@ async function saveServizioForWebSite() {
             const message = result.message;
             if(result.status==="success"){
                 closeModal("modal4");
-            }
+            }A+
             alert(message);
             listWebSite();
         }

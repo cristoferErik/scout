@@ -19,7 +19,7 @@ public class UtenteService {
     private UtenteRepository utenteRepository;
 
     @Transactional(readOnly=true)
-    public List<IUtente> getAllUtenti(){
+    public List<IUtente.UtenteP> getAllUtenti(){
         return this.utenteRepository.findAllUtenti();
     }
 

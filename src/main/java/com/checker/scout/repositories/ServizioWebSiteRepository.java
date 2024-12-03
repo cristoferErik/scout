@@ -17,5 +17,5 @@ public interface ServizioWebSiteRepository extends JpaRepository<WebSite,Long>{
             from WebSite w inner join DetailWsSe d on w.id=d.webSite.id
             inner join servizio s on s.id=d.servizio.id 
     """)
-    List<IWebSite> findAllWebSiteToUpdate();
+    List<IWebSite.WebSiteP> findAllWebSiteToUpdate();
 }

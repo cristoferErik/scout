@@ -15,6 +15,7 @@ import com.checker.scout.controllers.servizio.interfaces.ServizioInt;
 import com.checker.scout.entities.DetailWsSe;
 import com.checker.scout.entities.Servizio;
 import com.checker.scout.entities.WebSite;
+import com.checker.scout.entities.projections.IDetailWsSe;
 import com.checker.scout.repositories.DetailWsSeRepository;
 import com.checker.scout.repositories.ServizioRepository;
 import com.checker.scout.repositories.WebSiteRepository;
@@ -85,16 +86,25 @@ public class ServizioService {
 
         Map<String, Object> response = new HashMap<>();
 
+        //Qui si verifica se gia essiste il servizio collegato con il sitoWeb
+        IDetailWsSe.webSiteServiceIdsDto superKey= new IDetailWsSe.webSiteServiceIdsDto(servizioForWebSite.getServizioId(),servizioForWebSite.getWebSiteId());
+        boolean flagSuperKey=detailWsSeRepository.isExist(superKey);
+        if(!flagSuperKey){
+            response.put("status", "conflict");
+            response.put("message", "Il servizio che vuoi aggiungere gia essiste in questo sito web!");
+            return response;
+        }
+
         if (!webSiteOpt) {
             response.put("status", "not_found");
             response.put("message", "Il webSite non é stato trovato nel database!");
             return response;
-        }
-        if (!servizioFlag) {
+        }else if (!servizioFlag) {
             response.put("status", "not_found");
             response.put("message", "Il servizio non é stato trovato nel database!");
             return response;
         }
+        
         LocalDate dateIni = servizioForWebSite.getDateIni();
         LocalDate dateFine = servizioForWebSite.getDateFine();
         int periodo = servizioForWebSite.getPeriodo();
@@ -122,7 +132,8 @@ public class ServizioService {
 
                 //TO-DO
                 detailWsSe.setMessage("da compilare");
-
+                 
+                
                 detailWsSeRepository.save(detailWsSe);
                 response.put("status", "success");
                 response.put("message", "salvato con successo!");

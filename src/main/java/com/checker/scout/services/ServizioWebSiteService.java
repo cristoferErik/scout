@@ -14,7 +14,7 @@ public class ServizioWebSiteService {
     @Autowired
     private ServizioWebSiteRepository servizioWebSiteRepository;
 
-    public List<IWebSite> getAllWebSiteToUpdate(){
+    public List<IWebSite.WebSiteP> getAllWebSiteToUpdate(){
         return this.servizioWebSiteRepository.findAllWebSiteToUpdate();
     }
 }

@@ -13,12 +13,11 @@ import com.checker.scout.services.ServizioWebSiteService;
 @RestController
 @RequestMapping("/restHome")
 public class HomeRestController {
-
     @Autowired
     private ServizioWebSiteService servizioWebSiteService;
 
     @GetMapping("/webSiteToUpdate")
-    public List<IWebSite> getAllWebSiteToUpdate(){
+    public List<IWebSite.WebSiteP> getAllWebSiteToUpdate(){
         return servizioWebSiteService.getAllWebSiteToUpdate();
     }
 }

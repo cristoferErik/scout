@@ -30,8 +30,8 @@ public class UtenteRestController {
     private UtenteService utenteService;
 
     @GetMapping("/utenti")
-    public List<IUtente> getUtenti(){
-         List<IUtente> pageUtente = this.utenteService.getAllUtenti();
+    public List<IUtente.UtenteP> getUtenti(){
+         List<IUtente.UtenteP> pageUtente = this.utenteService.getAllUtenti();
          return pageUtente;
     }
 

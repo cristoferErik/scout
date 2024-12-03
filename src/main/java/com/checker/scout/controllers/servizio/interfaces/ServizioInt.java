@@ -60,7 +60,7 @@ public interface ServizioInt {
         private Long servizioId;
         private LocalDate dateIni;
         private LocalDate dateFine;
-        private int periodo;
+        private Integer periodo;
         private String descrizione;
         
         public Long getWebSiteId() {
@@ -87,10 +87,10 @@ public interface ServizioInt {
         public void setDateFine(LocalDate dateFine) {
             this.dateFine = dateFine;
         }
-        public int getPeriodo() {
+        public Integer getPeriodo() {
             return periodo;
         }
-        public void setPeriodo(int periodo) {
+        public void setPeriodo(Integer periodo) {
             this.periodo = periodo;
         }
         public String getDescrizione() {

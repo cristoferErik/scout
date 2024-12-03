@@ -20,5 +20,5 @@ public interface UtenteRepository extends JpaRepository<Utente,Long>{
             u.email as email
             from Utente u
             """)
-    public List<IUtente> findAllUtenti();
+    public List<IUtente.UtenteP> findAllUtenti();
 }
