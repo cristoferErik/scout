@@ -1,5 +1,6 @@
 package com.checker.scout.controllers.servizio.interfaces;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public interface ServizioInt {
@@ -29,8 +30,8 @@ public interface ServizioInt {
             public String getDescrizione() {
                 return descrizione;
             }
-            public void setDescrizione(String descrizzione) {
-                this.descrizione = descrizzione;
+            public void setDescrizione(String descrizione) {
+                this.descrizione = descrizione;
             }
             public float getCosto() {
                 return costo;
@@ -52,5 +53,54 @@ public interface ServizioInt {
             }
 
             
+    }
+
+    public class ServizioForWebSite{
+        private Long webSiteId;
+        private Long servizioId;
+        private LocalDate dateIni;
+        private LocalDate dateFine;
+        private int periodo;
+        private String descrizione;
+        
+        public Long getWebSiteId() {
+            return webSiteId;
+        }
+        public void setWebSiteId(Long webSiteId) {
+            this.webSiteId = webSiteId;
+        }
+        public Long getServizioId() {
+            return servizioId;
+        }
+        public void setServizioId(Long servizioId) {
+            this.servizioId = servizioId;
+        }
+        public LocalDate getDateIni() {
+            return dateIni;
+        }
+        public void setDateIni(LocalDate dateIni) {
+            this.dateIni = dateIni;
+        }
+        public LocalDate getDateFine() {
+            return dateFine;
+        }
+        public void setDateFine(LocalDate dateFine) {
+            this.dateFine = dateFine;
+        }
+        public int getPeriodo() {
+            return periodo;
+        }
+        public void setPeriodo(int periodo) {
+            this.periodo = periodo;
+        }
+        public String getDescrizione() {
+            return descrizione;
+        }
+        public void setDescrizione(String descrizione) {
+            this.descrizione = descrizione;
+        }
+       
+        
+        
     }
 }

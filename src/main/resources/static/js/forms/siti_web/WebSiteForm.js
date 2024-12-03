@@ -103,3 +103,9 @@ async function saveWebSiteForm(event) {
     }
 }
 
+//Questo permette aggiungere l'id del webSite dentro del input hidden
+function anagraficaServizioForm(id){
+    let form = document.getElementById("formAnaServizio");
+    let inputWebSiteId = form.querySelector('[name="webSiteId"]');
+    inputWebSiteId.value=id;
+}

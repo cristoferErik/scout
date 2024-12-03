@@ -25,16 +25,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="items">
-                    <div class="item dark-item">
-                        <label for="nome">Servizio</label>
-                        <select name="servizi" id="listServizio">
-                            <!--Si aggiunge con js-->
-                        </select>
-                    </div>
-                </div>
                 <div class="items  dark-item">
-                    <div class="separate item right">
+                    <div class="separate item">
                         <button class="button green" type="button" onclick="saveWebSiteForm(event);">Salva</button>
                         <button class="button dark-red" type="button" name="action" value="anulla"
                             onclick="closeModal('modal1')">anulla</button>
@@ -105,6 +97,61 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+<div th:fragment="modal-AnaServizio" id="modal4" class="modal">
+    <div class="card-form">
+        <div class="box-modal ">
+            <form class="module" method="post" id="formAnaServizio">
+                <div class="items">
+                    <div class="item center dark-item">
+                        <h2>Anagrafica Servizio</h2>
+                        <input type="hidden" name="webSiteId" />
+                    </div>
+                </div>
+                <div class="items dark-item">
+                    <div class="item center">
+                        <div>
+                            <label for="servizioId">ID del Servizio</label>
+                            <input type="number" name="servizioId" id="servizioId"></input>
+                        </div>
+                    </div>
+                </div>
+                <div class="items dark-item">
+                    <div class="item separate">
+                        <div>
+                            <label for="dateIni">Data inizio</label>
+                            <input type="date" name="dateIni" id="dateIni"></input>
+                        </div>
+                        <div>
+                            <label for="dateFine">Data fine</label>
+                            <input type="date" name="dateFine" id="dateFine"></input>
+                        </div>
+                    </div>
+                </div>
+                <div class="items dark-item">
+                    <div class="item">
+                        <label for="periodo">Periodo</label>
+                        <input type="number" name="periodo" id="periodo" placeholder="periodo"></input>
+                    </div>
+                </div>
+                <div class="items dark-item">
+                    <div class="item">
+                        <div>
+                            <label for="descrizione">Descrizione</label>
+                            <textarea name="descrizione" id="descrizione" placeholder="aggiunge una descrizione"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="items  dark-item">
+                    <div class="separate item right">
+                        <button class="button green" type="button" onclick="saveServizioForWebSite();">Salva</button>
+                        <button class="button dark-red" type="button" name="action" value="anulla"
+                            onclick="closeModal('modal4')">annulla</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>

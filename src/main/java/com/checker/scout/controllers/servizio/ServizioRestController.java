@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.checker.scout.controllers.servizio.interfaces.ServizioInt;
@@ -25,6 +24,7 @@ public class ServizioRestController {
 
     @Autowired
     private ServizioService servizioService;
+
 
     @GetMapping("/servizi")
     public List<Servizio> getServizi() {
@@ -79,12 +79,18 @@ public class ServizioRestController {
         return response;
     }
 
-    @GetMapping("/serviziByWebSite")
-    public Map<String,Object> getServiziByWebSite(@RequestParam(required = false) Long id){
-        List<Servizio> listServizio=servizioService.getAllServiziByWebSite(id);
-        Map<String, Object> response = new HashMap<>();
-        response.put("status", "success");
-        response.put("body",listServizio);
+    @PostMapping("/serviziForWebSite")
+    public Map<String,Object> saveServizioForWebSite(@RequestBody ServizioInt.ServizioForWebSite servizioForWebSite){
+        Map<String,Object> response = new HashMap<>();
+        if(servizioForWebSite.getServizioId()==null){
+            response.put("status","bad_request");
+            response.put("message","L'id del Servizio non puo essere vuoto!");
+        }else if(servizioForWebSite.getWebSiteId()==null){
+            response.put("status","bad_request");
+            response.put("message","L'id del WebSite é vuoto prova ricaricare la pagina!");
+        }else{
+            response=this.servizioService.saveServizioForWebSite(servizioForWebSite);
+        }
         return response;
     }
 }

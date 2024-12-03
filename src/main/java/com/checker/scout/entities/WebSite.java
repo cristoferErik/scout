@@ -6,6 +6,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -24,6 +25,9 @@ public class WebSite {
     private Long id;
     private String nome;
     private String url;
+
+  
+    @Column(columnDefinition="TEXT")
     private String descrizione;
 
     @JsonIgnore
@@ -72,8 +76,8 @@ public class WebSite {
         return descrizione;
     }
 
-    public void setDescrizione(String descrizzione) {
-        this.descrizione = descrizzione;
+    public void setDescrizione(String descrizione) {
+        this.descrizione = descrizione;
     }
 
     public List<DetailWsSe> getListDetailWsSe() {

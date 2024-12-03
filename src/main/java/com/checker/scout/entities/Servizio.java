@@ -7,6 +7,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -22,7 +23,10 @@ public class Servizio {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     private String nome;
+    
+    @Column(columnDefinition="TEXT")
     private String descrizione;
+
     private float costo;
     private LocalDateTime dataCreazione;
     private LocalDateTime dataAggiornamento;
@@ -77,8 +81,8 @@ public class Servizio {
         return descrizione;
     }
 
-    public void setDescrizione(String descrizzione) {
-        this.descrizione = descrizzione;
+    public void setDescrizione(String descrizione) {
+        this.descrizione = descrizione;
     }
 
     public LocalDateTime getDataCreazione() {

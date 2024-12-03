@@ -51,6 +51,10 @@ function createDataTableT1(data) {
                 <button type="button" class="button danger-color"
                     onclick="openModal('modal3'); deleteWebSiteForm(${dato.id});">remove</button>
             </td>
+            <td>
+                <button type="button" class="button gray-color"
+                    onclick="openModal('modal4'); anagraficaServizioForm(${dato.id});">+</button>
+            </td>
         `;
         tableBody.appendChild(row);
     });
@@ -124,36 +128,32 @@ async function deleteWebSite() {
         console.error('Errore nella richiesta!', error);
     }
 }
-async function getServizi() {
+async function saveServizioForWebSite() {
     try {
-        
-
-        let form = document.getElementById("formWebSite");
+        let form = document.getElementById("formAnaServizio");
         let inputs = form.querySelectorAll('[name]');
 
-        let sitoWeb = {};
+        let servizio = {};
         inputs.forEach((input) => {
-            sitoWeb[input.name] = input.value;
+            servizio[input.name] = input.value;
         });
 
-        const response = await fetch(`/restServizio/serviziByWebSite?id=${sitoWeb.id}`);
-        const responseData = await response.json();
+        const response = await fetch('/restServizio/serviziForWebSite', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(servizio),
+        });
 
-        if (!response.ok) {
-            let error = new Error();
-            error.data = responseData;
-            throw error;
-        } else {
-            const optionsList = responseData.body;
-
-            let select = form.querySelector('[name="servizi"]');
-            select.innerHTML="";
-            optionsList.forEach(optionData => {
-                let option = document.createElement("option");
-                option.value = optionData.id;
-                option.text = optionData.nome;
-                select.appendChild(option);
-            });
+        if (response.ok) {
+            const result = await response.json();
+            const message = result.message;
+            if(result.status==="success"){
+                closeModal("modal4");
+            }
+            alert(message);
+            listWebSite();
         }
     } catch (error) {
         console.error("Error fetching data:", error);

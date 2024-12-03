@@ -30,7 +30,10 @@ public class DetailWsSe {
     @Column(name="date_fine")
     private LocalDate dateFine;
     private int periodo;
-    private String descrizzione;
+
+    @Column(columnDefinition="TEXT")
+    private String descrizione;
+    
     @Column(name="prossimo_agg")
     private LocalDate prossimoAgg;
     
@@ -86,12 +89,12 @@ public class DetailWsSe {
         this.periodo = periodo;
     }
 
-    public String getDescrizzione() {
-        return descrizzione;
+    public String getDescrizione() {
+        return descrizione;
     }
 
-    public void setDescrizzione(String descrizzione) {
-        this.descrizzione = descrizzione;
+    public void setDescrizione(String descrizzione) {
+        this.descrizione = descrizzione;
     }
 
     public LocalDate getProssimoAgg() {
