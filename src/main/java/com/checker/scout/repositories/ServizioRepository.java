@@ -15,4 +15,9 @@ public interface ServizioRepository extends JpaRepository<Servizio, Long>{
             select s from Servizio s
             """)
     public List<Servizio> findAllServizi(); 
+
+    @Query("""
+            select s from Servizio s where s.id not in (select d.servizio.id from DetailWsSe d inner join d.webSite w where w.id=:id) 
+            """)
+    public List<Servizio> findAllServiziByWebSite(Long id);
 }

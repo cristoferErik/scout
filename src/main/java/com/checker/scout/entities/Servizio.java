@@ -31,9 +31,6 @@ public class Servizio {
     @OneToMany(mappedBy="servizio", cascade=CascadeType.ALL,fetch=FetchType.LAZY)
     private List<DetailWsSe> listDetailWsSe;
 
-
-
-
     public void prePersist(){
         if(dataCreazione == null){
             dataCreazione = LocalDateTime.now();

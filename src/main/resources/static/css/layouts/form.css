@@ -1,22 +1,23 @@
 .card-form{
-    display: flex;
-    justify-content: center;
-    margin: 0;
+    display: block;
+    align-content: center;
     margin: 0.5rem;
-    overflow-x: auto;
     box-sizing: border-box;
+    overflow: auto;
 }
 
-.box-modal{
+.card-form .box-modal{
     background: var(--second-color);
     margin:0.25rem 0rem;
     padding:0.25rem 0.5rem;
-    min-width: 30rem;
+    width: 100%;
+    display: flex;
 }
 .modal{
     position: absolute;
     display: none;
     align-content: center;
+    justify-content: center;
     top: 0;
     right: 0;
     bottom: 0;
@@ -24,7 +25,8 @@
     background: rgba(0,0,0,.5);
 }
 .module{
-    display: block;
+    display: flex;
+    flex-direction: column;
 }
 .items{
     display: block;
@@ -35,7 +37,6 @@
 .item{
     display: flex;
     padding: 1rem 2rem;
-    margin: 0.25rem 0rem;
     width: 100% ;
 }
 .center{

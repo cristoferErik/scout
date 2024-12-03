@@ -60,4 +60,8 @@ public class ServizioService {
         Optional<Servizio> servizioOpt = servizioRepository.findById(id);
         return servizioOpt;
     }
+
+    public List<Servizio> getAllServiziByWebSite(Long id){
+        return servizioRepository.findAllServiziByWebSite(id);
+    }
 }

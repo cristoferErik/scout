@@ -44,7 +44,6 @@ public class WebSite {
         this.listDetailWsSe=new ArrayList<>();
     }
 
-    
     public Long getId() {
         return id;
     }
