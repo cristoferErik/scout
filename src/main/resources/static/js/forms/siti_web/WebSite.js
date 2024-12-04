@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     listWebSite();
 });
+
 function listWebSite() {
     let listHosting = document.getElementById('listWebSite');
     let id = listHosting.querySelector('[name="hostingId"]').value;
@@ -128,6 +129,7 @@ async function deleteWebSite() {
         console.error('Errore nella richiesta!', error);
     }
 }
+
 async function saveServizioForWebSite() {
     try {
         let form = document.getElementById("formAnaServizio");
@@ -151,7 +153,7 @@ async function saveServizioForWebSite() {
             const message = result.message;
             if(result.status==="success"){
                 closeModal("modal4");
-            }A+
+            }
             alert(message);
             listWebSite();
         }

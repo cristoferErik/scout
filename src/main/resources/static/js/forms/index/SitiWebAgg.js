@@ -1,23 +1,24 @@
-
 document.addEventListener("DOMContentLoaded", function () {
-    fetch('/restHome/webSiteToUpdate')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("errore nella rete");
-            }
-            return response.json();
-        })
-        .then(data => {
-            //data=paginate(data);
-            createDataTableT1(data);
-            //$('#table1').DataTable(); // Inicializa DataTables
-            let table = new DataTable('#table1',{});
-        })
-        .catch(error => {
-            // Manejo de errores en caso de fallar la solicitud
-            console.error('Hubo un problema con la solicitud AJAX:', error);
-        });
+    listWebSiteByService();
 });
+
+async function listWebSiteByService(){
+    try {
+        const response = await fetch(`/restHome/webSiteToUpdate`);
+        const responseData = await response.json();
+        if (!response.ok) {
+            let error = new Error();
+            error.data = responseData;
+            throw error;
+        } else {
+            return responseData.body;
+        }
+
+    } catch (error) {
+        let message = `Error: ${error.data.status} - ${error.data.message}`;
+        alert(message);
+    }
+}
 
 function createDataTableT1(data) {
     const tableBody = document.getElementById("tbody1");
