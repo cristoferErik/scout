@@ -1,75 +1,72 @@
 package com.checker.scout.util.paginator;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
-import org.springframework.data.domain.Page;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-public class PageRender<T> {
-    private String url;
-    private Page<T> page;
-    private int actualPage;
-    private int totalPages;
-    private int numElementPage;
-    private static final int intervalo=5;
-    private List<PageItem> listPageItem;
-    private int rangeIni;
-    private int rangeEnd;
+public class PageRender {
 
-    public PageRender(String url,Page<T> page){
-        this.url=url;
-        this.page=page;
-        this.numElementPage = page.getSize();
-        this.totalPages= page.getTotalPages();
-        //Non dimenticare in previous thymeleaf restare 2 , per che se non se no si anulla.
-        this.actualPage=page.getNumber()+1;
-        this.listPageItem=new ArrayList<>();
-        
+    private Integer currentPage;
+    private Integer totalPages;
+    private static final int maxPages = 5;
+    private Integer size;
+    public PageRender(Integer currentPage, Integer totalPages,Integer size) {
+        this.currentPage = currentPage;
+        this.totalPages = totalPages==0?0:totalPages-1;
+        this.size = size;
     }
 
-    public void rangeOfPage(){
-        
-        rangeIni=((((actualPage-1)/intervalo)+1)*(intervalo))-intervalo+1;
-        rangeEnd=rangeIni+intervalo-1;
-        if(rangeEnd>totalPages){
-            rangeEnd=totalPages;
+    public List<Integer> getPageNumbers() {
+        int startPage = ((currentPage / maxPages) * maxPages);
+        int endPage;
+        if (startPage + maxPages > totalPages) {
+            endPage = totalPages;
+        } else {
+            endPage = (startPage + maxPages) - 1;
+        }
+        List<Integer> pageNumbers = new ArrayList<>();
+        for (int i = startPage; i <= endPage; i++) {
+            pageNumbers.add(i);
+        }
+        System.out.println("current page--->"+currentPage);
+        System.out.println("total_page--->"+totalPages);
+        return pageNumbers;
+    }
+    public Map<String,Object> generatePageLink(String basePath,List<Integer> listNumbers){
+        List<Map<String,Object>> response=new ArrayList<>();
+
+        for (Integer pageNumber : listNumbers) {
+            Map<String,Object> pageLink = new HashMap<>();
+            pageLink.put("page", pageNumber+1);
+            pageLink.put("link", this.generatePageLink(basePath,pageNumber, size));
+            if(Objects.equals(pageNumber, currentPage)){
+                pageLink.put("actual",true);
+            }
+            response.add(pageLink);
         }
 
-        for(int i=rangeIni ;i<=rangeEnd;i++){
-            listPageItem.add(new PageItem(i,(actualPage)==i));
+        Map<String,Object> page = new HashMap<>();
+        
+        if(currentPage!=0){
+            page.put("first",this.generatePageLink(basePath,0,this.size));
+            page.put("prev",this.generatePageLink(basePath,this.currentPage-1,this.size));
         }
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public Page<T> getPage() {
+        if(!Objects.equals(currentPage, totalPages)){
+            page.put("next",this.generatePageLink(basePath,this.currentPage+1,this.size));
+            page.put("last",this.generatePageLink(basePath,this.totalPages,this.size));
+        }
+        page.put("numbers",response);
         return page;
     }
-
-    public int getActualPage() {
-        return actualPage;
+    public String generatePageLink(String basePath,Integer pageNumber, Integer size) {
+        return ServletUriComponentsBuilder.fromPath(basePath)
+                .replaceQueryParam("page", pageNumber)
+                .replaceQueryParam("size", size)
+                .toUriString();
     }
-
-    public int getTotalPages() {
-        return totalPages;
-    }
-
-    public List<PageItem> getListPageItem() {
-        return listPageItem;
-    }
-    public boolean isFirst(){
-        return page.isFirst();
-    }
-    public boolean isLast(){
-        return page.isLast();
-    }
-    public boolean isHasNext(){
-        return page.hasNext();
-    }
-    public boolean isHasPrevious(){
-        return page.hasPrevious();
-    }
-    
 }
+

@@ -2,10 +2,8 @@ package com.checker.scout.controllers.home.interfaces;
 
 import java.time.LocalDate;
 
-import org.springframework.hateoas.RepresentationModel;
-
 public interface HomeInt {
-    public class webSiteToUpdateDTO extends  RepresentationModel<webSiteToUpdateDTO>{
+    public class webSiteToUpdateDTO{
         private Long id;
         private String nomeWebSite;
         private LocalDate prossimoAgg;

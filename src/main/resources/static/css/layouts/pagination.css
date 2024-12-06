@@ -1,8 +1,11 @@
+.box-pagination{
+    display: block;
+    align-content: center;
+}
 .pagination{
     display: flex;
-}
-.pagination div{
-    display: flex;
+    justify-content: center;
+    padding:1rem 0rem;
 }
 .item-icon{
     color:#d8dde4;

@@ -2,16 +2,21 @@ document.addEventListener("DOMContentLoaded", function () {
     listWebSiteByService();
 });
 
-async function listWebSiteByService(){
+async function listWebSiteByService(url){
     try {
-        const response = await fetch(`/restHome/webSiteToUpdate`);
+        if(!url){
+            url="/restHome/webSiteToUpdate";
+        }
+        const response = await fetch(url);
         const responseData = await response.json();
+
         if (!response.ok) {
             let error = new Error();
             error.data = responseData;
             throw error;
         } else {
-            return responseData.body;
+            createPagination(responseData,"pagination1");
+            createDataTableT1(responseData.body);
         }
 
     } catch (error) {
@@ -19,6 +24,20 @@ async function listWebSiteByService(){
         alert(message);
     }
 }
+
+
+function addEventListenerToPages(input){
+    // Agregar event listeners para manejar el clic en los enlaces de paginación
+    let paginationLinks = input.querySelectorAll(".page-link");
+    paginationLinks.forEach(link => {
+        link.addEventListener("click", async function (event) {
+            event.preventDefault();
+            let url = link.getAttribute("data-link");
+            listWebSiteByService(url);
+        });
+    });
+}
+
 
 function createDataTableT1(data) {
     const tableBody = document.getElementById("tbody1");

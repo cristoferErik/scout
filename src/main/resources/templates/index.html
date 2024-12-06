@@ -14,30 +14,36 @@
         </div>
       </div>
       <div class="box ">
-        <table class="table" id="table1">
-          <thead>
-            <tr>
-              <th>Id</th>
-              <th>Nome</th>
-              <th>Aggiornamento</th>
-              <th>Nome del servizio</th>
-              <th>Azione</th>
-            </tr>
-          </thead>
-          <tbody id="tbody1">
-            <!--Insertamo i dati da js-->
-          </tbody>
-        </table>
+        <div class="table-container">
+          <table class="table" id="table1">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Aggiornamento</th>
+                <th>Nome del servizio</th>
+                <th>Azione</th>
+              </tr>
+            </thead>
+            <tbody class="bodyT" id="tbody1">
+              <!--Insertamo i dati da js-->
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="box">
+        <div th:replace="~{index-modal/paginations :: pagination1}"></div>
       </div>
     </div>
     <div th:replace="~{index-modal/index-modals :: modal-save-update}"></div>
   </div>
 </body>
 
+<footer th:replace="~{modules/footer}"></footer>
 <script th:src="@{/js/Date/FormatDate.js}"></script>
 <script th:src="@{/js/forms/index/SitiWebAgg.js}"></script>
+<script th:src="@{/js/Pagination/Pagination.js}"></script>
 
-<footer th:replace="~{modules/footer}"></footer>
 
 
 </html>

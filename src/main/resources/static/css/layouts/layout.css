@@ -38,17 +38,32 @@ input{
     border-spacing: 0;
     text-align: center;
     width: 100%;
+    max-height: 10rem;
 }
 .table thead{
     background: var( --second-color);
 }
 .table tbody{
     background: var(--blue-gray-color);
+    
 }
-
+.table-container{
+    overflow-y: auto;
+    max-height: 25rem;
+}
+.table-container::-webkit-scrollbar{
+    background: #5f5f5f;
+    width: 0.5rem; 
+    height: 0.5rem; 
+}
+.table-container::-webkit-scrollbar-thumb{
+    background-color: #888; 
+    border-radius: 10px; 
+}
 th, td{
     padding: 0.5rem 0.25rem ;
     max-width: 10rem;
+    min-width: 2rem;
     overflow: hidden;    
     white-space: nowrap; 
     text-overflow: ellipsis;
