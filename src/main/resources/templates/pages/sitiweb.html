@@ -9,7 +9,7 @@
         <div class="card" id="listWebSite">
             <div class="box">
                 <div>
-                    <h2 for="cercare">Siti webs</h2>
+                    <h1 for="cercare">Siti webs</h1>
                 </div>
                 <input type="hidden" name="hostingId" th:value="${hostingId}">
             </div>
@@ -41,10 +41,15 @@
             <div th:replace="~{sitioweb-modal/sitioweb-modal :: modal-check}"></div>
             <div th:replace="~{sitioweb-modal/sitioweb-modal :: modal-remove}"></div>
             <div th:replace="~{sitioweb-modal/sitioweb-modal :: modal-AnaServizio}"></div>
+            <div th:replace="~{sitioweb-modal/sitioweb-modal :: modal-history}"></div>
+            <div th:replace="~{sitioweb-modal/sitioweb-modal :: modal-history-update}"></div>
+            <div th:replace="~{sitioweb-modal/sitioweb-modal :: modal-history-remove}"></div>
         </div>
     </div>
     <footer th:replace="~{modules/footer}"></footer>
     <script th:src="@{/js/forms/siti_web/WebSite.js}"></script>
     <script th:src="@{/js/forms/siti_web/WebSiteForm.js}"></script>
-
+    <script th:src="@{/js/forms/siti_web/HistorialServizi.js}"></script>
+    <script th:src="@{/js/forms/siti_web/HistorialServiziForm.js}"></script>
+    <script th:src="@{/js/Pagination/Pagination.js}"></script>
 </body>

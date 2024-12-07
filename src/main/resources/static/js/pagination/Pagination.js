@@ -56,3 +56,14 @@ function createPagination(data,idPagination) {
     input.innerHTML = paginationHTML;
     addEventListenerToPages(input);
 }
+function addEventListenerToPages(input){
+    // Agregar event listeners para manejar el clic en los enlaces de paginación
+    let paginationLinks = input.querySelectorAll(".page-link");
+    paginationLinks.forEach(link => {
+        link.addEventListener("click", async function (event) {
+            event.preventDefault();
+            let url = link.getAttribute("data-link");
+            listWebSiteByService(url);
+        });
+    });
+}

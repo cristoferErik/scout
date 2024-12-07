@@ -12,7 +12,7 @@ async function listWebSiteByService(url){
 
         if (!response.ok) {
             let error = new Error();
-            error.data = responseData;
+            error.data = responseData.body;
             throw error;
         } else {
             createPagination(responseData,"pagination1");
@@ -24,20 +24,6 @@ async function listWebSiteByService(url){
         alert(message);
     }
 }
-
-
-function addEventListenerToPages(input){
-    // Agregar event listeners para manejar el clic en los enlaces de paginación
-    let paginationLinks = input.querySelectorAll(".page-link");
-    paginationLinks.forEach(link => {
-        link.addEventListener("click", async function (event) {
-            event.preventDefault();
-            let url = link.getAttribute("data-link");
-            listWebSiteByService(url);
-        });
-    });
-}
-
 
 function createDataTableT1(data) {
     const tableBody = document.getElementById("tbody1");

@@ -6,12 +6,16 @@ import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.checker.scout.controllers.website.interfaces.WebSiteInt;
 import com.checker.scout.entities.Hosting;
 import com.checker.scout.entities.WebSite;
+import com.checker.scout.entities.projections.IDetailWsSe;
+import com.checker.scout.repositories.DetailWsSeRepository;
 import com.checker.scout.repositories.HostingRepository;
 import com.checker.scout.repositories.WebSiteRepository;
 
@@ -24,6 +28,9 @@ public class WebSiteService {
 
     @Autowired
     private HostingRepository hostingRepository;
+
+    @Autowired
+    private DetailWsSeRepository detailWsSeRepository;
 
      public List<WebSite> findAllWebSite(Long idHosting){
         return webSiteRepository.findAllWebSite(idHosting);
@@ -75,5 +82,10 @@ public class WebSiteService {
             response.put("message", "WebSite non ha potuto essere eliminato per che non essiste!");
         }
         return response;
+    }
+
+    @Transactional(readOnly=true)
+    public Page<IDetailWsSe.HistorialService> historialServiceByWebSite(Long webSiteId,Pageable pageable){
+        return this.detailWsSeRepository.findAllHistorialServicesByWebSiteId(webSiteId, pageable);
     }
 }

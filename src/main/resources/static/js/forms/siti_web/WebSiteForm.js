@@ -50,7 +50,7 @@ async function checkWebSite(id) {
     // Llenar los campos del formulario con los datos del usuario
     inputs.forEach(function (input) {
         switch (input.name) {
-            case 'id':
+            case 'webSiteId':
                 input.value = data.id;
                 break;
             case 'nome':

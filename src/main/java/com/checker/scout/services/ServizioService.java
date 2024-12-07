@@ -80,7 +80,11 @@ public class ServizioService {
 
     @Transactional
     public Map<String, Object> saveServizioForWebSite(ServizioInt.ServizioForWebSite servizioForWebSite) {
-
+        boolean detailFlag=false;
+        if(servizioForWebSite.getId()!=null){
+            detailFlag=detailWsSeRepository.existsById(servizioForWebSite.getId());
+        }
+        
         boolean servizioFlag = servizioRepository.existsById(servizioForWebSite.getServizioId());
         boolean webSiteOpt = webSiteRepository.existsById(servizioForWebSite.getWebSiteId());
 
@@ -89,7 +93,9 @@ public class ServizioService {
         //Qui si verifica se gia essiste il servizio collegato con il sitoWeb
         IDetailWsSe.webSiteServiceIdsDto superKey= new IDetailWsSe.webSiteServiceIdsDto(servizioForWebSite.getServizioId(),servizioForWebSite.getWebSiteId());
         boolean flagSuperKey=detailWsSeRepository.isExist(superKey);
-        if(!flagSuperKey){
+        
+        //Si sono falso quindi se restituirà questo errore
+        if(!flagSuperKey && !detailFlag){
             response.put("status", "conflict");
             response.put("message", "Il servizio che vuoi aggiungere gia essiste in questo sito web!");
             return response;
@@ -116,6 +122,8 @@ public class ServizioService {
             //Si verifica che il prossimo aggiornamento, si trovi tra dateIni e dateFine
             if (prossimoAgg.isBefore(dateFine) && prossimoAgg.isAfter(dateIni)) {
                 DetailWsSe detailWsSe = new DetailWsSe();
+                if(detailFlag) detailWsSe.setId(servizioForWebSite.getId());
+                
                 WebSite webSite = new WebSite();
                 webSite.setId(servizioForWebSite.getWebSiteId());
                 Servizio servizio =new Servizio();
@@ -155,5 +163,34 @@ public class ServizioService {
             response.put("body",res);
         }
         return response;
+    }
+
+    @Transactional(readOnly=true)
+    public Map<String,Object> getServizioForWebSiteById(Long id){
+        Optional<DetailWsSe> detailWsSeOpt =detailWsSeRepository.findById(id);
+        Map<String,Object> response = new HashMap<>();
+        if(detailWsSeOpt.isPresent()){
+            response.put("status","success");
+            response.put("body", detailWsSeOpt.get());
+        }else{
+            response.put("status","not_found");
+            response.put("message", "La riga che sta cercando non essiste!");
+        }
+        return response;
+    }
+
+    @Transactional
+    public Map<String,Object> deleteServizioForWebSiteById(Long id){
+        Map<String,Object> response = new HashMap<>();
+        try {
+            detailWsSeRepository.deleteById(id);
+            response.put("status", "success");
+            response.put("message","servizio eliminato con successo!");
+        } catch (IllegalArgumentException e) {
+            response.put("status", "not_found");
+            response.put("message",e.getMessage());
+        }
+        return response;
+        
     }
 }

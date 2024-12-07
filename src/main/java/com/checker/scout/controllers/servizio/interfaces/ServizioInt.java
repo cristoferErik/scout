@@ -56,6 +56,7 @@ public interface ServizioInt {
     }
 
     public class ServizioForWebSite{
+        private Long id;
         private Long webSiteId;
         private Long servizioId;
         private LocalDate dateIni;
@@ -63,6 +64,14 @@ public interface ServizioInt {
         private Integer periodo;
         private String descrizione;
         
+
+        public Long getId() {
+            return id;
+        }
+
+        public void setId(Long id) {
+            this.id = id;
+        }
         public Long getWebSiteId() {
             return webSiteId;
         }
@@ -99,8 +108,5 @@ public interface ServizioInt {
         public void setDescrizione(String descrizione) {
             this.descrizione = descrizione;
         }
-       
-        
-        
     }
 }

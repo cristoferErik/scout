@@ -42,14 +42,15 @@
             <div id="formCheckWebSite">
                 <div class="items">
                     <div class="item center dark-item">
-                        <h2 for="idServizio">Sito Web</h2>
+                        <h2>Sito Web</h2>
+                        <input type="hidden" name="webSiteId">
                     </div>
                 </div>
                 <div class="items">
                     <div class="separate dark-item">
                         <div>
                             <div class="item">
-                                <label for="nomeS">Nome</label>
+                                <label for="nome">Nome</label>
                                 <input disabled type="text" name="nome"></input>
                             </div>
                             <div class="item">
@@ -65,8 +66,12 @@
                     </div>
                 </div>
                 <div class="items  dark-item">
-                    <div class="separate item right">
-                        <button class="button dark-red right" type="button" name="action" value="anulla"
+                    <div class="separate item ">
+                        <button class="button green" type="button" name="action" value="anulla"
+                            onclick="openModal('modal5'); addListWebSiteByService();">storico dei servizi</button>
+                        <button class="button green" type="button" name="action" value="anulla"
+                            onclick="openModal('modal6'); ">Credenziale</button>
+                        <button class="button dark-red" type="button" name="action" value="anulla"
                             onclick="closeModal('modal2')">anulla</button>
                     </div>
                 </div>
@@ -140,7 +145,8 @@
                     <div class="item">
                         <div>
                             <label for="descrizione">Descrizione</label>
-                            <textarea name="descrizione" id="descrizione" placeholder="aggiunge una descrizione"></textarea>
+                            <textarea name="descrizione" id="descrizione"
+                                placeholder="aggiunge una descrizione"></textarea>
                         </div>
                     </div>
                 </div>
@@ -149,6 +155,123 @@
                         <button class="button green" type="button" onclick="saveServizioForWebSite();">Salva</button>
                         <button class="button dark-red" type="button" name="action" value="anulla"
                             onclick="closeModal('modal4')">annulla</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div th:fragment="modal-history" id="modal5" class="modal">
+    <div class="card">
+        <div class="box-modal ">
+            <div class="box">
+                <h1>Storico di servizi</h1>
+            </div>
+            <div class="box">
+                <div class="table-container">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Servizio</th>
+                                <th>data inizio</th>
+                                <th>data fine</th>
+                                <th>periodo</th>
+                                <th>status</th>
+                                <th>descrizione</th>
+                                <th>update</th>
+                                <th>Delete</th>
+                                <th>remove</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody2">
+                            <!--Inserimento dei dati-->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="box">
+                <div th:replace="~{sitioweb-modal/pagination :: modal-pagination-2}"></div>
+            </div>
+            <div class="box">
+                <button class="button dark-red right" type="button" name="action" value="anulla"
+                        onclick="closeModal('modal5')">anulla</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:fragment="modal-history-update" id="modal6" class="modal">
+    <div class="card-form">
+        <div class="box-modal ">
+            <form class="module" method="post" id="formServiceForWebSite">
+                <div class="items">
+                    <div class="item center dark-item">
+                        <h2 for="id">Aggiornare Servizio</h2>
+                        <input type="hidden" name="id" />
+                        <input type="hidden" name="webSiteId">
+                        <input type="hidden" name="servizioId">
+                    </div>
+                </div>
+                <div class="items dark-item">
+                    <div class="item separate">
+                        <div>
+                            <label for="dateIni">Data inizio</label>
+                            <input type="date" name="dateIni" id="dateIni"></input>
+                        </div>
+                        <div>
+                            <label for="dateFine">Data fine</label>
+                            <input type="date" name="dateFine" id="dateFine"></input>
+                        </div>
+                    </div>
+                </div>
+                <div class="items dark-item">
+                    <div class="item">
+                        <label for="periodo">Periodo</label>
+                        <input type="number" name="periodo" id="periodo" placeholder="periodo"></input>
+                    </div>
+                </div>
+                <div class="items dark-item">
+                    <div class="item">
+                        <div>
+                            <label for="descrizione">Descrizione</label>
+                            <textarea name="descrizione" id="descrizione"
+                                placeholder="aggiunge una descrizione"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="items  dark-item">
+                    <div class="separate item">
+                        <button class="button green" type="button" onclick="saveServizioForWebSite();">Salva</button>
+                        <button class="button dark-red" type="button" name="action" value="anulla"
+                            onclick="closeModal('modal6')">anulla</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div th:fragment="modal-history-remove" id="modal7" class="modal">
+    <div class="card-form">
+        <div class="box-modal">
+            <form class="module" id="deleteServiceForWebSite" >
+                <div class="items">
+                    <div class="item center dark-item">
+                        <h2 for="cercare">Sei sicuro di eliminare questo Servizio</h2>
+                        <input type="hidden" name="id" />
+                    </div>
+                </div>
+                <div class="items">
+                    <div class="item center dark-item">
+                        <img class="claimers" th:src="@{/images/claimers/warning-svgrepo-com.svg}" alt="">
+                    </div>
+                </div>
+                <div class="items  dark-item">
+                    <div class="separate item right">
+                        <button class="button green" type="button" onclick="deleteServiceForWebSite();">Elimina</button>
+                        <button class="button dark-red" type="button" name="action" value="anulla"
+                            onclick="closeModal('modal7')">anulla</button>
                     </div>
                 </div>
             </form>

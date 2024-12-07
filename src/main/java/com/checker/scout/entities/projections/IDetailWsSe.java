@@ -1,5 +1,7 @@
 package com.checker.scout.entities.projections;
 
+import java.time.LocalDate;
+
 
 public interface IDetailWsSe {
     public class webSiteServiceIdsDto{
@@ -28,5 +30,17 @@ public interface IDetailWsSe {
     public interface webSiteServizeIds{
         Long webSiteId();
         Long servizioId();
+    }
+
+    public interface HistorialService{
+        public Long getId();
+        public Long getServizioId();
+        public Long getWebSiteId();
+        public String getDescrizione();
+        public Integer getPeriodo();
+        public Boolean getStatus();
+        public LocalDate getDateIni();
+        public LocalDate getDateFine();
+        public String getNomeServizio();
     }
 }
