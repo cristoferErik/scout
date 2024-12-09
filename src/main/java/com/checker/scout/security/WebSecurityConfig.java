@@ -32,12 +32,14 @@ public class WebSecurityConfig{
         .authenticated())
         .sessionManagement(management->management.sessionCreationPolicy(SessionCreationPolicy.ALWAYS))
         .formLogin(form->form
-        .loginPage("/login")
-        .loginProcessingUrl("/perform-login")
-        .permitAll())
+            .loginPage("/login")
+            .usernameParameter("email")
+            .passwordParameter("password")
+            .loginProcessingUrl("/perform-login")
+            .permitAll())
         .logout(logout -> logout
-        .logoutUrl("/logout")
-        .logoutSuccessUrl("/login?logout"))
+            .logoutUrl("/logout")
+            .logoutSuccessUrl("/login?logout"))
             .build();
     }
 }

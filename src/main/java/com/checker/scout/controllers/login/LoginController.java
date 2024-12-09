@@ -2,8 +2,6 @@ package com.checker.scout.controllers.login;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
@@ -32,12 +30,9 @@ public class LoginController {
     }
 
     @PostMapping("/perform-login")
-    public String login(@RequestParam String username, @RequestParam String password) {
+    public String login(@RequestParam String email, @RequestParam String password) {
         try {
-            UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(username, password);
-            Authentication authentication = authenticationManager.authenticate(authenticationToken);
-            SecurityContextHolder.getContext().setAuthentication(authentication);
-            System.out.println("Authentication successful for user: " + username);
+            System.out.println("Authentication successful for user: " + email);
             return "redirect:/";
         } catch (AuthenticationException e) {
             return "redirect:/login";
