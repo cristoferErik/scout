@@ -21,6 +21,7 @@ public interface ServizioWebSiteRepository extends JpaRepository<WebSite, Long> 
         from WebSite w
         inner join DetailWsSe d on w.id = d.webSite.id
         inner join Servizio s on d.servizio.id = s.id
+        where d.status=true
     """)
     Page<IWebSite.WebSiteP> findAllWebSiteToUpdate(Pageable pageable);
 

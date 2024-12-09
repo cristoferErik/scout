@@ -9,6 +9,4 @@ public interface IWebSite {
         LocalDate getProssimoAgg();
         String getNomeServizio();
     }
-    
-    
 }

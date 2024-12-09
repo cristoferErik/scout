@@ -4,6 +4,7 @@
 <head th:replace="~{modules/head}"></head>
 
 <body>
+    <input type="hidden" name="_csrf" th:value="${_csrf.token}" />
     <!--alt + 126 = ~ -->
     <div class="wrapper">
         <header th:replace="~{modules/menu}"></header>
@@ -20,6 +21,7 @@
                         <tr>
                             <th>Id</th>
                             <th>Nome</th>
+                            <th>Netson url</th>
                             <th>Url</th>
                             <th>Username</th>
                             <th>Password</th>

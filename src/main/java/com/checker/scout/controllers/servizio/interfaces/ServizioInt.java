@@ -62,6 +62,7 @@ public interface ServizioInt {
         private LocalDate dateIni;
         private LocalDate dateFine;
         private Integer periodo;
+        private Boolean status;
         private String descrizione;
         
 
@@ -107,6 +108,14 @@ public interface ServizioInt {
         }
         public void setDescrizione(String descrizione) {
             this.descrizione = descrizione;
+        }
+
+        public Boolean getStatus() {
+            return status;
+        }
+
+        public void setStatus(Boolean status) {
+            this.status = status;
         }
     }
 }

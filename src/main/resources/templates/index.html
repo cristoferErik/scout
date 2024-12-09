@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="~{modules/head}"></head>
-
+<meta name="_csrf" content="${_csrf.token}" />
 <body>
   <!--alt + 126 = ~ -->
   <div class="wrapper">
@@ -15,14 +15,15 @@
       </div>
       <div class="box ">
         <div class="table-container">
-          <table class="table" id="table1">
+          <table class="table">
             <thead>
               <tr>
                 <th>Id</th>
                 <th>Nome</th>
                 <th>Aggiornamento</th>
                 <th>Nome del servizio</th>
-                <th>Azione</th>
+                <th>aggiornare</th>
+                <th>finalizato</th>
               </tr>
             </thead>
             <tbody class="bodyT" id="tbody1">
@@ -42,8 +43,7 @@
 <footer th:replace="~{modules/footer}"></footer>
 <script th:src="@{/js/Date/FormatDate.js}"></script>
 <script th:src="@{/js/forms/index/SitiWebAgg.js}"></script>
+<script th:src="@{/js/forms/index/SitiWebAggForm.js}"></script>
 <script th:src="@{/js/Pagination/Pagination.js}"></script>
-
-
 
 </html>

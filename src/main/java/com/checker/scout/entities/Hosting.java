@@ -23,6 +23,7 @@ public class Hosting {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     private String nome;
+    private String netsonUrl;
     private String url;
     @Column(name="h_username")
     private String hUsername;
@@ -95,6 +96,14 @@ public class Hosting {
 
     public void setListWebSite(List<WebSite> listWebSite) {
         this.listWebSite = listWebSite;
+    }
+
+    public String getNetsonUrl() {
+        return netsonUrl;
+    }
+
+    public void setNetsonUrl(String netsonUrl) {
+        this.netsonUrl = netsonUrl;
     }
 
 

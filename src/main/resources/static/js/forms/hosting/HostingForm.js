@@ -16,6 +16,9 @@ async function updateHosting(id) {
             case 'nome':
                 input.value = hosting.nome;
                 break;
+            case 'netsonUrl':
+                input.value = hosting.netsonUrl;
+                break;
             case 'url':
                 input.value = hosting.url;
                 break;
@@ -78,6 +81,9 @@ async function checkFormHosting(id) {
                 break;
             case 'nome':
                 input.value = hosting.nome;
+                break;
+            case 'netsonUrl':
+                input.value = hosting.netsonUrl;
                 break;
             case 'url':
                 input.value = hosting.url;

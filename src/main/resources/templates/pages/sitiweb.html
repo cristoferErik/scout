@@ -2,8 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="~{modules/head}"></head>
-
 <body>
+    <input type="hidden" name="_csrf" th:value="${_csrf.token}" />
     <div class="wrapper">
         <header th:replace="~{modules/menu}"></header>
         <div class="card" id="listWebSite">

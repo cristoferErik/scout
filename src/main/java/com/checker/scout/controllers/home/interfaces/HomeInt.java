@@ -36,4 +36,35 @@ public interface HomeInt {
 
         
     }
+    public class webSiteUpdatedDTO{
+        private Long WebSiteId;
+        private String descrizione;
+        private String message;
+
+        public Long getWebSiteId() {
+            return WebSiteId;
+        }
+
+        public void setWebSiteId(Long WebSiteId) {
+            this.WebSiteId = WebSiteId;
+        }
+
+        public String getDescrizione() {
+            return descrizione;
+        }
+
+        public void setDescrizione(String descrizione) {
+            this.descrizione = descrizione;
+        }
+
+        public String getMessage() {
+            return message;
+        }
+
+        public void setMessage(String message) {
+            this.message = message;
+        }
+
+
+    }
 }

@@ -36,6 +36,7 @@ public class HostingService {
         Hosting hosting = new Hosting();
         hosting.setId(hostingDao.getId());
         hosting.setNome(hostingDao.getNome());
+        hosting.setNetsonUrl(hostingDao.getNetsonUrl());
         hosting.setUrl(hostingDao.getUrl());
         hosting.sethUsername(hostingDao.gethUsername());
         hosting.sethPassword(hostingDao.gethPassword());
@@ -53,6 +54,7 @@ public class HostingService {
                 Optional<Hosting> hostingOpt = hostingRepository.findById(hosting.getId());
                 if (hostingOpt.isPresent()) {
                     hostingOpt.get().setNome(hosting.getNome());
+                    hostingOpt.get().setNetsonUrl(hosting.getNetsonUrl());
                     hostingOpt.get().setUrl(hosting.getUrl());
                     hostingOpt.get().sethUsername(hosting.gethUsername());
                     hostingOpt.get().sethPassword(hosting.gethPassword());

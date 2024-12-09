@@ -4,7 +4,6 @@ async function updateServiceForWebSite(id) {
 
     // Llamada a getUtenteById envuelta en try-catch
     const data = await getServiceForWebSiteById(id);
-    console.log(data);
     // Si no se obtiene la respuesta, se lanza un error
     if (!data) {
         closeModal("modal6");
@@ -32,6 +31,9 @@ async function updateServiceForWebSite(id) {
                 break;
             case 'periodo':
                 input.value = data.periodo;
+                break;
+            case 'status':
+                input.checked = data.status;
                 break;
             case 'descrizione':
                 input.value = data.descrizione;

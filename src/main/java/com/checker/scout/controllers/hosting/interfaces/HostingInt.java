@@ -4,6 +4,7 @@ public interface HostingInt {
     public class HostingDao{
         private Long id;
         private String nome;
+        private String netsonUrl;
         private String url;
         private String hUsername;
         private String hPassword; 
@@ -49,19 +50,14 @@ public interface HostingInt {
             this.utenteId = utenteId;
         }
 
-        @Override
-        public String toString() {
-            StringBuilder sb = new StringBuilder();
-            sb.append("HostingDao{");
-            sb.append("id=").append(id);
-            sb.append(", nome=").append(nome);
-            sb.append(", url=").append(url);
-            sb.append(", hUsername=").append(hUsername);
-            sb.append(", hPassword=").append(hPassword);
-            sb.append(", utenteId=").append(utenteId);
-            sb.append('}');
-            return sb.toString();
+        public String getNetsonUrl() {
+            return netsonUrl;
         }
+
+        public void setNetsonUrl(String netsonUrl) {
+            this.netsonUrl = netsonUrl;
+        }
+        
         
 
     }

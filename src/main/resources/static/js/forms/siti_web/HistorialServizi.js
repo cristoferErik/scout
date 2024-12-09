@@ -100,6 +100,7 @@ async function deleteServiceForWebSite() {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('[name="_csrf"]').value,
             },
         });
 
@@ -122,13 +123,19 @@ async function saveServizioForWebSite() {
 
         let servizio = {};
         inputs.forEach((input) => {
-            servizio[input.name] = input.value;
+            
+            if(input.name==="status"){
+                servizio[input.name] = input.checked;
+                
+            }else{
+                servizio[input.name] = input.value;
+            }
         });
-
         const response = await fetch('/restServizio/serviziForWebSite', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('[name="_csrf"]').value,
             },
             body: JSON.stringify(servizio),
         });

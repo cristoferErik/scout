@@ -12,6 +12,7 @@ function createDataTableT1(data) {
             `
             <td>${dato.id}</td>
             <td>${dato.nome}</td>
+            <td>${dato.netsonUrl}</td>
             <td>${dato.url}</td>
             <td>${dato.hUsername}</td>
             <td>${dato.hPassword}</td>
@@ -74,6 +75,7 @@ async function saveHosting(hosting){
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('[name="_csrf"]').value,
             },
             body: JSON.stringify(hosting),
         });
@@ -119,6 +121,7 @@ async function deleteHosting(){
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('[name="_csrf"]').value,
             },
         });
         const responseData= await response.json();

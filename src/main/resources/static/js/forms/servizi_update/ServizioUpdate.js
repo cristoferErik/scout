@@ -11,14 +11,14 @@ function listServizio(){
         })
         .then(data => {
             let tableElement =document.getElementById('table1');
-            if (tableElement.DataTable) {
-                let tableInstance= tableElement.DataTable;
-                tableInstance.clear();  // Limpiar las filas actuales
-                tableInstance.destroy();  // Destruir la instancia de DataTable
+            if (tableElement._dtInstance) {
+                tableElement._dtInstance.clear();  // Pulire le righe correnti
+                tableElement._dtInstance.destroy();  // Distruggere l'istanza di DataTable
             }
             createDataTableT1(data);
             //$('#table1').DataTable(); // Inicializa DataTables
-            let table = new DataTable('#table1',{});
+            let newTable = new DataTable(tableElement, {});
+            tableElement._dtInstance = newTable; 
         })
         .catch(error => {
             // Manejo de errores en caso de fallar la solicitud
@@ -64,6 +64,7 @@ async function saveServizio(servizio){
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('[name="_csrf"]').value,
             },
             body: JSON.stringify(servizio),
         });
@@ -111,6 +112,7 @@ async function deleteServizio(){
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('[name="_csrf"]').value,
             },
         });
         const responseData= await response.json();

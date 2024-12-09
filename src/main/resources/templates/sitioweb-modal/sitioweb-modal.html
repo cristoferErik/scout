@@ -69,8 +69,8 @@
                     <div class="separate item ">
                         <button class="button green" type="button" name="action" value="anulla"
                             onclick="openModal('modal5'); addListWebSiteByService();">storico dei servizi</button>
-                        <button class="button green" type="button" name="action" value="anulla"
-                            onclick="openModal('modal6'); ">Credenziale</button>
+                        <!--<button class="button green" type="button" name="action" value="anulla"
+                            onclick="openModal('modal6'); ">Credenziale</button>-->
                         <button class="button dark-red" type="button" name="action" value="anulla"
                             onclick="closeModal('modal2')">anulla</button>
                     </div>
@@ -152,7 +152,7 @@
                 </div>
                 <div class="items  dark-item">
                     <div class="separate item right">
-                        <button class="button green" type="button" onclick="saveServizioForWebSite();">Salva</button>
+                        <button class="button green" type="button" onclick="saveAnaServizio();">Salva</button>
                         <button class="button dark-red" type="button" name="action" value="anulla"
                             onclick="closeModal('modal4')">annulla</button>
                     </div>
@@ -161,7 +161,6 @@
         </div>
     </div>
 </div>
-
 
 <div th:fragment="modal-history" id="modal5" class="modal">
     <div class="card">
@@ -230,6 +229,12 @@
                     <div class="item">
                         <label for="periodo">Periodo</label>
                         <input type="number" name="periodo" id="periodo" placeholder="periodo"></input>
+                    </div>
+                </div>
+                <div class="items dark-item">
+                    <div class="item">
+                        <label for="status">status</label>
+                        <input type="checkbox" name="status" id="status" placeholder="status"></input>
                     </div>
                 </div>
                 <div class="items dark-item">

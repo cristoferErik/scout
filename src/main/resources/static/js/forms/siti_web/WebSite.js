@@ -85,6 +85,7 @@ async function saveWebSite(sitoWeb) {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('[name="_csrf"]').value,
             },
             body: JSON.stringify(sitoWeb),
         });
@@ -115,6 +116,7 @@ async function deleteWebSite() {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('[name="_csrf"]').value,
             },
         });
 
@@ -153,6 +155,37 @@ async function saveServizioForWebSite() {
             const message = result.message;
             if(result.status==="success"){
                 closeModal("modal4");
+            }
+            alert(message);
+            listWebSite();
+        }
+    } catch (error) {
+        console.error("Error fetching data:", error);
+    }
+
+}
+async function saveAnaServizio() {
+    try {
+        let form = document.getElementById("formAnaServizio");
+        let inputs = form.querySelectorAll('[name]');
+
+        let servizio = {};
+        inputs.forEach((input) => {
+            servizio[input.name] = input.value;
+        });
+        const response = await fetch('/restServizio/serviziForWebSite', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(servizio),
+        });
+
+        if (response.ok) {
+            const result = await response.json();
+            const message = result.message;
+            if(result.status==="success"){
+                closeModal("modal6");
             }
             alert(message);
             listWebSite();

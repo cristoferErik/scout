@@ -34,7 +34,7 @@ public class HostingRestController {
     @PostMapping("/saveHosting")
     public Map<String,Object> saveHosting(@RequestBody HostingInt.HostingDao hostingDao){
         System.out.println(hostingDao.getId());
-        System.out.println(hostingDao.getUtenteId());
+        System.out.println(hostingDao.getNetsonUrl());
         Map<String,Object> response=hostingService.saveHosting(hostingDao);
         return response;
     }

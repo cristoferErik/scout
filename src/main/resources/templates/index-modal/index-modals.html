@@ -1,33 +1,37 @@
 <div th:fragment="modal-save-update" id="modal1" class="modal">
     <div class="card-form">
         <div class="box-modal ">
-            <form class="module" action="/saveAggSw" method="post">
+            <form class="module" method="post" id="aggSwForm">
                 <div class="items dark-item ">
                     <div class="item ">
                         <h2 for="cercare">Descrizzione del aggiormamento</h2>
-                        <input type="hidden" name="idSitoWeb">
+                        <input type="hidden" name="sitoWebId">
                     </div>
                 </div>
                 <div class="items dark-item ">
                     <div class="item center">
                         <label for="date">Data</label>
-                        <input type="hidden" name="date">
-                        <input disabled readonly type="date" name="date" id="date">
+                        <input disabled type="date" name="date" id="date">
+                    </div>
+                </div>
+                <div class="items dark-item">
+                    <div class="item center">
+                        <label for="nomeServizio">Nome servizio</label>
+                        <input disabled type="text" name="nomeServizio" id="nomeServizio" readonly></input>
                     </div>
                 </div>
                 <div class="items dark-item">
                     <div class="item">
                         <label for="nomeWebSite">Sito Web</label>
-                        <input type="hidden" name="nomeWebSite">
                         <input disabled type="text" name="nomeWebSite" id="nomeWebSite" readonly></input>
                     </div>
                 </div>
                 <div class="items dark-item">
                     <div class="item center">
                         <div>
-                            <label for="description">Descrizzione</label>
-                            <textarea name="description" id="description"
-                                placeholder="aggiunge una descrizzione"></textarea>
+                            <label for="descrizione">Descrizzione</label>
+                            <textarea name="descrizione" id="descrizione"
+                                placeholder="aggiunge una descrizione"></textarea>
                         </div>
                     </div>
                 </div>
@@ -41,7 +45,8 @@
                 </div>
                 <div class="items dark-item">
                     <div class="separate item right">
-                        <button class="button green" type="submit" name="action" value="invia">Salva</button>
+                        <button class="button green" type="submit" name="action" value="invia"
+                            onclick="saveDescrizioneAgg(event);">Salva</button>
                         <button class="button dark-red" type="button" name="action" value="anulla"
                             onclick="closeModal('modal1')">annulla</button>
                     </div>

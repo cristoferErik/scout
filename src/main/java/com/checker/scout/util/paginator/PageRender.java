@@ -32,8 +32,8 @@ public class PageRender {
         for (int i = startPage; i <= endPage; i++) {
             pageNumbers.add(i);
         }
-        System.out.println("current page--->"+currentPage);
-        System.out.println("total_page--->"+totalPages);
+        //System.out.println("current page--->"+currentPage);
+        //System.out.println("total_page--->"+totalPages);
         return pageNumbers;
     }
     public Map<String,Object> generatePageLink(String basePath,List<Integer> listNumbers){

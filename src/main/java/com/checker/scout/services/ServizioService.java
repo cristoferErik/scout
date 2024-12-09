@@ -136,8 +136,9 @@ public class ServizioService {
                 detailWsSe.setDescrizione(servizioForWebSite.getDescrizione());
 
                 detailWsSe.setProssimoAgg(prossimoAgg);
-                detailWsSe.setStatus(true);
-
+                if(!detailFlag)detailWsSe.setStatus(true);
+                else detailWsSe.setStatus(servizioForWebSite.getStatus());
+                
                 //TO-DO
                 detailWsSe.setMessage("da compilare");
                  
