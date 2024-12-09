@@ -11,18 +11,28 @@
     padding: 3rem;
     background: var(--blue-dark-color);
     text-align: center;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease-in-out;
+}
+.card:hover {
+    transform: translateY(5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5); 
 }
 .box{
     background: var(--second-color);
     margin:0.25rem 0rem;
     padding:0.25rem 0.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 .adapter{
     min-width: 40rem;
 }
-input{
-    border-width: 0;
-    padding: 0.25rem;
+
+input:focus{
+    border-color: var(--second-color);
+    outline: none;
 }
 .it-bn-1{
     grid-column-start:2;
@@ -39,9 +49,16 @@ input{
     text-align: center;
     width: 100%;
     max-height: 10rem;
+    border-radius: 12px;
+    
 }
 .table thead{
-    background: var( --second-color);
+    background: var(--second-color);
+    color: #fff;
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 .table tbody{
     background: var(--blue-gray-color);
@@ -50,6 +67,7 @@ input{
 .table-container{
     overflow-y: auto;
     max-height: 25rem;
+    border-radius: 12px;
 }
 .table-container::-webkit-scrollbar{
     background: #5f5f5f;

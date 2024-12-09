@@ -3,13 +3,13 @@
         <div class="box-modal ">
             <form class="module" method="post" id="formServizio">
                 <div class="items">
-                    <div class="item center dark-item">
+                    <div class="item center">
                         <h2 for="id">Servizio</h2>
                         <input type="hidden" name="id" id="id" />
                     </div>
                 </div>
                 <div class="items">
-                    <div class="separate dark-item">
+                    <div class="separate ">
                         <div>
                             <div class="item">
                                 <label for="nome">Nome</label>
@@ -27,7 +27,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="items  dark-item">
+                <div class="items">
                     <div class="separate item right">
                         <button class="button green" type="button" onclick="saveFormServizio(event);">Salva</button>
                         <button class="button dark-red" type="button" name="action" value="anulla"
@@ -44,12 +44,12 @@
         <div class="box-modal " id="checkServizio">
             <div class="module">
                 <div class="items">
-                    <div class="item center dark-item">
+                    <div class="item center">
                         <h2 for="id">Servizio</h2>
                     </div>
                 </div>
                 <div class="items">
-                    <div class="separate dark-item">
+                    <div class="separate">
                         <div class="item">
                             <label for="nome">Nome</label>
                             <input type="text" readonly name="nome" id="nome"></input>
@@ -73,7 +73,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="items  dark-item">
+                <div class="items">
                     <div class="separate item">
                         <button class="button dark-red right" type="button" name="action" value="anulla"
                             onclick="closeModal('modal2')">anulla</button>
@@ -90,17 +90,17 @@
             <form class="module" method="Post" id="formDeleteServizio">
                 <input type="hidden" method="post">
                 <div class="items">
-                    <div class="item center dark-item">
+                    <div class="item center">
                         <h2 for="cercare">Sei sicuro di eliminare questo Servizio</h2>
                         <input type="hidden" name="id" />
                     </div>
                 </div>
                 <div class="items">
-                    <div class="item center dark-item">
+                    <div class="item center">
                         <img class="claimers" th:src="@{/images/claimers/warning-svgrepo-com.svg}" alt="">
                     </div>
                 </div>
-                <div class="items  dark-item">
+                <div class="items  ">
                     <div class="separate item right">
                         <button class="button green" type="button" onclick="deleteServizio();">Elimina</button>
                         <button class="button dark-red" type="button" name="action" value="anulla"

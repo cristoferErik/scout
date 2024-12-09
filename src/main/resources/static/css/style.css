@@ -67,12 +67,18 @@ a{
     border: none;
     min-width: 1rem;
     padding: 0.5rem 1.5rem;
-    white-space: nowrap;/*evita il cambio di linea*/
+    white-space: nowrap;
     cursor: pointer;
     font-size: 14px;
     text-align: center;
+    transition: all 0.3s ease; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
 }
-
+.button:hover {
+    background-color: var(--blue-dark-item-color); 
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); 
+    transform: translateY(-3px);
+}
 .right{
     margin-left: auto;
 }
@@ -94,11 +100,32 @@ textarea{
     color: var(--light-font-color);
     
 }
+input{
+    border-width: 0;
+    padding: 0.25rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    color: var(--blue-dark-color);
+    font-size: 1rem;
+    transition: border 0.3s ease;
+}
+.item input, .item textarea {
+    display: flex;
+    box-sizing: border-box;
+    padding: 0.75rem;
+    margin: 0.5rem 0;
+    border-radius: 8px;
+    font-size: 1rem;
+    
+}
 span{
     margin-left: 1rem;
 }
-label{
+.title{
+    font-size: 16px;
+    padding: 0.5rem;
     font-weight: bold;
+    text-transform: uppercase; 
 }
 .claimers{
     width: 10rem;

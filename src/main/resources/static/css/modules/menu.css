@@ -9,6 +9,8 @@ header{
 }
 .menu ul{
     margin: 0px 2.5rem;   
+    display: flex;
+    padding: 0;
 }
 .menu ul,.menu li{
     display: flex;
@@ -26,6 +28,7 @@ li:last-child,li:first-child {
     padding: 1rem 2rem;
     color: var(--light-font-color);
     white-space: nowrap;/*evita il cambio di linea*/
+    transition: background-color 0.3s ease, transform 0.3s ease; 
 }
 .m_button:hover{
     background: var(--second-color);

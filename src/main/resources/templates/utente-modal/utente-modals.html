@@ -4,13 +4,13 @@
         <div class="box-modal ">
             <form class="module" method="post" id="formUtente">
                 <div class="items">
-                    <div class="item center dark-item">
+                    <div class="item center">
                         <h2>Utente</h2>
                         <input type="hidden" name="id" id="id" />
                     </div>
                 </div>
                 <div class="items">
-                    <div class="separate dark-item">
+                    <div class="separate">
                         <div>
                             <div class="item">
                                 <label for="nome">Nome</label>
@@ -35,7 +35,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="items  dark-item">
+                <div class="items">
                     <div class="separate item right">
                         <button class="button green" type="submit" onclick="saveFormUtente(event)">Salva</button>
                         <button class="button dark-red" type="button" name="action" value="anulla"
@@ -51,12 +51,12 @@
         <div class="box-modal">
             <div class="module" id="formCheckUtente">
                 <div class="items">
-                    <div class="item center dark-item">
+                    <div class="item center">
                         <h2 for="cercare">Utente:</h2>
                     </div>
                 </div>
                 <div class="items">
-                    <div class="dark-item">
+                    <div>
                         <div>
                             <div class="item">
                                 <label for="nome">Nome:</label>
@@ -81,7 +81,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="items  dark-item">
+                <div class="items">
                     <div class="separate item right">
                         <form action="/hosting/listHosting" method="get">
                             <input type="hidden" name="id" />
@@ -101,17 +101,17 @@
         <div class="box-modal">
             <form class="module" method="Post" id="formDeleteUtente">
                 <div class="items">
-                    <div class="item center dark-item">
+                    <div class="item center">
                         <h2 for="cercare">Sei sicuro di eliminare l'Utente</h2>
                         <input type="hidden" name="id" id="id" />
                     </div>
                 </div>
                 <div class="items">
-                    <div class="item center dark-item">
+                    <div class="item center">
                         <img class="claimers" th:src="@{/images/claimers/warning-svgrepo-com.svg}" alt="">
                     </div>
                 </div>
-                <div class="items  dark-item">
+                <div class="items">
                     <div class="separate item right">
                         <button class="button green" type="button" onclick="deleteUtente();">Elimina</button>
                         <button class="button dark-red" type="button" name="action" value="anulla"

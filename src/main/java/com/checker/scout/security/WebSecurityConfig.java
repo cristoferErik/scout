@@ -27,7 +27,7 @@ public class WebSecurityConfig{
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
         return http.authorizeHttpRequests((authz)->authz
-        .requestMatchers("/login","/perform-login").permitAll()
+        .requestMatchers("/login","/perform-login","/css/**", "/js/**").permitAll()
         .anyRequest()
         .authenticated())
         .sessionManagement(management->management.sessionCreationPolicy(SessionCreationPolicy.ALWAYS))

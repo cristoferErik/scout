@@ -206,14 +206,14 @@
         <div class="box-modal ">
             <form class="module" method="post" id="formServiceForWebSite">
                 <div class="items">
-                    <div class="item center dark-item">
+                    <div class="item center ">
                         <h2 for="id">Aggiornare Servizio</h2>
                         <input type="hidden" name="id" />
                         <input type="hidden" name="webSiteId">
                         <input type="hidden" name="servizioId">
                     </div>
                 </div>
-                <div class="items dark-item">
+                <div class="items">
                     <div class="item separate">
                         <div>
                             <label for="dateIni">Data inizio</label>
@@ -225,19 +225,19 @@
                         </div>
                     </div>
                 </div>
-                <div class="items dark-item">
+                <div class="items">
                     <div class="item">
                         <label for="periodo">Periodo</label>
                         <input type="number" name="periodo" id="periodo" placeholder="periodo"></input>
                     </div>
                 </div>
-                <div class="items dark-item">
+                <div class="items">
                     <div class="item">
                         <label for="status">status</label>
                         <input type="checkbox" name="status" id="status" placeholder="status"></input>
                     </div>
                 </div>
-                <div class="items dark-item">
+                <div class="items">
                     <div class="item">
                         <div>
                             <label for="descrizione">Descrizione</label>
@@ -246,7 +246,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="items  dark-item">
+                <div class="items ">
                     <div class="separate item">
                         <button class="button green" type="button" onclick="saveServizioForWebSite();">Salva</button>
                         <button class="button dark-red" type="button" name="action" value="anulla"
@@ -262,17 +262,17 @@
         <div class="box-modal">
             <form class="module" id="deleteServiceForWebSite" >
                 <div class="items">
-                    <div class="item center dark-item">
+                    <div class="item center">
                         <h2 for="cercare">Sei sicuro di eliminare questo Servizio</h2>
                         <input type="hidden" name="id" />
                     </div>
                 </div>
                 <div class="items">
-                    <div class="item center dark-item">
+                    <div class="item center">
                         <img class="claimers" th:src="@{/images/claimers/warning-svgrepo-com.svg}" alt="">
                     </div>
                 </div>
-                <div class="items  dark-item">
+                <div class="items ">
                     <div class="separate item right">
                         <button class="button green" type="button" onclick="deleteServiceForWebSite();">Elimina</button>
                         <button class="button dark-red" type="button" name="action" value="anulla"

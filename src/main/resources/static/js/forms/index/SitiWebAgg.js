@@ -50,6 +50,7 @@ function createDataTableT1(data) {
         tableBody.appendChild(row);
     });
 }
+
 async function saveDescrizioneAgg(event){
     try{
         event.preventDefault();
