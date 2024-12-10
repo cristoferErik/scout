@@ -34,6 +34,9 @@
                     </tbody>
                 </table>
             </div>
+            <div class="box">
+                <div th:replace="~{hosting-modal/paginations :: pagination1}"></div>
+            </div>
             <div class="container box ">
                 <button type="button" class="button green right"
                     onclick="openModal('modal1');">Aggiungere</button>
@@ -46,6 +49,7 @@
     <script th:src="@{/js/modal.js}"></script>
     <script th:src="@{/js/forms/hosting/Hosting.js}"></script>
     <script th:src="@{/js/forms/hosting/HostingForm.js}"></script>
+    <script th:src="@{/js/Pagination/Pagination.js}"></script>
     <footer th:replace="~{modules/footer}"></footer>
    
 </body>

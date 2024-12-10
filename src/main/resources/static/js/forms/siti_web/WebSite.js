@@ -2,29 +2,28 @@ document.addEventListener("DOMContentLoaded", function () {
     listWebSite();
 });
 
-function listWebSite() {
-    let listHosting = document.getElementById('listWebSite');
-    fetch(`/restWebSite/webSitesByhosting`)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("errore nella rete");
-            }
-            return response.json();
-        })
-        .then(data => {
-            let tableElement = document.getElementById('table1');
-            if ($.fn.DataTable.isDataTable(tableElement)) {
-                let tableInstance = $(tableElement).DataTable(); // Usar jQuery para acceder a DataTable
-                tableInstance.clear();  // Limpiar las filas actuales
-                tableInstance.destroy();  // Destruir la instancia de DataTable
-            }
-            createDataTableT1(data);
-            let newTable = new DataTable(tableElement, {});
-        })
-        .catch(error => {
-            // Manejo de errores en caso de fallar la solicitud
-            console.error('Hubo un problema con la solicitud AJAX:', error);
-        });
+async function listWebSite(url) {
+    try {
+        if (!url) {
+            url = "/restWebSite/webSitesByhosting";
+        }
+        const response = await fetch(url);
+        
+
+        if (!response.ok) {
+            let error = new Error();
+            error.data = responseData.body;
+            throw error;
+        } else {
+            const responseData = await response.json();
+            createPagination(responseData, "pagination1");
+            createDataTableT1(responseData.body);
+        }
+
+    } catch (error) {
+        let message = `Error: ${error.data.status} - ${error.data.message}`;
+        alert(message);
+    }
 }
 
 function createDataTableT1(data) {

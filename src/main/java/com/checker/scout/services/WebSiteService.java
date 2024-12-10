@@ -1,7 +1,6 @@
 package com.checker.scout.services;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -29,9 +28,9 @@ public class WebSiteService {
     @Autowired
     private HostingRepository hostingRepository;
 
-    public List<WebSite> findAllWebSite(HttpSession session) {
+    public Page<WebSite> findAllWebSite(HttpSession session,Pageable pageable) {
         Long hostingId = (Long) session.getAttribute("hostingId");
-        return webSiteRepository.findAllWebSite(hostingId);
+        return webSiteRepository.findAllWebSite(hostingId,pageable);
     }
 
     @Transactional

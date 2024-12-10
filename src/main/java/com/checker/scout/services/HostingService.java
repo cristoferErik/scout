@@ -1,11 +1,12 @@
 package com.checker.scout.services;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,10 +28,9 @@ public class HostingService {
     private UtenteRepository utenteRepository;
 
     @Transactional(readOnly = true)
-    public List<Hosting> getAllHostingsByUtente(HttpSession session) {
+    public Page<Hosting> getAllHostingsByUtente(HttpSession session,Pageable pageable) {
         Long utenteId = (Long) session.getAttribute("utenteId");
-        System.out.println(utenteId);
-        return this.hostingRepository.findAllHostingByUtente(utenteId);
+        return this.hostingRepository.findAllHostingByUtente(utenteId,pageable);
     }
 
     @Transactional

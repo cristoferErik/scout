@@ -33,32 +33,29 @@ function createDataTableT1(data) {
     });
 }
 
-function listHosting(){
+async function listHosting(url) {
+    try {
+        if (!url) {
+            url = "/restHosting/hostingByUtente";
+        }
+        const response = await fetch(url);
+        
 
-    fetch(`/restHosting/hostingByUtente`)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("errore nella rete");
-            }
-            return response.json();
-        })
-        .then(data => {
-            let tableElement =document.getElementById('table1');
-            if (tableElement._dtInstance) {
-                tableElement._dtInstance.clear();  // Pulire le righe correnti
-                tableElement._dtInstance.destroy();  // Distruggere l'istanza di DataTable
-            }
-            createDataTableT1(data);
-            //$('#table1').DataTable(); // Inicializa DataTables
-            let newTable = new DataTable(tableElement, {});
-            tableElement._dtInstance = newTable; 
-        })
-        .catch(error => {
-            // Gestione degli errori in caso di fallimento della richiesta
-            console.error("C'è stato un problema con la richiesta AJAX:", error);
-        });
+        if (!response.ok) {
+            let error = new Error();
+            error.data = responseData.body;
+            throw error;
+        } else {
+            const responseData = await response.json();
+            createPagination(responseData, "pagination1");
+            createDataTableT1(responseData.body);
+        }
+
+    } catch (error) {
+        let message = `Error: ${error.data.status} - ${error.data.message}`;
+        alert(message);
+    }
 }
-
 async function saveHosting(hosting){
     try{
         const response = await fetch('/restHosting/saveHosting',{
