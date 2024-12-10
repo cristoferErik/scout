@@ -2,6 +2,8 @@ package com.checker.scout.controllers.login;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
@@ -14,6 +16,7 @@ import com.checker.scout.security.AuthService;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class LoginController {
@@ -30,9 +33,14 @@ public class LoginController {
     }
 
     @PostMapping("/perform-login")
-    public String login(@RequestParam String email, @RequestParam String password) {
+    public String login(@RequestParam String email, @RequestParam String password,HttpServletRequest request) {
         try {
-            System.out.println("Authentication successful for user: " + email);
+            UsernamePasswordAuthenticationToken token=new UsernamePasswordAuthenticationToken(email, password);
+            Authentication authentication=authenticationManager.authenticate(token);
+            
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+            HttpSession session = request.getSession(true);  // Crear una sesión si no existe
+            session.setAttribute("SPRING_SECURITY_CONTEXT", SecurityContextHolder.getContext());
             return "redirect:/";
         } catch (AuthenticationException e) {
             return "redirect:/login";

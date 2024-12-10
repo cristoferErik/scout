@@ -31,6 +31,10 @@ public class WebSecurityConfig{
         .anyRequest()
         .authenticated())
         .sessionManagement(management->management.sessionCreationPolicy(SessionCreationPolicy.ALWAYS))
+        .exceptionHandling(exception->exception.authenticationEntryPoint((request,response,authException)->{
+            response.sendRedirect("/login");
+        }))
+        /*
         .formLogin(form->form
             .loginPage("/login")
             .usernameParameter("email")
@@ -40,6 +44,7 @@ public class WebSecurityConfig{
         .logout(logout -> logout
             .logoutUrl("/logout")
             .logoutSuccessUrl("/login?logout"))
+        */
             .build();
     }
 }
