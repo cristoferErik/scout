@@ -1,20 +1,21 @@
 document.addEventListener("DOMContentLoaded", function () {
-    listWebSiteByService();
+    listWebSites();
 });
 
-async function listWebSiteByService(url) {
+async function listWebSites(url) {
     try {
         if (!url) {
-            url = "/restHome/webSiteToUpdate";
+            url = "/web_sites";
         }
         const response = await fetch(url);
-        const responseData = await response.json();
+        
 
         if (!response.ok) {
             let error = new Error();
             error.data = responseData.body;
             throw error;
         } else {
+            const responseData = await response.json();
             createPagination(responseData, "pagination1");
             createDataTableT1(responseData.body);
         }
@@ -34,13 +35,16 @@ function createDataTableT1(data) {
         row.innerHTML =
             `
             <td>${dato.id}</td>
-            <td>${dato.nomeWebSite}</td>
-            <td>${dato.prossimoAgg}</td>
-            <td>${dato.nomeServizio}</td>
+            <td>${dato.nome}</td>
+            <td>${dato.url}</td>
+            <td>${dato.descrizione}</td>
+            <td>${dato.dataAggiornamento}</td>
+            <td>${dato.dataBackup}</td>
+            
             <td>
                 <button type="button" class="button light-blue"
-                data-aggSw='${JSON.stringify(dato)}'
-                onclick="openModal('modal1'); fillAggSwForm(this);">Aggiornare</button>
+                data-webSite='${JSON.stringify(dato)}'
+                onclick="openModal('modal1'); messageForm(this);">Aggiornare</button>
             </td>
             <td>
                 <button type="button" class="button gray-color"
@@ -51,10 +55,10 @@ function createDataTableT1(data) {
     });
 }
 
-async function saveDescrizioneAgg(event){
+async function sendMessage(event){
     try{
         event.preventDefault();
-        let form = document.getElementById("aggSwForm");
+        let form = document.getElementById("webSites");
         let formData= new FormData(form);
         
         let data={};
@@ -62,10 +66,11 @@ async function saveDescrizioneAgg(event){
             data[key]=value;
         });
 
-        const response = await fetch('/restHome/webSiteUpdated',{
+        const response = await fetch('/message',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('[name="_csrf"]').value,
             },
             body: JSON.stringify(data),
         });
@@ -75,7 +80,7 @@ async function saveDescrizioneAgg(event){
             alert(message);
             closeModal("modal1");
         }
-        listWebSiteByService();
+        listWebSites();
     }catch(error){
         console.error('Errore nella richiesta!',error);
     }

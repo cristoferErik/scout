@@ -6,6 +6,9 @@ import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,12 +17,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.checker.scout.controllers.utente.interfaces.UtenteInt;
 import com.checker.scout.entities.Utente;
-import com.checker.scout.entities.projections.IUtente;
 import com.checker.scout.services.UtenteService;
+import com.checker.scout.util.paginator.PageRender;
 
 
 @RestController
@@ -30,9 +34,24 @@ public class UtenteRestController {
     private UtenteService utenteService;
 
     @GetMapping("/utenti")
-    public List<IUtente.UtenteP> getUtenti(){
-         List<IUtente.UtenteP> pageUtente = this.utenteService.getAllUtenti();
-         return pageUtente;
+    public ResponseEntity<?> getUtenti(
+        @RequestParam (value= "page",defaultValue="0") Integer page,
+        @RequestParam (value="size",defaultValue="10") Integer size
+        ){
+        Map<String,Object> response= new HashMap<>();
+        Pageable pageable = PageRequest.of(page,size);
+        Page<Utente> utentePage=utenteService.findAllUtenti(pageable);
+        
+        PageRender pageRender= new PageRender(page, utentePage.getTotalPages(),size);
+        
+        List<Integer> listNumbers= pageRender.getPageNumbers();
+        
+        Map<String,Object> pageLinks = pageRender.generatePageLink("/restHome/webSiteToUpdate",listNumbers);
+
+        response.put("status","success");
+        response.put("body",utentePage.getContent());
+        response.put("pageLinks", pageLinks);
+        return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
     @GetMapping("/utente/{id}")

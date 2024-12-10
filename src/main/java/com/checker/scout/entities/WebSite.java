@@ -1,6 +1,6 @@
 package com.checker.scout.entities;
 
-import java.util.ArrayList;
+import java.time.LocalDate;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -25,7 +25,10 @@ public class WebSite {
     private Long id;
     private String nome;
     private String url;
-
+    @Column(name="data_aggiornamento")
+    private LocalDate dataAggiornamento;
+    @Column(name="data_backup")
+    private LocalDate dataBackup;
   
     @Column(columnDefinition="TEXT")
     private String descrizione;
@@ -38,15 +41,6 @@ public class WebSite {
     @JsonIgnore
     @OneToMany(mappedBy="webSite", cascade=CascadeType.ALL,fetch=FetchType.LAZY)
     private List<AccountWebSite> listAccountWebSites;
-
-    @JsonIgnore
-    @OneToMany(mappedBy="webSite",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
-    private List<DetailWsSe> listDetailWsSe;
-
-    public WebSite() {
-        this.listAccountWebSites=new ArrayList<>();
-        this.listDetailWsSe=new ArrayList<>();
-    }
 
     public Long getId() {
         return id;
@@ -79,15 +73,6 @@ public class WebSite {
     public void setDescrizione(String descrizione) {
         this.descrizione = descrizione;
     }
-
-    public List<DetailWsSe> getListDetailWsSe() {
-        return listDetailWsSe;
-    }
-
-    public void setListDetailWsSe(List<DetailWsSe> listDetailWsSe) {
-        this.listDetailWsSe = listDetailWsSe;
-    }
-
     public List<AccountWebSite> getListAccountWebSites() {
         return listAccountWebSites;
     }
@@ -102,6 +87,22 @@ public class WebSite {
 
     public void setHosting(Hosting hosting) {
         this.hosting = hosting;
+    }
+
+    public LocalDate getDataAggiornamento() {
+        return dataAggiornamento;
+    }
+
+    public void setDataAggiornamento(LocalDate dataAggiornamento) {
+        this.dataAggiornamento = dataAggiornamento;
+    }
+
+    public LocalDate getDataBackup() {
+        return dataBackup;
+    }
+
+    public void setDataBackup(LocalDate dataBackup) {
+        this.dataBackup = dataBackup;
     }
 
 

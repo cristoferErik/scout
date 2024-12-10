@@ -4,8 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function listWebSite() {
     let listHosting = document.getElementById('listWebSite');
-    let id = listHosting.querySelector('[name="hostingId"]').value;
-    fetch(`/restWebSite/webSites?hostingId=${id}`)
+    fetch(`/restWebSite/webSitesByhosting`)
         .then(response => {
             if (!response.ok) {
                 throw new Error("errore nella rete");
@@ -39,7 +38,6 @@ function createDataTableT1(data) {
             <td>${dato.id}</td>
             <td>${dato.nome}</td>
             <td>${dato.url}</td>
-            <td>${dato.descrizione}</td>
             <td>
                 <button type="button" class="button light-blue"
                     onclick="openModal('modal1'); updateWebSite(${dato.id});">update</button>
@@ -52,10 +50,6 @@ function createDataTableT1(data) {
                 <button type="button" class="button danger-color"
                     onclick="openModal('modal3'); deleteWebSiteForm(${dato.id});">remove</button>
             </td>
-            <td>
-                <button type="button" class="button gray-color"
-                    onclick="openModal('modal4'); anagraficaServizioForm(${dato.id});">+</button>
-            </td>
         `;
         tableBody.appendChild(row);
     });
@@ -64,12 +58,12 @@ function createDataTableT1(data) {
 async function getWebSiteById(id) {
     try {
         const response = await fetch(`/restWebSite/webSite/${id}`);
-        const responseData = await response.json();
         if (!response.ok) {
             let error = new Error();
             error.data = responseData;
             throw error;
         } else {
+            const responseData = await response.json();
             return responseData.body;
         }
 
@@ -80,6 +74,7 @@ async function getWebSiteById(id) {
 }
 
 async function saveWebSite(sitoWeb) {
+    console.log(JSON.stringify(sitoWeb));
     try {
         const response = await fetch('/restWebSite/saveWebSite', {
             method: 'POST',

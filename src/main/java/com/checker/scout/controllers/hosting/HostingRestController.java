@@ -12,12 +12,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.checker.scout.controllers.hosting.interfaces.HostingInt;
 import com.checker.scout.entities.Hosting;
 import com.checker.scout.services.HostingService;
+
+import jakarta.servlet.http.HttpSession;
 
 @RequestMapping("/restHosting")
 @RestController
@@ -26,16 +27,16 @@ public class HostingRestController {
     @Autowired
     private HostingService hostingService;
 
-    @GetMapping("/hosting")
-    public List<Hosting> getServizi(@RequestParam Long id){
-        return hostingService.getAllHostingsByUtente(id);
+    @GetMapping("/hostingByUtente")
+    public List<Hosting> getServizi(HttpSession session){
+        return hostingService.getAllHostingsByUtente(session);
     }   
     
     @PostMapping("/saveHosting")
-    public Map<String,Object> saveHosting(@RequestBody HostingInt.HostingDao hostingDao){
+    public Map<String,Object> saveHosting(@RequestBody HostingInt.HostingDao hostingDao,HttpSession session){
         System.out.println(hostingDao.getId());
         System.out.println(hostingDao.getNetsonUrl());
-        Map<String,Object> response=hostingService.saveHosting(hostingDao);
+        Map<String,Object> response=hostingService.saveHosting(hostingDao,session);
         return response;
     }
 

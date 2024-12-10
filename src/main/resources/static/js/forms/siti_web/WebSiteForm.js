@@ -15,7 +15,7 @@ async function updateWebSite(id) {
     // Llenar los campos del formulario con los datos del usuario
     inputs.forEach(function (input) {
         switch (input.name) {
-            case 'id':
+            case 'webSiteId':
                 input.value = data.id;
                 break;
             case 'nome':
@@ -23,6 +23,12 @@ async function updateWebSite(id) {
                 break;
             case 'url':
                 input.value = data.url;
+                break;
+            case 'dataAggiornamento':
+                input.value = data.dataAggiornamento;
+                break;
+            case 'dataBackup':
+                input.value = data.dataBackup;
                 break;
             case 'descrizione':
                 input.value = data.descrizione;
@@ -46,7 +52,6 @@ async function checkWebSite(id) {
         listWebSite();
         return;
     }
-
     // Llenar los campos del formulario con los datos del usuario
     inputs.forEach(function (input) {
         switch (input.name) {
@@ -58,6 +63,12 @@ async function checkWebSite(id) {
                 break;
             case 'url':
                 input.value = data.url;
+                break;
+            case 'dataAggiornamento':
+                input.value = data.dataAggiornamento;
+                break;
+            case 'dataBackup':
+                input.value = data.dataBackup;
                 break;
             case 'descrizione':
                 input.value = data.descrizione;
@@ -92,9 +103,6 @@ async function saveWebSiteForm(event) {
         formData.forEach((value, key) => {
             webSite[key] = value;
         });
-        let listHostingInputs = document.getElementById('listWebSite');
-        let hostingId = listHostingInputs.querySelector('[name="hostingId"]').value;
-        webSite["hostingId"] = hostingId
 
         saveWebSite(webSite);
         closeModal("modal1");
@@ -104,9 +112,9 @@ async function saveWebSiteForm(event) {
 }
 
 //Questo permette aggiungere l'id del webSite dentro del input hidden
-function anagraficaServizioForm(id){
+function anagraficaServizioForm(id) {
     let form = document.getElementById("formAnaServizio");
     let inputWebSiteId = form.querySelector('[name="webSiteId"]');
-    inputWebSiteId.value=id;
+    inputWebSiteId.value = id;
 }
 

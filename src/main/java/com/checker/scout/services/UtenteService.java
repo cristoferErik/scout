@@ -1,14 +1,14 @@
 package com.checker.scout.services;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.checker.scout.entities.Utente;
-import com.checker.scout.entities.projections.IUtente;
 import com.checker.scout.repositories.UtenteRepository;
 
 
@@ -19,8 +19,8 @@ public class UtenteService {
     private UtenteRepository utenteRepository;
 
     @Transactional(readOnly=true)
-    public List<IUtente.UtenteP> getAllUtenti(){
-        return this.utenteRepository.findAllUtenti();
+    public Page<Utente> findAllUtenti(Pageable pageable){
+        return this.utenteRepository.findAll(pageable);
     }
 
     @Transactional

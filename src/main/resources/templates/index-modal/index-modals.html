@@ -1,11 +1,11 @@
 <div th:fragment="modal-save-update" id="modal1" class="modal">
     <div class="card-form">
         <div class="box-modal ">
-            <form class="module" method="post" id="aggSwForm">
+            <form class="module" method="post" id="webSites">
                 <div class="items dark-item ">
                     <div class="item ">
                         <h2 for="cercare">Descrizzione del aggiormamento</h2>
-                        <input type="hidden" name="sitoWebId">
+                        <input type="hidden" name="webSiteId">
                     </div>
                 </div>
                 <div class="items dark-item ">
@@ -15,15 +15,9 @@
                     </div>
                 </div>
                 <div class="items dark-item">
-                    <div class="item center">
-                        <label for="nomeServizio">Nome servizio</label>
-                        <input disabled type="text" name="nomeServizio" id="nomeServizio" readonly></input>
-                    </div>
-                </div>
-                <div class="items dark-item">
                     <div class="item">
-                        <label for="nomeWebSite">Sito Web</label>
-                        <input disabled type="text" name="nomeWebSite" id="nomeWebSite" readonly></input>
+                        <label for="nome">Sito Web</label>
+                        <input disabled type="text" name="nome" id="nome" readonly></input>
                     </div>
                 </div>
                 <div class="items dark-item">
@@ -45,8 +39,8 @@
                 </div>
                 <div class="items dark-item">
                     <div class="separate item right">
-                        <button class="button green" type="submit" name="action" value="invia"
-                            onclick="saveDescrizioneAgg(event);">Salva</button>
+                        <button class="button green" type="button" name="action" value="invia"
+                            onclick="sendMessage(event);">Salva</button>
                         <button class="button dark-red" type="button" name="action" value="anulla"
                             onclick="closeModal('modal1')">annulla</button>
                     </div>

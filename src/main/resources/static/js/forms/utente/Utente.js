@@ -1,32 +1,30 @@
 document.addEventListener("DOMContentLoaded", function () {
     listUtente();
 });
-function listUtente(){
-    fetch('/restUtente/utenti')
-    .then(response => {
-        if (!response.ok) {
-            throw new Error("errore nella rete");
+async function listUtente(url) {
+    try {
+        if (!url) {
+            url = "/restUtente/utenti";
         }
-        return response.json();
-    })
-    .then(data => {
-        //data=paginate(data);
-        //console.log(data);
+        const response = await fetch(url);
         
-        let tableElement =document.getElementById('table1');
-        if($.fn.DataTable.isDataTable(tableElement)){
-            let tableInstance = $(tableElement).DataTable(); // Usar jQuery para acceder a DataTable
-            tableInstance.clear();  // Limpiar las filas actuales
-            tableInstance.destroy();  // Destruir la instancia de DataTable
+
+        if (!response.ok) {
+            let error = new Error();
+            error.data = responseData.body;
+            throw error;
+        } else {
+            const responseData = await response.json();
+            createPagination(responseData, "pagination1");
+            createDataTableT1(responseData.body);
         }
-            createDataTableT1(data);
-            let newTable = new DataTable(tableElement, {});
-    })
-    .catch(error => {
-        // Manejo de errores en caso de fallar la solicitud
-        console.error('Hubo un problema con la solicitud AJAX:', error);
-    });
+
+    } catch (error) {
+        let message = `Error: ${error.data.status} - ${error.data.message}`;
+        alert(message);
+    }
 }
+
 function createDataTableT1(data) {
     const tableBody = document.getElementById("tbody1");
     tableBody.innerHTML = "";
@@ -83,6 +81,7 @@ async function saveUtente(utente){
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('[name="_csrf"]').value,
             },
             body: JSON.stringify(utente),
         });

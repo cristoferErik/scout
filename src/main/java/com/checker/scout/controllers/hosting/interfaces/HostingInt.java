@@ -8,7 +8,6 @@ public interface HostingInt {
         private String url;
         private String hUsername;
         private String hPassword; 
-        private Long utenteId;
 
         public HostingDao() {
         }
@@ -42,12 +41,6 @@ public interface HostingInt {
         }
         public void sethPassword(String hPassword) {
             this.hPassword = hPassword;
-        }
-        public Long getUtenteId() {
-            return utenteId;
-        }
-        public void setUtenteId(Long utenteId) {
-            this.utenteId = utenteId;
         }
 
         public String getNetsonUrl() {

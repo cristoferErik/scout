@@ -47,7 +47,7 @@ async function checkUtente(id) {
 
     inputs.forEach(function (input) {
         switch (input.name) {
-            case 'id':
+            case 'utenteId':
                 input.value = data.id;
                 break;
             case 'nome':

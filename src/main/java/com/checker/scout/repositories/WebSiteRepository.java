@@ -20,4 +20,5 @@ public interface WebSiteRepository extends JpaRepository<WebSite, Long>{
             select w from WebSite w where w.id= :idWebSite
             """)
     public Optional<WebSite> findWebSiteById(Long idWebSite);
+    
 }

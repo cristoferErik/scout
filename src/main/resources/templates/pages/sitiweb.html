@@ -6,12 +6,11 @@
     <input type="hidden" name="_csrf" th:value="${_csrf.token}" />
     <div class="wrapper">
         <header th:replace="~{modules/menu}"></header>
-        <div class="card" id="listWebSite">
+        <div class="card">
             <div class="box">
                 <div class="title">
                     <label for="cercare">Siti webs</label>
                 </div>
-                <input type="hidden" name="hostingId" th:value="${hostingId}">
             </div>
             <div class="box">
                 <table class="table" id="table1">
@@ -20,11 +19,9 @@
                             <th>Id</th>
                             <th>Nome</th>
                             <th>Url</th>
-                            <th>descrizione</th>
                             <th>Update</th>
                             <th>Check</th>
                             <th>Delete</th>
-                            <th>Servizio</th>
                         </tr>
                     </thead>
                     <tbody id="tbody1">
@@ -40,16 +37,10 @@
             <div th:replace="~{sitioweb-modal/sitioweb-modal :: modal-save-update}"></div>
             <div th:replace="~{sitioweb-modal/sitioweb-modal :: modal-check}"></div>
             <div th:replace="~{sitioweb-modal/sitioweb-modal :: modal-remove}"></div>
-            <div th:replace="~{sitioweb-modal/sitioweb-modal :: modal-AnaServizio}"></div>
-            <div th:replace="~{sitioweb-modal/sitioweb-modal :: modal-history}"></div>
-            <div th:replace="~{sitioweb-modal/sitioweb-modal :: modal-history-update}"></div>
-            <div th:replace="~{sitioweb-modal/sitioweb-modal :: modal-history-remove}"></div>
         </div>
     </div>
     <footer th:replace="~{modules/footer}"></footer>
     <script th:src="@{/js/forms/siti_web/WebSite.js}"></script>
     <script th:src="@{/js/forms/siti_web/WebSiteForm.js}"></script>
-    <script th:src="@{/js/forms/siti_web/HistorialServizi.js}"></script>
-    <script th:src="@{/js/forms/siti_web/HistorialServiziForm.js}"></script>
     <script th:src="@{/js/Pagination/Pagination.js}"></script>
 </body>

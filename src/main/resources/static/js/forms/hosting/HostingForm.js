@@ -76,7 +76,7 @@ async function checkFormHosting(id) {
     }
     inputs.forEach(function (input) {
         switch (input.name) {
-            case 'id':
+            case 'hostingId':
                 input.value = hosting.id;
                 break;
             case 'nome':

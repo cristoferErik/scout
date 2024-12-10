@@ -34,10 +34,8 @@ function createDataTableT1(data) {
 }
 
 function listHosting(){
-    let listHosting = document.getElementById('listHosting');
-    let id = listHosting.querySelector('[name="utenteId"]').value;
 
-    fetch(`/restHosting/hosting?id=${id}`)
+    fetch(`/restHosting/hostingByUtente`)
         .then(response => {
             if (!response.ok) {
                 throw new Error("errore nella rete");
@@ -62,14 +60,6 @@ function listHosting(){
 }
 
 async function saveHosting(hosting){
-    let listHostingInputs = document.getElementById('listHosting');
-    let utenteId = listHostingInputs.querySelector('[name="utenteId"]').value;
-    if(utenteId){
-        hosting["utenteId"]=utenteId
-    }else{
-        throw Error("Non c'è l'ID del utente");
-    }
-
     try{
         const response = await fetch('/restHosting/saveHosting',{
             method: 'POST',

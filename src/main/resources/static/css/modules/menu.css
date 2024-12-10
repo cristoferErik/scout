@@ -23,7 +23,7 @@ header{
 li:last-child,li:first-child {
     border-right: none;
     border-left:none;
-  }
+}
 .m_button{
     padding: 1rem 2rem;
     color: var(--light-font-color);

@@ -1,17 +1,14 @@
-function fillAggSwForm(button){
-    const dato = JSON.parse(button.getAttribute('data-aggSw'));
-    let form = document.getElementById('aggSwForm');
+function messageForm(button){
+    const dato = JSON.parse(button.getAttribute('data-webSite'));
+    let form = document.getElementById('webSites');
     let inputs = form.querySelectorAll('[name]');
     inputs.forEach(input => {
         switch(input.name){
-            case "sitoWebId":
+            case "webSiteId":
                 input.value=dato.id;
                 break;
-            case "nomeWebSite":
-                input.value=dato.nomeWebSite;
-                break;
-            case "nomeServizio":
-                input.value=dato.nomeServizio;
+            case "nome":
+                input.value=dato.nome;
                 break;
             case "date":
                 date=new Date();

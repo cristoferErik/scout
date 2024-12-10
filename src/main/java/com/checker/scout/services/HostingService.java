@@ -15,7 +15,7 @@ import com.checker.scout.entities.Utente;
 import com.checker.scout.repositories.HostingRepository;
 import com.checker.scout.repositories.UtenteRepository;
 
-
+import jakarta.servlet.http.HttpSession;
 
 @Service
 public class HostingService {
@@ -26,70 +26,55 @@ public class HostingService {
     @Autowired
     private UtenteRepository utenteRepository;
 
-    @Transactional(readOnly=true)
-    public List<Hosting> getAllHostingsByUtente(Long utenteId) {
+    @Transactional(readOnly = true)
+    public List<Hosting> getAllHostingsByUtente(HttpSession session) {
+        Long utenteId = (Long) session.getAttribute("utenteId");
+        System.out.println(utenteId);
         return this.hostingRepository.findAllHostingByUtente(utenteId);
     }
 
     @Transactional
-    public Map<String,Object> saveHosting(HostingInt.HostingDao hostingDao) {
-        Hosting hosting = new Hosting();
-        hosting.setId(hostingDao.getId());
-        hosting.setNome(hostingDao.getNome());
-        hosting.setNetsonUrl(hostingDao.getNetsonUrl());
-        hosting.setUrl(hostingDao.getUrl());
-        hosting.sethUsername(hostingDao.gethUsername());
-        hosting.sethPassword(hostingDao.gethPassword());
-        Optional<Utente> optUtente = this.utenteRepository.findById(hostingDao.getUtenteId());
-        Map<String,Object> response= new HashMap<>();
-
-        if (optUtente.isPresent()) {
-            hosting.setUtente(optUtente.get());
-            if (hosting.getId() == null) {
-                hostingRepository.save(hosting);
-                response.put("status","success");
-                response.put("message","Hosting salvato successivamente!");
-                return response;
-            } else {
-                Optional<Hosting> hostingOpt = hostingRepository.findById(hosting.getId());
-                if (hostingOpt.isPresent()) {
-                    hostingOpt.get().setNome(hosting.getNome());
-                    hostingOpt.get().setNetsonUrl(hosting.getNetsonUrl());
-                    hostingOpt.get().setUrl(hosting.getUrl());
-                    hostingOpt.get().sethUsername(hosting.gethUsername());
-                    hostingOpt.get().sethPassword(hosting.gethPassword());
-                    hostingRepository.save(hostingOpt.get());
-                    response.put("status","success");
-                    response.put("message","Hosting aggiornato successivamente!");
-                    return response;
-                } else {
-                    response.put("status","not_found");
-                    response.put("message","Il Hosting non essiste nella base di dati!");
-                    return response;
-                }
-            }
-        } else {
-            response.put("status","not_found");
-            response.put("message","L'utente non esiste per cio, non si puo aggiornare il suo hosting!");
-            return response;
+    public Map<String, Object> saveHosting(HostingInt.HostingDao hostingDao, HttpSession session) {
+        Map<String, Object> response = new HashMap<>();
+        try {
+            Hosting hosting = new Hosting();
+            hosting.setId(hostingDao.getId());
+            hosting.setNome(hostingDao.getNome());
+            hosting.setNetsonUrl(hostingDao.getNetsonUrl());
+            hosting.setUrl(hostingDao.getUrl());
+            hosting.sethUsername(hostingDao.gethUsername());
+            hosting.sethPassword(hostingDao.gethPassword());
+            Long utenteId = (Long) session.getAttribute("utenteId");
+            Utente utente = new Utente();
+            utente.setId(utenteId);
+            hosting.setUtente(utente);
+            hostingRepository.save(hosting);
+            response.put("status", "success");
+            response.put("message", "Hosting salvato successivamente!");
+        } catch (Exception e) {
+            response.put("status", "bad_request");
+            response.put("message","C'è stato un errore, non si è potuto salvare il hosting!");
+            System.err.println(e.getMessage());
         }
+        return response;
+
     }
 
     @Transactional(readOnly = true)
-    public Optional<Hosting> findHostingById(Long id){
+    public Optional<Hosting> findHostingById(Long id) {
         return this.hostingRepository.findById(id);
     }
 
-    public Map<String,Object> deleteHosting(Long id){
-        Optional<Hosting> optHosting=this.hostingRepository.findById(id);
-        Map<String,Object> response= new HashMap<>();
-        if(optHosting.isPresent()){
+    public Map<String, Object> deleteHosting(Long id) {
+        Optional<Hosting> optHosting = this.hostingRepository.findById(id);
+        Map<String, Object> response = new HashMap<>();
+        if (optHosting.isPresent()) {
             this.hostingRepository.deleteById(id);
-            response.put("status","success");
-            response.put("message","Il hosting è stato eliminato successivamente!");
-        }else{
-            response.put("status","not_found");
-            response.put("message","Il hosting non è stato trovato, per cio non ha potuto essere eliminato!");
+            response.put("status", "success");
+            response.put("message", "Il hosting è stato eliminato successivamente!");
+        } else {
+            response.put("status", "not_found");
+            response.put("message", "Il hosting non è stato trovato, per cio non ha potuto essere eliminato!");
         }
         return response;
     }

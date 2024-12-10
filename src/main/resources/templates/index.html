@@ -2,9 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="~{modules/head}"></head>
-<meta name="_csrf" content="${_csrf.token}" />
 <body>
   <!--alt + 126 = ~ -->
+  <input type="hidden" name="_csrf" th:value="${_csrf.token}" />
   <div class="wrapper">
     <header th:replace="~{modules/menu}"></header>
     <div class="card">
@@ -20,10 +20,11 @@
               <tr>
                 <th>Id</th>
                 <th>Nome</th>
-                <th>Aggiornamento</th>
+                <th>Url</th>
                 <th>Nome del servizio</th>
-                <th>aggiornare</th>
-                <th>finalizato</th>
+                <th>dataAggiornamento</th>
+                <th>dataBackup</th>
+                <th>message</th>
               </tr>
             </thead>
             <tbody class="bodyT" id="tbody1">
@@ -42,8 +43,8 @@
 
 <footer th:replace="~{modules/footer}"></footer>
 <script th:src="@{/js/Date/FormatDate.js}"></script>
-<script th:src="@{/js/forms/index/SitiWebAgg.js}"></script>
-<script th:src="@{/js/forms/index/SitiWebAggForm.js}"></script>
+<script th:src="@{/js/forms/index/WebSites.js}"></script>
+<script th:src="@{/js/forms/index/WebSitesForm.js}"></script>
 <script th:src="@{/js/Pagination/Pagination.js}"></script>
 
 </html>
