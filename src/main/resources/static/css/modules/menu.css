@@ -29,7 +29,7 @@ li:last-child,li:first-child {
 .m_button{
     padding: 1rem 2rem;
     color: var(--light-font-color);
-    white-space: nowrap;/*evita il cambio di linea*/
+    white-space: nowrap;
     transition: background-color 0.3s ease, transform 0.3s ease; 
 }
 .m_button:hover{
