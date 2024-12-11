@@ -14,16 +14,18 @@ header{
 }
 .menu ul,.menu li{
     display: flex;
-    float: left;
     border-width: 0 1px;
+}
+.menu li{
     border-style:solid;
     border-color: var(--border-color);
 }
-
+/*
 li:last-child,li:first-child {
     border-right: none;
-    border-left:none;
+    border-left: none;
 }
+    */
 .m_button{
     padding: 1rem 2rem;
     color: var(--light-font-color);

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Pagina non trovata - Errore 404</title>
+    <link rel="stylesheet" th:href="@{/css/error/error.css}"> <!-- Collega il file CSS esterno -->
+</head>
+<body>
+    <div class="error-container">
+        <h1>Oops! Pagina non trovata.</h1>
+        <p>Ci scusiamo, ma la pagina che stai cercando non esiste.</p>
+        <a href="/" th:href="@{/}">Torna alla homepage</a>
+    </div>
+</body>
+</html>
