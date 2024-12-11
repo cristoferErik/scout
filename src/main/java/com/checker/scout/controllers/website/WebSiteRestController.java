@@ -56,8 +56,8 @@ public class WebSiteRestController {
     }
 
     @PostMapping("/saveWebSite")
-    public Map<String, Object> saveWebSite(@RequestBody WebSiteInt.WebSiteDao webSiteDao,HttpSession session) {
-        return webSiteService.saveWebSite(webSiteDao,session);
+    public Map<String, Object> saveWebSite(@RequestBody WebSiteInt.WebSiteDTO webSiteDTO,HttpSession session) {
+        return webSiteService.saveWebSite(webSiteDTO,session);
     }
 
     @GetMapping("/webSite/{id}")
@@ -77,5 +77,10 @@ public class WebSiteRestController {
     @DeleteMapping("/webSite/{id}")
     public Map<String, Object> deleteWebSite(@PathVariable Long id) {
         return this.webSiteService.deleteWebSite(id);
+    }
+
+    @PostMapping("/saveWebSiteIndex")
+    public Map<String, Object> saveWebSiteIndex(@RequestBody WebSiteInt.WebSiteDTO webSiteDTO) {
+        return webSiteService.saveWebSiteIndex(webSiteDTO);
     }
 }

@@ -3,27 +3,17 @@ package com.checker.scout.controllers.home.interfaces;
 
 public interface HomeInt {
     public class webSiteMessage{
-        private Long id;
-        private String nameWebSite;
-        private String descrizione;
+        private Long webSiteId;
+        private String webSiteNome;
+        private String subject;
         private String message;
-        public Long getId() {
-            return id;
+        
+        public Long getWebSiteId() {
+            return webSiteId;
         }
-        public void setId(Long id) {
-            this.id = id;
-        }
-        public String getNameWebSite() {
-            return nameWebSite;
-        }
-        public void setNameWebSite(String nameWebSite) {
-            this.nameWebSite = nameWebSite;
-        }
-        public String getDescrizione() {
-            return descrizione;
-        }
-        public void setDescrizione(String descrizione) {
-            this.descrizione = descrizione;
+
+        public void setWebSiteId(Long webSiteId) {
+            this.webSiteId = webSiteId;
         }
         public String getMessage() {
             return message;
@@ -32,6 +22,21 @@ public interface HomeInt {
             this.message = message;
         }
 
-        
+        public String getSubject() {
+            return subject;
+        }
+
+        public void setSubject(String subject) {
+            this.subject = subject;
+        }
+
+        public String getWebSiteNome() {
+            return webSiteNome;
+        }
+
+        public void setWebSiteNome(String webSiteNome) {
+            this.webSiteNome = webSiteNome;
+        }
+    
     }
 }

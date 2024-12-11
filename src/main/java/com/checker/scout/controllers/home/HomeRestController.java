@@ -22,6 +22,8 @@ import com.checker.scout.entities.WebSite;
 import com.checker.scout.services.WebSiteService;
 import com.checker.scout.util.paginator.PageRender;
 
+import jakarta.servlet.http.HttpSession;
+
 @RestController
 public class HomeRestController {
 
@@ -31,11 +33,18 @@ public class HomeRestController {
     @GetMapping("/web_sites")
     public ResponseEntity<?> getAllWebSiteToUpdate(
         @RequestParam (value= "page",defaultValue="0") Integer page,
-        @RequestParam (value="size",defaultValue="10") Integer size){
+        @RequestParam (value="size",defaultValue="10") Integer size,
+        HttpSession session){
+
+        session.removeAttribute("utenteId");
+        session.removeAttribute("webSiteId");
+        session.removeAttribute("hostingId"); 
+
         Map<String,Object> response= new HashMap<>();
         Pageable pageable = PageRequest.of(page,size);
         Page<WebSite> webSitePage=webSiteService.findAllWebSites(pageable);
         
+
         PageRender pageRender= new PageRender(page, webSitePage.getTotalPages(),size);
         
         List<Integer> listNumbers= pageRender.getPageNumbers();
@@ -50,10 +59,8 @@ public class HomeRestController {
 
     @PostMapping("/message")
     public ResponseEntity<?> sendMessage(@RequestBody webSiteMessage webSiteMessage){
-        Map<String,Object> response= new HashMap<>();
-        response.put("status","success");
-        response.put("message","Messagio inviato con successo!");
-        webSiteService.webSiteMessage(webSiteMessage);
+        Map<String,Object> response= webSiteService.webSiteMessage(webSiteMessage);
+        
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 }

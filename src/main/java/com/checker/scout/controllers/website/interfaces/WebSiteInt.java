@@ -3,7 +3,7 @@ package com.checker.scout.controllers.website.interfaces;
 import java.time.LocalDate;
 
 public interface WebSiteInt {
-    public class WebSiteDao {
+    public class WebSiteDTO {
 
         private Long webSiteId;
         private String nome;
@@ -12,7 +12,7 @@ public interface WebSiteInt {
         private LocalDate dataBackup;
         private String descrizione;
 
-        public WebSiteDao() {
+        public WebSiteDTO() {
         }
 
 

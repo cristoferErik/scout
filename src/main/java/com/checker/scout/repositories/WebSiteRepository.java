@@ -22,4 +22,9 @@ public interface WebSiteRepository extends JpaRepository<WebSite, Long>{
             """)
     public Optional<WebSite> findWebSiteById(Long idWebSite);
     
+    @Query("""
+            select u.email from WebSite w inner join w.hosting h inner join h.utente u
+            where w.id=:webSiteId   
+           """)
+    public Optional<String> findEmailUtenteById(Long webSiteId);
 }
