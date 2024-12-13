@@ -1,0 +1,45 @@
+services:
+  scout:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+        MYSQL_HOST: mysql-spring
+        MYSQL_USERNAME: root
+        MYSQL_PASSWORD: Mangione.Capo
+    depends_on:
+      - db
+    networks:
+        - scout
+  db:
+    container_name: mysql-spring
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: Mangione.Capo
+      MYSQL_DATABASE: scout
+    ports:
+      - "3308:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./my.cnf:/etc/mysql/my.cnf
+    networks:
+      - scout
+  phpmyadmin:
+    container_name: interfaciadb
+    depends_on:
+      - db
+    image: phpmyadmin:latest
+    ports:
+      - "8003:80"
+    environment:
+       UPLOAD_LIMIT: 100000000
+    networks:
+      - scout
+networks:
+  scout:
+    name: scout
+    driver: bridge
+
+volumes:
+  mysql-data:
+    driver: local
