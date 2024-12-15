@@ -36,13 +36,15 @@ public class LoginController {
     public String login(@RequestParam String email, @RequestParam String password,HttpServletRequest request) {
         try {
             /*
-            Gestore gestore=new Gestore();
-            gestore.setId(2L);
-            gestore.setName("Davide");
-            gestore.setEmail("davide.mangione@gmail.com");
-            gestore.setPassword("Mangione.Capo");
-            authService.saveGestore(gestore);
+                Gestore gestore=new Gestore();
+                gestore.setId(2L);
+                gestore.setName("Davide");
+                gestore.setEmail("davide.mangione@gmail.com");
+                gestore.setPassword("Mangione.Capo");
+                authService.saveGestore(gestore);
              */
+            
+
             UsernamePasswordAuthenticationToken token=new UsernamePasswordAuthenticationToken(email, password);
             Authentication authentication=authenticationManager.authenticate(token);
             
